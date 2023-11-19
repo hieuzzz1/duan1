@@ -14,7 +14,7 @@
                             <tr>
                                 <th class="col-3">Mã danh mục</th>
                                 <th class="col-3">Tên danh mục</th>
-                                <th class="col-3">Thao tác</th>
+                                <th class="col-3">Thao tácc</th>
                             </tr>
                         </thead>
                         <tbody>
