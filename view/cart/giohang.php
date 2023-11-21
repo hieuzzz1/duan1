@@ -69,14 +69,17 @@
 
 </div> -->
 
+<div class="container top-top-dki">
 <div class="col mt-3">
     <a href="index.php" class="text-decoration-none text-dark uiui">Trang chủ</a> / <span class="text-danger">Giỏ
         hàng</span>
 </div>
 <style>
-    .uiui {
-        margin-left: 140px;
+    
+    .top-top-dki {
+        margin-top :160px
     }
+    
 
     body {
         background-color: #F3F3F6;
@@ -132,13 +135,10 @@
         </div>
     </div>
 </div>
-
+</div>
 
 
 <style>
-    body {
-        background-color: #e6e6f1 !important;
-    }
 
     * {
         margin: 0;
@@ -162,7 +162,7 @@
 
     .button {
         display: inline-block;
-        background: #DC3545;
+        background: #F08383;
         border-radius: 5px;
         height: 48px;
         -webkit-transition: all 200ms ease;
@@ -191,7 +191,7 @@
     .cart_section {
         width: 100%;
         padding-top: 35px;
-        padding-bottom: 111px;
+        padding-bottom: 50px;
     }
 
     .cart_title {

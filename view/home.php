@@ -54,8 +54,8 @@
             </div>
             <style>
                 .dm {
-                    background-color: #DC3545 !important;
-                    border: 10px solid #DC3545 !important;
+                    background-color: #F08383 !important;
+                    border: 1px solid #F08383 !important;
                     text-align: center;
                     border-radius: 0% !important;
                 }
@@ -84,23 +84,10 @@
                 }
             </style>
         </div>
-        <div class="hrne container mt-5">
-            <style>
-                .hrne {
-                    max-width: 1080px;
-                    height: 1px;
-                    border: 1px solid #d51b2e;
-                }
 
-                body {
-                    background-color: #e6e6f1;
-
-                }
-            </style>
-        </div>
         <!-- slideshow -->
         <div class="slider">
-            <div class="row">
+            <div class="row bg-white-carosel mt-4">
                 <div class="large-12 columns mt-5">
                     <div class="owl-carousel owl-theme anhcrs">
                         <div class="item">
@@ -161,6 +148,12 @@
                         </div>
                     </div>
                     <style>
+                        .bg-white-carosel {
+                            border-radius: 5px;
+                            background-color: #fff;
+                            margin: auto;
+                        }
+
                         .item img {
                             margin: 0 auto;
                             max-width: 70px;
@@ -183,6 +176,7 @@
                 echo $thongbao;
             }
         ?>
+
         <!-- giỏ hàng - home -->
         <?php
             if(isset($_SESSION['user'])) {
@@ -207,7 +201,13 @@
                             <div class="tensp">Kem chống nắng</div>
                         </a>
                         <div class="quantity">Số lượng</div>
-                        <input type="number">
+                        <div class="number-input">
+                            <input type="button" value="&#8722;" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                class="minus"></input>
+                            <input class="quantity" min="0" name="quantity" value="1" type="number">
+                            <input type="button" value="&#43;" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                class="plus"></input>
+                        </div>
 
                     </div>
                     <div class="col-3 xoa-gia">
@@ -219,23 +219,96 @@
                     </form>
                 </div>
             </div>
-            <div class="dathang-home">
-                <div class="row mb-3">
-                    <div class="col-6">Tổng tiền:</div>
-                    <div class="col-6">
-                        <div class="giasp-home-dathang">
-                            300.000<span>₫</span>
+            <form action="index.php?act=giohang" method="post">
+                <div class="dathang-home">
+                    <div class="row mb-3">
+                        <div class="col-6">Tổng tiền:</div>
+                        <div class="col-6">
+                            <div class="giasp-home-dathang">
+                                300.000<span>₫</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row d-flex justify-content-center">
-                    <div class="col">
-                        <input type="submit" value="Đặt Hàng">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col">
+                            <input type="submit" value="Đặt Hàng">
+                        </div>
                     </div>
+
                 </div>
+            </form>
+            <style>
+                    input[type="number"] {
+                        -webkit-appearance: textfield;
+                        -moz-appearance: textfield;
+                        appearance: textfield;
+                    }
 
-            </div>
+                    input[type=number]::-webkit-inner-spin-button,
+                    input[type=number]::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                    }
 
+                    .number-input {
+                        border: 1px solid #ccc;
+                        display: inline-flex;
+                    }
+
+                    .number-input,
+                    .number-input * {
+                        box-sizing: border-box;
+                    }
+
+                    .number-input input {
+                        outline: none;
+                        -webkit-appearance: none;
+                        background-color: transparent;
+                        border: none;
+                        align-items: center;
+                        justify-content: center;
+                        width: 30px;
+                        height: 20px;
+                        cursor: pointer;
+                        margin: 0;
+                        position: relative;
+                    }
+
+
+
+                    input[class='plus']::after {
+                        display: inline-block;
+                        position: absolute;
+                        font-weight: 100;
+                        font-size: 17px;
+                        font-family: "Font Awesome 5 Free";
+                        content: '\002B';
+                        transform: translate(-50%, -30%) rotate(180deg);
+                    }
+
+                    input[class='minus']::after {
+                        display: inline-block;
+                        position: absolute;
+                        font-weight: 500;
+                        font-size: 20px;
+                        font-family: "Font Awesome 5 Free";
+                        content: '\2212';
+                        transform: translate(-50%, -30%) rotate(180deg);
+                    }
+
+
+
+                    .number-input input[type=number] {
+                        font-family: sans-serif;
+                        max-width: 50px;
+                        padding: .5rem;
+                        border: solid #ccc;
+                        border-radius: 0%;
+                        border-width: 0 1px;
+                        font-size: 18px;
+                        height: 30px;
+                        text-align: center;
+                    }      
+            </style>
             <style>
                 .dathang-home {
                     height: 200px;
@@ -337,11 +410,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Bạn cần nhập thông tin cá nhân để tiếp tục mua hàng tại shop! <a href="index.php?act=tkmuahang">Nhập thông tin</a>
+                        Bạn cần nhập thông tin cá nhân để tiếp tục mua hàng tại shop! <a
+                            href="index.php?act=tkmuahang">Nhập thông tin</a>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- End modal -->
         <div class="product-content">
             <nav>
                 <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
@@ -358,16 +433,15 @@
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
                     tabindex="0">
                     <div class="row mx-5">
-                        <?php foreach ($spnew as $sp):?>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
                             <div class="card" style="width: 18rem;">
-                                <div class="card-body">
+                                <div class="card-body border-spp">
                                     <div class="anhsppp">
                                         <a href="index.php?act=spchitiet"><img
                                                 src="https://png.pngtree.com/png-clipart/20200206/ourlarge/pngtree-pink-fresh-cosmetics-set-elements-png-image_2132437.jpg"
                                                 class="card-img-top" alt="...">
                                             <p class="card-title">
-                                                <?=$sp['name']?>
+                                                Kem chống nắng
                                             </p>
                                         </a>
                                     </div>
@@ -375,7 +449,7 @@
                                         <div class="col-md-7">
 
                                             <div class="giasp mt-4">
-                                                <?=$sp['giasp']?><span>₫</span>
+                                                400.000<span>₫</span>
 
                                             </div>
                                             <span class="giasale text-decoration-line-through">200.000đd</span>
@@ -396,15 +470,12 @@
                                 </div>
                             </div>
                         </div>
-                        <?php endforeach; ?>
-
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
                     tabindex="0">
                     <div class="row mx-5">
-                        <?php foreach ($spnew as $sp):?>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <div class="anhsppp">
@@ -412,7 +483,7 @@
                                                 src="https://png.pngtree.com/png-clipart/20200206/ourlarge/pngtree-pink-fresh-cosmetics-set-elements-png-image_2132437.jpg"
                                                 class="card-img-top" alt="...">
                                             <p class="card-title">
-                                                <?=$sp['name']?>
+                                                Kem chống nắng
                                             </p>
                                         </a>
                                     </div>
@@ -420,7 +491,7 @@
                                         <div class="col-md-7">
 
                                             <div class="giasp mt-4">
-                                                <?=$sp['giasp']?><span>₫</span>
+                                                400.000<span>₫</span>
 
                                             </div>
                                             <span class="giasale text-decoration-line-through">200.000đd</span>
@@ -433,7 +504,7 @@
                                         }else {
                                             echo '<div class="col-md-2 mt-5 carrt yttt"><a href="index.php?act=themvaogiohang" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
                                         }
-                                    ?>
+                                        ?>
                                         <div class="col-md-2 mt-5 carrt">
                                             <a href="#"><i class="fa-regular fa-heart"></i></a>
                                         </div>
@@ -441,15 +512,12 @@
                                 </div>
                             </div>
                         </div>
-                        <?php endforeach; ?>
-
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
                     tabindex="0">
                     <div class="row mx-5">
-                        <?php foreach ($spnew as $sp):?>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <div class="anhsppp">
@@ -457,7 +525,7 @@
                                                 src="https://png.pngtree.com/png-clipart/20200206/ourlarge/pngtree-pink-fresh-cosmetics-set-elements-png-image_2132437.jpg"
                                                 class="card-img-top" alt="...">
                                             <p class="card-title">
-                                                <?=$sp['name']?>
+                                                Kem chống nắng
                                             </p>
                                         </a>
                                     </div>
@@ -465,7 +533,7 @@
                                         <div class="col-md-7">
 
                                             <div class="giasp mt-4">
-                                                <?=$sp['giasp']?><span>₫</span>
+                                                400.000<span>₫</span>
 
                                             </div>
                                             <span class="giasale text-decoration-line-through">200.000đd</span>
@@ -478,7 +546,7 @@
                                         }else {
                                             echo '<div class="col-md-2 mt-5 carrt yttt"><a href="index.php?act=themvaogiohang" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
                                         }
-                                    ?>
+                                        ?>
                                         <div class="col-md-2 mt-5 carrt">
                                             <a href="#"><i class="fa-regular fa-heart"></i></a>
                                         </div>
@@ -486,8 +554,6 @@
                                 </div>
                             </div>
                         </div>
-                        <?php endforeach; ?>
-
                     </div>
                 </div>
             </div>
@@ -504,7 +570,7 @@
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
                     tabindex="0">
                     <div class="row mx-5">
-                        <div class="col-md-3 my-4">
+                        <div class="col-md-3 my-4 d-flex justify-content-center">
                             <a href="#" class="baiposs">
                                 <div class="card" style="width: 18rem;">
                                     <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
@@ -566,16 +632,26 @@
         </div>
     </div>
     <style>
+        .mymaincontent {
+            margin-top: 150px !important;
+        }
+
         #nav-contact,
         #nav-profile,
         #nav-tabContent {
             background-color: #fff;
-            border: none;
+            border: none !important;
         }
+
+
 
         .baiposs {
             text-decoration: none;
             color: #000000;
+        }
+
+        .baiposs:hover p {
+            color: #F08383;
         }
 
         .bv {
@@ -586,7 +662,7 @@
 
         .baiviet p {
             color: #ffffff !important;
-            background-color: #d51b2e !important;
+            background-color: #F08383 !important;
         }
 
         .nav button {
@@ -610,14 +686,14 @@
         }
 
         .product-content a:hover {
-            color: rgb(255, 221, 83);
+            color: #F08383;
         }
 
         .card {
             margin-top: 20px;
             margin-bottom: 20px;
             max-width: 230px;
-            background-color: #fff8f9;
+            background-color: #fff;
         }
 
         .card p {
@@ -635,6 +711,13 @@
             margin-right: 10px;
         }
 
+        .border-spp {
+            border: 1px solid #FFA2A2 !important;
+            border-radius: 5px;
+        }
+
+
+
         .card-body img {
             position: relative;
             transition: transform 0.5s;
@@ -647,7 +730,7 @@
         }
 
         .card-body:hover .carrt {
-            background-color: rgb(255, 83, 83);
+            background-color: #f09f9f;
             transform: scale(1.05);
         }
 

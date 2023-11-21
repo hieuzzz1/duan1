@@ -1,14 +1,90 @@
-<div class="container">
+<div class="container margin-fixeeed">
     <div class="col-md-9 mt-3 mb-4 iconcsss">
         <a href="index.php" class="text-decoration-none text-dark">Trang chủ</a> <i
             class="fa-solid fa-chevron-right"></i> <span class="text-danger">Sản phẩm
             chi tiết</span>
         <style>
+            .margin-fixeeed {
+                margin-top: 160px;
+            }
+
             .iconcsss i {
                 font-size: 14px;
                 color: #989898;
                 margin-left: 5px;
                 margin-right: 5px;
+            }
+        </style>
+        <style>
+            input[type="number"] {
+                -webkit-appearance: textfield;
+                -moz-appearance: textfield;
+                appearance: textfield;
+            }
+
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+            }
+
+            .number-input {
+                border: 1px solid #ccc;
+                display: inline-flex;
+            }
+
+            .number-input,
+            .number-input * {
+                box-sizing: border-box;
+            }
+
+            .number-input button {
+                outline: none;
+                -webkit-appearance: none;
+                background-color: transparent;
+                border: none;
+                align-items: center;
+                justify-content: center;
+                width: 30px;
+                height: 20px;
+                cursor: pointer;
+                margin: 0;
+                position: relative;
+            }
+
+
+
+            button[class='plus']::after {
+                display: inline-block;
+                position: absolute;
+                font-weight: 100;
+                font-size: 17px;
+                font-family: "Font Awesome 5 Free";
+                content: '\002B';
+                transform: translate(-50%, -30%) rotate(180deg);
+            }
+
+            button[class='minus']::after {
+                display: inline-block;
+                position: absolute;
+                font-weight: 500;
+                font-size: 20px;
+                font-family: "Font Awesome 5 Free";
+                content: '\2212';
+                transform: translate(-50%, -30%) rotate(180deg);
+            }
+
+
+
+            .number-input input[type=number] {
+                font-family: sans-serif;
+                max-width: 50px;
+                padding: .5rem;
+                border: solid #ccc;
+                border-radius: 0%;
+                border-width: 0 1px;
+                font-size: 18px;
+                height: 30px;
+                text-align: center;
             }
         </style>
     </div>
@@ -47,36 +123,39 @@
                 }
 
                 .cart {
-                    width: 500px;
-                    height: 160px;
-                    background-color: #f3f3f3;
-                    padding: 10px;
+                    width: 400px;
+                    height: 110px;
                     margin-top: 18px;
-                    border: none;
+                    border: 0.1px solid #F08383;
                     border-radius: 10px;
                 }
 
                 .boxkm {
-                    margin-top: 7px;
+                    margin-top: 9px;
                     display: flex;
                     justify-content: center;
                     font-size: 18px;
                     line-height: 40px;
                     margin-bottom: 5px;
-                    width: 270px;
+                    width: 170px;
                     height: 40px;
                     border: 1px solid #ccc;
                     border-radius: 10px;
                     font-weight: 600;
-                    background-color: rgb(185, 39, 39);
+                    background-color: #F08383;
                     color: #fff;
                     margin-left: 10px;
+                }
+
+                .boxkm span {
+                    font-size: 15px
                 }
 
                 .cart p {
                     margin-bottom: 0px;
                     margin-left: 10px;
-
+                    font-weight: 300;
+                    color: #555555;
                 }
 
                 * {
@@ -84,8 +163,12 @@
                 }
 
                 .cart .textkm {
-                    padding: 10px;
                     margin-bottom: 10px;
+                }
+
+                .cart .textkm span {
+                    color: #F08383;
+                    font-size: 17px;
                 }
 
                 .soluong input {
@@ -95,14 +178,13 @@
                     width: 150px;
                     text-align: center;
                     height: 30px;
-                    background-color: #da3838;
-                    color: #fff;
+                    color: #000000;
                 }
 
                 .btt11 button {
                     border: 1px solid #ffffff;
                     padding: 10px;
-                    background-color: #da3838;
+                    background-color: #FFA2A2;
                     color: #fff;
                     border-radius: 5px;
                     font-size: 15px;
@@ -112,33 +194,36 @@
                     border: none;
                     padding: 10px;
                     background-color: #fff;
-                    color: #ff0000;
+                    color: #F08383;
                     border-radius: 5px;
                     font-size: 15px;
-                    border: 1px solid #da3838;
-                    margin-left: -13px;
+                    border: 1px solid #FFA2A2;
+                    margin-left: 40px;
+                    margin-top: 1px;
+                    height: 48px;
                 }
 
 
                 .btt11 button:hover {
-                    border: 1px solid #da3838;
+                    border: 1px solid #FFA2A2;
                     background-color: #ffffff;
-                    color: #ff0000;
+                    color: #F08383;
                     border-radius: 5px;
                 }
 
                 .btt22 button:hover {
-                    background-color: #da3838;
+                    background-color: #FFA2A2;
                     color: #ffffff;
                     border-radius: 5px;
                 }
 
                 .btt11 button {
-                    width: 200px;
+                    width: 250px;
+                    height: 50px;
                 }
 
                 .boxtuvan {
-                    background-color: #dab738;
+                    background-color: #F08383;
                     padding: 10px;
                     color: #fff;
                     border-radius: 5px;
@@ -161,6 +246,10 @@
 
                 body {
                     background-color: #E7EEF6;
+                }
+
+                .quantity-chitietsp {
+                    margin-left: -40px;
                 }
             </style>
             <script>
@@ -217,11 +306,6 @@
             <div class="mb-2 mt-2">Thương hiệu: <b class="me-2">Kem chống nắng</b> Mã sản phẩm: <b>HT009</b> <br></div>
             <div><b class="fs-4 text-danger me-2">300.000đ</b> <b class="fw-lighter">Giá niêm yết:</b> <b
                     class="fw-light text-decoration-line-through">345.000đ</b>
-                <div>
-                    <span class="text-success">Tiết kiệm:</span>
-                    <b class="text-danger fs-6">45.000đ</b>
-                    <span class="text-success">so với giá thị trường</span>
-                </div>
             </div>
 
             <div class="cart">
@@ -229,24 +313,95 @@
                     <span><i class="fa-solid fa-gift"></i> Khuyến mãi ưu đãi</span>
                 </div>
                 <div class="textkm">
-                    <p>Tặng ngay tai nghe iDot trị giá 1 triệu</p>
-                    <p>Tặng ốp lưng chống sốc</p>
-                    <p>Tặng phiếu mua hàng trị giá 2.000.000đ</p>
+                    <p><span>&#8226;</span> Tặng ngay ưu đãi cực sốc</p>
+                    <p><span>&#8226;</span> Tặng phiếu mua sắm 500.000đ</p>
+                </div>
+            </div>
+            <div class="row mt-2 mb-3 chu-tieude">
+                <div class="col-md-6 mt-2 mb-2">
+                    <div class="soluong">
+                        <h6>Loại hàng</h6>
+                        <label class="radio"> <input type="radio" name="size" value="S" checked> <span>Bản
+                                thường</span></label>
+                        <label class="radio"> <input type="radio" name="size" value="M"> <span>Bản plus</span></label>
+                        <br>
+                        <label class="radio mt-2"> <input class="single-choice-checkbox" type="checkbox" name="size"
+                                value="L">
+                            <span>30ml</span></label>
+                        <label class="radio"> <input class="single-choice-checkbox" type="checkbox" name="size"
+                                value="XL">
+                            <span>150ml</span></label>
+                        <label class="radio"> <input class="single-choice-checkbox" type="checkbox" name="size"
+                                value="XXL">
+                            <span>200ml</span></label>
+                    </div>
+                </div>
+                <div class="col-md-6 quantity-chitietsp">
+                    <div class="soluong mt-2 mb-2">
+                        <h6>Số lượng</h6>
+                        <div class="number-input">
+                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                class="minus"></button>
+                            <input class="quantity" min="0" name="quantity" value="1" type="number">
+                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                class="plus"></button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="soluong mt-2 mb-2">
-                <h6>Số lượng</h6><input type="number" name="" id="" value="100">
-            </div>
+
 
             <div class="row btn-muahang mt-2 mb-2">
                 <div class="col-4 btt11"><button>THÊM VÀO GIỎ HÀNG <br>
                     </button></div>
                 <div class="col-3 btt22"><button>MUA NGAY <br></button></div>
-                <div class="col-5 boxtuvan">
-                    <span><i class="fa-solid fa-phone-volume"></i> Gọi 0345497282 để tư vấn mua hàng</span>
-                </div>
+                <style>
+                    label.radio {
+                        cursor: pointer
+                    }
 
+                    label.radio input {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        visibility: hidden;
+                        pointer-events: none
+                    }
+
+                    label.radio span {
+                        padding: 1px 9px;
+                        border: 1px solid#ccc;
+                        display: inline-block;
+                        color: #8c8c8c;
+                        border-radius: 3px;
+                    }
+
+                    label.radio input:checked+span {
+                        border-color: #F08383;
+                        background-color: #ffffff;
+                        color: #F08383
+                    }
+                </style>
+                <script>
+                    // Lấy tất cả các checkbox cùng một tên
+                    var checkboxes = document.querySelectorAll('.single-choice-checkbox');
+
+                    // Thêm sự kiện 'change' cho mỗi checkbox
+                    checkboxes.forEach(function (checkbox) {
+                        checkbox.addEventListener('change', function () {
+                            // Nếu checkbox được chọn, hủy chọn tất cả các checkbox khác
+                            if (this.checked) {
+                                checkboxes.forEach(function (otherCheckbox) {
+                                    if (otherCheckbox !== checkbox) {
+                                        otherCheckbox.checked = false;
+                                    }
+                                });
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
@@ -320,6 +475,7 @@
                     }
                 </style>
 
+
             </div>
             <div class="nav nav-tabs mt-4 oko" id="nav-tab" role="tablist">
                 <p class="nav-link active">Sản phẩm liên quan</p>
@@ -371,7 +527,7 @@
                 }
 
                 .oko p {
-                    background-color: #da3838 !important;
+                    background-color: #FFA2A2 !important;
                     color: #fff !important;
                     border-radius: 5px !important;
                     width: 500px;
@@ -385,135 +541,7 @@
         </div>
     </div>
 
-    <div class="post-content mb-5">
-        <nav>
-            <div class="nav nav-tabs mt-4 baiviet" id="nav-tab" role="tablist">
-                <p class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tin tức mới nhất</p>
-            </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
-                tabindex="0">
-                <div class="row mx-5 bg">
-                    <div class="col-md-3 my-4">
-                        <a href="#" class="baiposs">
-                            <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 my-4">
-                        <a href="#" class="baiposs">
-                            <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 my-4">
-                        <a href="#" class="baiposs">
-                            <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 my-4">
-                        <a href="#" class="baiposs">
-                            <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <style>
-        .baiposs {
-            text-decoration: none;
-            color: #000000;
-        }
 
-        .bv {
-            border-left: 1px solid #ccc;
-            border-right: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .baiviet p {
-            color: #ffffff !important;
-            background-color: #d51b2e !important;
-        }
-
-        .nav button {
-            color: #000000 !important;
-        }
-
-        #nav-tabContent {
-            border: 1px solid #b7b7b7;
-
-        }
-
-        .product-content img {
-            max-width: 170px;
-            height: 170px;
-        }
-
-        .product-content p {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .product-content a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .product-content a:hover {
-            color: rgb(255, 221, 83);
-        }
-
-        .card {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            max-width: 230px;
-            border: 1px solid #cecece;
-            background-color: #fff8f9;
-        }
-
-        .card p {
-            text-align: center;
-            margin-top: 10px;
-        }
-    </style>
 
 
 </div>

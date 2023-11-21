@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container top-top-dki">
     <div class="dieuhuong mb-4">
         <div class="dhmenu mb-4">
             <div class="col-md-9 mt-3">
@@ -103,17 +103,21 @@
         justify-content: center;
     }
 
+    .top-top-dki {
+        margin-top: 160px
+    }
+
     .container0 button[type="submit"] {
         text-align: center;
         width: 500px;
-        background-color: rgb(167, 32, 32);
+        background-color: #F08383;
         border: none;
         border-radius: 3px;
         height: 40px;
     }
 
     .container0 button[type="submit"]:active {
-        background-color: rgb(167, 32, 32) !important;
+        background-color: #F08383 !important;
     }
 
     .container0 button[type="submit"]:hover {

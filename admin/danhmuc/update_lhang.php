@@ -5,18 +5,18 @@
         <div class="row">
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
-                    <p>DANH MỤC SẢN PHẨM</p>
+                    <p>DANH MỤC LOẠI HÀNG</p>
                 </div>
                 <div class="bangdanhmuc">
-                    <form action="index.php?act=update_dmuc" method="post">
+                    <form action="index.php?act=update_loaihang" method="post">
                                     <?php
-                        if(is_array($dm)){
-                            extract($dm);
+                        if(is_array($lh)){
+                            extract($lh);
                         }
                     ?>
                     <p>Tên danh mục</p>
                     
-                    <input type="text" name="tenhanghoa" value="<?php if(isset($tendm)&&($tendm!="")) echo $tendm;?>">
+                    <input type="text" name="name" value="<?php if(isset($name)&&($name!="")) echo $name;?>">
                     <input type="hidden" name="id" value="<?php if(isset($id)&&($id>0)) echo $id;?>">
                     <input type="submit" name="capnhat" value="CẬP NHẬT">
 

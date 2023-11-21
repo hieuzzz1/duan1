@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container top-top-dki">
 
     <form action="index.php?act=donhangthanhcong" method="post">
         <div class="row mt-5 mb-5">
@@ -134,6 +134,9 @@
 
 </div>
 <style>
+    .top-top-dki {
+        margin-top: 160px
+    }
     .cttt-tongtatca {
         padding: 10px;
     }
@@ -147,7 +150,7 @@
     .cttt-tongtatca .thanhtien-tongtatca button {
         margin-left: 89px;
         color: #ffffff;
-        background-color: #DC3545;
+        background-color: #F08383;
         border: none;
         outline: none;
         margin-top: 25px;
@@ -264,7 +267,7 @@
     .css-bg-thanhtoan a {
         font-size: 30px;
         text-decoration: none;
-        color: #f15060;
+        color: #F08383;
         font-weight: 700;
         cursor: pointer;
     }

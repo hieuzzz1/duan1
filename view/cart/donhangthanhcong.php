@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container top-top-dki">
 
     <div class="row mt-5 mb-5">
         <div class="col-8 bg-white css-bg-thanhtoan">
@@ -80,6 +80,9 @@
 
 </div>
 <style>
+    .top-top-dki {
+        margin-top: 160px
+    }
     .cttt-tongtatca {
         padding: 10px;
     }
@@ -190,7 +193,7 @@
     .css-bg-thanhtoan a {
         font-size: 30px;
         text-decoration: none;
-        color: #f15060;
+        color: #F08383;
         font-weight: 700;
         cursor: pointer;
     }

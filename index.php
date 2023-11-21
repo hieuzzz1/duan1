@@ -6,7 +6,6 @@
     include "./model/sanpham.php";
     include "./model/taikhoan.php";
     
-    $spnew=load_all_sp_home();
 
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
         $act = $_GET[ 'act' ];

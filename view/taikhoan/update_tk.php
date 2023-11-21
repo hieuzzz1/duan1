@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container top-top-dki">
     <div class="row mb-5">
         <?php
             if(isset($thongbao) && ($thongbao!="")){
@@ -9,6 +9,9 @@
             <a href="index.php" class="text-decoration-none text-dark">Trang chủ</a> <i
                 class="fa-solid fa-chevron-right"></i> <span class="text-danger">Cập nhật tài khoản</span>
             <style>
+                .top-top-dki {
+                    margin-top: 160px
+                }
                 .iconcsss i {
                     font-size: 14px;
                     color: #989898;
@@ -74,8 +77,8 @@
 </div>
 <style>
     .dm {
-        background-color: #DC3545 !important;
-        border: 10px solid #DC3545 !important;
+        background-color: #F08383 !important;
+        border: 10px solid #F08383 !important;
         text-align: center;
         border-radius: 0% !important;
     }
@@ -136,7 +139,7 @@
 
     .container1 input[type="submit"] {
         width: 500px;
-        background-color: rgb(167, 32, 32);
+        background-color: #F08383;
         border: none;
         border-radius: 3px;
         height: 40px;

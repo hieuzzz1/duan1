@@ -1,41 +1,74 @@
 <div class="be-left-sidebar">
-            <div class="left-sidebar-wrapper"><a class="left-sidebar-toggle" href="#">Dashboard</a>
-                <div class="left-sidebar-spacer">
-                    <div class="left-sidebar-scroll">
-                        <div class="left-sidebar-content">
-                            <ul class="sidebar-elements">
-                                <li class="divider">Menu</li>
-                                <li class="active"><a href="index.php"><i class="icon mdi mdi-home"></i><span>Trang
-                                            chủ</span></a>
-                                </li>
-                                <li class="parent"><a href="index.php?act=list_tk"><i class="icon mdi mdi-face"></i><span>Tài
-                                            khoản</span></a>
-                                </li>
-                                <li><a href="index.php?act=list_danhmuc"><i class="fa-solid fa-list icon"
-                                            style="font-size: 16px;"></i><span>Danh
-                                            mục</span></a>
-                                <li><a href=""><i class="fa-brands fa-shopify icon"
-                                            style="font-size: 16px;"></i><span>Hàng
-                                            hóa</span></a>
-                                <li><a href=""><i class="fa-regular fa-rectangle-list icon"
-                                            style="font-size: 16px;"></i><span>Đơn hàng</span></a>
-                                </li>
-                                <li><a href=""><i class="fa-solid fa-comment icon"
-                                            style="font-size: 16px;"></i><span>Bình
-                                            luận</span></a>
-                                </li>
-                                <li class="parent"><a href=""><i
-                                            class="icon mdi mdi-chart-donut"></i><span>Thống
-                                            kê</span></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="">Thống kê tổng</a>
-                                        </li>
-                                    </ul>
-                                </li>
+    <div class="left-sidebar-wrapper"><a class="left-sidebar-toggle" href="#">Dashboard</a>
+        <div class="left-sidebar-spacer">
+            <div class="left-sidebar-scroll">
+                <div class="left-sidebar-content">
+                    <ul class="sidebar-elements">
+                        <li class="divider">Menu</li>
+                        <li class="active"><a href="index.php"><i
+                                    class="icon mdi mdi-home"></i><span>Trangchủ</span></a></li>
+
+                        <li class="parent"><a href="index.php?act=list_tk"><i class="icon mdi mdi-face"></i><span>Tài
+                                    khoản</span></a></li>
+
+                        <li class="parent"><a href=""><i class="icon mdi mdi-chart-donut"></i><span>Danh
+                                    mục</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="index.php?act=list_danhmuc">Danh mục sản phẩm</a></li>
+                                <li><a href="index.php?act=list_khoiluong">Danh mục khối lượng</a></li>
+                                <li><a href="index.php?act=list_loaihang">Danh mục loại hàng</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li><a href="index.php?act=list_hanghoa"><i class="fa-brands fa-shopify icon"
+                                    style="font-size: 16px;"></i><span>Hàng hóa</span></a>
+                        <li><a href=""><i class="fa-regular fa-rectangle-list icon"
+                                    style="font-size: 16px;"></i><span>Đơn hàng</span></a>
+                        </li>
+                        <li><a href=""><i class="fa-solid fa-comment icon" style="font-size: 16px;"></i><span>Bình
+                                    luận</span></a>
+                        </li>
+                        <li class="parent"><a href=""><i class="icon mdi mdi-chart-donut"></i><span>Thống
+                                    kê</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="">Thống kê tổng</a>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<script src="../beagle-dashboard/assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+
+<script src="../beagle-dashboard/assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js"
+    type="text/javascript"></script>
+
+<script src="../beagle-dashboard/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/js/app.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.time.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-flot/plugins/jquery.flot.orderBars.js"
+    type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-flot/plugins/curvedLines.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-flot/plugins/jquery.flot.tooltip.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery.sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/countup/countUp.min.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
+<script src="../beagle-dashboard/assets/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //-initialize the javascript
+        App.init();
+        App.dashboard();
+
+    });
+</script>

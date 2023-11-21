@@ -1,8 +1,11 @@
-<div class="container">
+<div class="container top-top-dki">
     <div class="col-md-9 mt-3 mb-4 iconcsss">
         <a href="index.php" class="text-decoration-none text-dark">Trang chủ</a> <i
             class="fa-solid fa-chevron-right"></i> <span class="text-danger">Chính sách</span>
         <style>
+            .top-top-dki {
+                margin-top: 160px
+            }
             .iconcsss i {
                 font-size: 14px;
                 color: #989898;

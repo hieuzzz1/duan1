@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container top-top">
     <div class="col-md-9 mt-3 mb-4 iconcsss ms-2">
         <a href="index.php" class="text-decoration-none text-dark">Trang chủ</a> <i
             class="fa-solid fa-chevron-right"></i> <span class="text-danger">Giới thiệu</span>
@@ -179,6 +179,9 @@
 
 </div>
 <style>
+    .top-top {
+        margin-top: 160px;
+    } 
     p.card {
         background-color: antiquewhite;
         text-align: center;

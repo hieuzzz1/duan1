@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container top-top-dki">
     <div class="dieuhuong mb-4">
     <div class="dhmenu mb-4">
             <div class="col-md-9 mt-3">
@@ -6,6 +6,9 @@
                     class="text-danger">Đăng nhập</span>
             </div>
         <style>
+            .top-top-dki {
+                margin-top :160px
+            }
             .dhmenu {
                 margin-left: 20px;
             }
@@ -102,7 +105,7 @@
 
     .container0 button[type="submit"] {
         width: 500px;
-        background-color: rgb(167, 32, 32);
+        background-color: #F08383;
         border: none;
         border-radius: 3px;
         height: 40px;

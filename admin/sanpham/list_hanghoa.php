@@ -7,37 +7,47 @@
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
                     <!-- Thêm danh mục -->
-                    <a href="index.php?act=themdanhmuc" class="add_hang_hoa mt-2 mb-4" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                    <a href="index.php?act=add_sanpham" class="add_hang_hoa mt-2 mb-4">
                         Thêm mới hàng hóa<i class="fa-solid fa-arrow-up-from-bracket btn"></i>
                     </a>
-                    <p><b>DANH MỤC SẢN PHẨM</b></p>
+                    <p><b>SẢN PHẨM</b></p>
                 </div>
                 <div class="bangdanhmuc">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-3">Mã danh mục</th>
-                                <th class="col-3">Tên danh mục</th>
-                                <th class="col-3">Thao tác</th>
+                                <th class="col-1">Mã</th>
+                                <th class="col-2">Tên sản phẩm</th>
+                                <th class="col-1">Ảnh</th>
+                                <th class="col-1">Giá</th>
+                                <th class="col-2">Loại sản phẩm</th>
+                                <th class="col-2">Khối lượng</th>
+                                <th class="col-2">Thuộc danh mục</th>
+                                <th class="col-2">Thao tác</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
-
-                            <?php
-                             foreach($listdanhmuc as $list=> $ldm):?>
+                            <?php foreach ($listsanpham as $list) {
+                                extract($list);
+                                $hinh="../upload".$img;
+                                if(is_file($hinh)){
+                                    $ok="<img src='".$hinh."' height='80'>";
+                                }
+                            }?>
+                            <?php foreach ($listsanpham as $key => $value):?>
+                            
                             <tr>
-                                <th>
-                                    <?=$ldm['id']?>
-                                </th>
+                                <th><?=$value['id']?></th>
+                                <td><?=$value['name']?></td>
+                                <td><img src="../upload/<?=$value['img']?>" alt="" height="80"></td>
+                                <td><?=$value['price']?></td>
+                                <td><?=$value['id_loai']?></td>
+                                <td><?=$value['id_khoiluong']?></td>
+                                <td><?=$value['iddm']?></td>
                                 <td>
-                                    <?=$ldm['tendm']?>
-
-                                </td>
-                                <td>
-
                                     <!-- Sửa danh mục -->
-                                    <a href="index.php?act=suadm&id=<?=$ldm['id']?>">
+                                    <a href="index.php?act=suadm&id=">
                                         <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
                                     </a>
                                     <!-- Xóa danh mục -->
@@ -45,19 +55,20 @@
                                         <i class="fa-regular fa-trash-can btn"></i>
                                     </a> -->
                                     <a href="#" class="openModalButton" data-bs-toggle="modal"
-                                        data-bs-target="#customModal_<?php echo $ldm['id']; ?>">
+                                        data-bs-target="#customModal_">
                                         <i class="fa-regular fa-trash-can btn"></i>
                                     </a>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
+                            
 
-                            <div class="modal fade" id="customModal_<?php echo $ldm['id']; ?>"
-                                data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                aria-labelledby="customModalLabel_<?php echo $ldm['id']; ?>" aria-hidden="true">
+                            <div class="modal fade" id="customModal_" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="customModalLabel_" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                        <h1 class="modal-title fs-5">Xác nhận xóa danh mục
+                                            <h1 class="modal-title fs-5">Xác nhận xóa danh mục
                                                 <i class="fa-regular fa-trash-can text-danger"></i> <br>
                                             </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -66,17 +77,15 @@
                                             </button>
                                         </div>
                                         <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
+                                            <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Hủy</button>
-                                            <a href="index.php?act=xoadanhmuc&id=<?=$ldm['id'];?>">
+                                            <a href="index.php?act=xoadanhmuc&id=">
                                                 Xóa
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <?php endforeach; ?>
 
                         </tbody>
                     </table>

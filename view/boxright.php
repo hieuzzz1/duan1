@@ -73,8 +73,8 @@
 
     /* css của danh mục sản phẩm */
     .dm {
-        background-color: #DC3545 !important;
-        border: 10px solid #DC3545 !important;
+        background-color: #F08383 !important;
+        border: 10px solid #F08383 !important;
         text-align: center;
         border-radius: 0% !important;
     }

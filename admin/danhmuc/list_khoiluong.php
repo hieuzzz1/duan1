@@ -7,37 +7,37 @@
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
                     <!-- Thêm danh mục -->
-                    <a href="index.php?act=themdanhmuc" class="add_hang_hoa mt-2 mb-4" data-bs-toggle="modal"
+                    <a href="index.php?act=themkhoiluong" class="add_hang_hoa mt-2 mb-4" data-bs-toggle="modal"
                         data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-                        Thêm mới hàng hóa<i class="fa-solid fa-arrow-up-from-bracket btn"></i>
+                        Thêm mới khối lượng<i class="fa-solid fa-arrow-up-from-bracket btn"></i>
                     </a>
-                    <p><b>DANH MỤC SẢN PHẨM</b></p>
+                    <p><b>DANH MỤC KHỐI LƯỢNG</b></p>
                 </div>
                 <div class="bangdanhmuc">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-3">Mã danh mục</th>
-                                <th class="col-3">Tên danh mục</th>
+                                <th class="col-3">Mã khối lượng</th>
+                                <th class="col-3">Tên khối lượng</th>
                                 <th class="col-3">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <?php
-                             foreach($listdanhmuc as $list=> $ldm):?>
+                             foreach($listkhoiluong as $list=> $kl):?>
                             <tr>
                                 <th>
-                                    <?=$ldm['id']?>
+                                    <?=$kl['id']?>
                                 </th>
                                 <td>
-                                    <?=$ldm['tendm']?>
+                                    <?=$kl['name']?>
 
                                 </td>
                                 <td>
 
                                     <!-- Sửa danh mục -->
-                                    <a href="index.php?act=suadm&id=<?=$ldm['id']?>">
+                                    <a href="index.php?act=suakhoiluong&id=<?=$kl['id']?>">
                                         <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
                                     </a>
                                     <!-- Xóa danh mục -->
@@ -45,19 +45,19 @@
                                         <i class="fa-regular fa-trash-can btn"></i>
                                     </a> -->
                                     <a href="#" class="openModalButton" data-bs-toggle="modal"
-                                        data-bs-target="#customModal_<?php echo $ldm['id']; ?>">
+                                        data-bs-target="#customModal_<?php echo $kl['id']; ?>">
                                         <i class="fa-regular fa-trash-can btn"></i>
                                     </a>
                                 </td>
                             </tr>
 
-                            <div class="modal fade" id="customModal_<?php echo $ldm['id']; ?>"
+                            <div class="modal fade" id="customModal_<?php echo $kl['id']; ?>"
                                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                aria-labelledby="customModalLabel_<?php echo $ldm['id']; ?>" aria-hidden="true">
+                                aria-labelledby="customModalLabel_<?php echo $kl['id']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                        <h1 class="modal-title fs-5">Xác nhận xóa danh mục
+                                        <h1 class="modal-title fs-5">Xác nhận xóa khối lượng
                                                 <i class="fa-regular fa-trash-can text-danger"></i> <br>
                                             </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -68,7 +68,7 @@
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Hủy</button>
-                                            <a href="index.php?act=xoadanhmuc&id=<?=$ldm['id'];?>">
+                                            <a href="index.php?act=xoakhoiluong&id=<?=$kl['id'];?>">
                                                 Xóa
                                             </a>
                                         </div>
@@ -94,21 +94,21 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1>Thêm mới hàng hóa</h1>
+                <h1>Thêm mới khối lượng</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
                         class="fa-solid fa-xmark"></i></button>
             </div>
-            <form action="index.php?act=themdanhmuc" method="post">
+            <form action="index.php?act=themkhoiluong" method="post">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Tên hàng hóa</label>
-                        <input type="text" class="form-control" name="tenhanghoa">
+                        <label for="recipient-name" class="col-form-label">Tên khối lượng</label>
+                        <input type="text" class="form-control" name="tenkhoiluong">
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <input type="submit" name="themmoidm" value="Thêm mới">
+                    <input type="submit" name="themmoikl" value="Thêm mới">
                 </div>
             </form>
         </div>
