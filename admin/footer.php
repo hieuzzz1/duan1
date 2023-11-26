@@ -15,14 +15,15 @@
                                     mục</span></a>
                             <ul class="sub-menu">
                                 <li><a href="index.php?act=list_danhmuc">Danh mục sản phẩm</a></li>
-                                <li><a href="index.php?act=list_khoiluong">Danh mục khối lượng</a></li>
-                                <li><a href="index.php?act=list_loaihang">Danh mục loại hàng</a></li>
-
+                                <li><a href="index.php?act=list_dungtich">Danh mục dung tích</a></li>
                             </ul>
                         </li>
-
-                        <li><a href="index.php?act=list_hanghoa"><i class="fa-brands fa-shopify icon"
-                                    style="font-size: 16px;"></i><span>Hàng hóa</span></a>
+                        <li class="parent"><a href=""><i class="icon mdi mdi-chart-donut"></i><span>Hàng hóa</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="index.php?act=list_hanghoa">Sản phẩm</a></li>
+                                <li><a href="index.php?act=view_sanphamct">Sản phẩm chi tiết</a></li>
+                            </ul>
+                        </li>
                         <li><a href=""><i class="fa-regular fa-rectangle-list icon"
                                     style="font-size: 16px;"></i><span>Đơn hàng</span></a>
                         </li>

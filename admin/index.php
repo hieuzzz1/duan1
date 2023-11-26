@@ -6,8 +6,7 @@ session_start();
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
     $listdanhmuc=loadall();
-    $listloaihang=loadall_loaihang();
-    $listkhoiluong=loadall_khoiluong();
+    $listdungtich=loadall_dungtich();
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
         $act = $_GET[ 'act' ];
         switch ($act) {
@@ -53,123 +52,141 @@ session_start();
                 include "../admin/danhmuc/update_dmuc.php";
                 break;
 
-            case 'list_loaihang':
-                $listloaihang=loadall_loaihang();
-                include "../admin/danhmuc/list_loaihang.php";
-                break;
 
-            case "themloaihang":
-                if(isset($_POST['themmoilh'])&&($_POST['themmoilh'])){
-                    $tenloaihang=$_POST['tenloaihang'];
-                    insert_loaihang($tenloaihang);
-                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_loaihang">';
+
+
+            case 'list_dungtich':
+                $listdungtich=loadall_dungtich();
+                include "../admin/danhmuc/list_dungtich.php";
+                break;
+            
+            case "themdungtich":
+                if(isset($_POST['themmoidungtich'])&&($_POST['themmoidungtich'])){
+                    $tendungtich=$_POST['tendungtich'];
+                    insert_khoiluong($tendungtich);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_dungtich">';
 
                 }
-                include "../admin/danhmuc/list_loaihang.php";
+                include "../admin/danhmuc/list_dungtich.php";
                 break;
 
-            case 'update_loaihang':
+            case 'update_dungtich':
                 if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                    $name=$_POST['name'];
+                    $tendt=$_POST['tendt'];
                     $id=$_POST['id'];
-                    update_loaihang($id,$name);
-                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_loaihang">';
+                    update_dungtich($id,$tendt);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_dungtich">';
                 }
-                $listloaihang=loadall_loaihang();
-                include "../admin/danhmuc/list_loaihang.php";
+                $listdungtich=loadall_dungtich();
+                include "../admin/danhmuc/list_dungtich.php";
                 break;
-            case 'sualoaihang':
+            case 'suadungtich':
                 if(isset($_GET['id'])&&($_GET['id']>0)){
-                    $lh=loadone_loaihang($_GET['id']);
+                    $kl=loadone_dungtich($_GET['id']);
                 }
-                include "../admin/danhmuc/update_lhang.php";
+                include "../admin/danhmuc/update_dtich.php";
                 break;
-            case 'xoaloaihang':
+            case 'xoadungtich':
                 if(isset($_GET['id'])&&($_GET['id'])){
-                    delete_loaihang($_GET['id']);
-                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_loaihang">';
+                    delete_dungtich($_GET['id']);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_dungtich">';
                 }
-                $listloaihang=loadall_loaihang();
-                include "../admin/danhmuc/list_loaihang.php";
-                break;
-
-
-            case 'list_khoiluong':
-                $listkhoiluong=loadall_khoiluong();
-                include "../admin/danhmuc/list_khoiluong.php";
-                break;
-
-            case "themkhoiluong":
-                if(isset($_POST['themmoikl'])&&($_POST['themmoikl'])){
-                    $tenkhoiluong=$_POST['tenkhoiluong'];
-                    insert_khoiluong($tenkhoiluong);
-                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_khoiluong">';
-
-                }
-                include "../admin/danhmuc/list_khoiluong.php";
-                break;
-
-            case 'update_khoiluong':
-                if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                    $name=$_POST['name'];
-                    $id=$_POST['id'];
-                    update_khoiluong($id,$name);
-                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_khoiluong">';
-                }
-                $listkhoiluong=loadall_khoiluong();
-                include "../admin/danhmuc/list_khoiluong.php";
-                break;
-            case 'suakhoiluong':
-                if(isset($_GET['id'])&&($_GET['id']>0)){
-                    $kl=loadone_khoiluong($_GET['id']);
-                }
-                include "../admin/danhmuc/update_kluong.php";
-                break;
-            case 'xoakhoiluong':
-                if(isset($_GET['id'])&&($_GET['id'])){
-                    delete_khoiluong($_GET['id']);
-                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_khoiluong">';
-                }
-                $listkhoiluong=loadall_khoiluong();
-                include "../admin/danhmuc/list_khoiluong.php";
+                $listdungtich=loadall_dungtich();
+                include "../admin/danhmuc/list_dungtich.php";
                 break;
             // End danh mục
             
-            
+
             //Hàng hóa
             case "list_hanghoa":
                 $listsanpham=loadAll_sanpham();
                 include "../admin/sanpham/list_hanghoa.php";
                 break;
-            case "add_sanpham":
-                if(isset($_POST['add_sp'])&&($_POST['add_sp'])){
-                    $loai=$_POST['idlh'];
-                    $iddm=$_POST['iddm'];
-                    $khoiluong=$_POST['idkl'];
-                    $name=$_POST['tensp'];
-                    $price=$_POST['giasp'];
+            case "sua_sanpham":
+                if(isset($_GET['id'])&&($_GET['id']>0)){
+                    $sanpham=loadOne_sanpham($_GET['id']);
+                }
+                $listdanhmuc=loadall();
+                include "../admin/sanpham/update_sanpham.php";
+                break;
+            case "capnhatsanpham":
+                if(isset($_POST['capnhatsp'])&&($_POST['capnhatsp'])){
+                    $id=$_POST['id'];
+                    $danhmuc_sua=$_POST['danhmuc_sua'];
+                    $ten_sua=$_POST['ten_sua'];
+                    $gia_sp=$_POST['gia_sp'];
+                    $gia_sua=$_POST['gia_sua'];
                     $hinh=$_FILES['anhsp']['name'];
                     $target_dir="../upload/";
                     $target_file=$target_dir . basename($_FILES['anhsp']['name']);
                     move_uploaded_file($_FILES['anhsp']['tmp_name'], $target_file);
-                    
-                    insert_sanpham($loai,$khoiluong,$name,$price,$hinh,$iddm);
+                    update_sanpham($id,$danhmuc_sua,$ten_sua,$gia_sp,$gia_sua,$hinh);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_hanghoa">';
+                }
+                $listsanpham=loadAll_sanpham();
+                $listdanhmuc=loadall();
+                include "../admin/sanpham/list_hanghoa.php";
+                break;
+
+            case "xoasp":
+                if(isset($_GET['id'])&&($_GET['id'])){
+                    delete_sanpham($_GET['id']);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_hanghoa">';
+                }
+                $listsanpham=loadAll_sanpham();
+                include "../admin/sanpham/list_hanghoa.php";
+                break;
+
+            case "add_sanpham":
+                if(isset($_POST['add_sp'])&&($_POST['add_sp'])){
+                    $iddm=$_POST['iddm'];
+                    $name=$_POST['tensp'];
+                    $gia_sp=$_POST['gia_sp'];
+                    $gia_sale=$_POST['gia_sale'];
+                    $hinh=$_FILES['anhsp']['name'];
+                    $target_dir="../upload/";
+                    $target_file=$target_dir . basename($_FILES['anhsp']['name']);
+                    move_uploaded_file($_FILES['anhsp']['tmp_name'], $target_file);
+                    insert_sanpham($name,$gia_sp,$gia_sale,$hinh,$iddm);
                     echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_hanghoa">';
                 }
                 $listdanhmuc=loadall();
-                $listloaihang=loadall_loaihang();
-                $listkhoiluong=loadall_khoiluong();
-
                 include "../admin/sanpham/add_sanpham.php";
                 break;
 
+            case "view_sanphamct":
+                $listsanpham=loadAll_sanpham();
+                $listsanpham_chitiet=loadOne_sanphamct_();
+                include "../admin/sanpham/view_sanphamct.php";
+                break;
 
-
+            case "add_spchitiet":
+                if(isset($_POST['Themsanphamchitiet'])&&($_POST['Themsanphamchitiet']) ){
+                    $id_dungtich=$_POST['id_dungtich'];
+                    $id_sp=$_POST['id_sp'];
+                    $gia_sp_chitiet=$_POST['gia_sp_chitiet'];
+                    insert_spchitiet($id_dungtich,$id_sp,$gia_sp_chitiet);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=view_sanphamct">';
+                }
+                $listsanpham=loadAll_sanpham();
+                $listsanpham_chitiet=loadOne_sanphamct_();
+                $listdanhmuc=loadall();
+                include "../admin/sanpham/view_sanphamct.php";
+                break;
+            case "xoasp_ct":
+                if(isset($_GET['id'])&&($_GET['id'])){
+                    delete_sanpham_ct($_GET['id']);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=view_sanphamct">';
+                }
+                $listsanpham_chitiet=loadOne_sanphamct_();
+                include "../admin/sanpham/view_sanphamct.php";
+                break;
+    
 
 
             case "list_tk":
                 include "../admin/taikhoan/list_tk.php";
-                break;
+                
 
             default:
             include "../admin/home.php";

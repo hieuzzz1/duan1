@@ -26,62 +26,32 @@
         pdo_execute($sql);
     }
 
-
-
+    
     // Loại hàng
-    function insert_loaihang($tenloaihang){
-        $sql ="insert into sp_loai(name) values('$tenloaihang')";
+    function insert_khoiluong($tendungtich){
+        $sql ="insert into dung_tich(ten_dung_tich) values('$tendungtich')";
         pdo_execute($sql);
     }
 
-    function delete_loaihang($id){
-        $sql = "delete from sp_loai where id=".$id;
+    function delete_dungtich($id){
+        $sql = "delete from dung_tich where id=".$id;
         pdo_execute($sql);
     }
 
-    function loadall_loaihang(){
-        $sql= "select * from sp_loai order by id desc";
-        $listloaihang=pdo_query($sql);
-        return $listloaihang;
+    function loadall_dungtich(){
+        $sql= "select * from dung_tich order by id desc";
+        $listdungtich=pdo_query($sql);
+        return $listdungtich;
     }
 
-    function loadone_loaihang($id){
-        $sql = "select * from sp_loai where id=".$id;
-        $lh= pdo_query_one($sql);
-        return $lh;
-    }
-
-    function update_loaihang($id,$name){
-        $sql =" update sp_loai set name ='".$name."' where id=".$id;
-        pdo_execute($sql);
-    }
-
-
-    // Loại hàng
-    function insert_khoiluong($tenkhoiluong){
-        $sql ="insert into sp_khoiluong(name) values('$tenkhoiluong')";
-        pdo_execute($sql);
-    }
-
-    function delete_khoiluong($id){
-        $sql = "delete from sp_khoiluong where id=".$id;
-        pdo_execute($sql);
-    }
-
-    function loadall_khoiluong(){
-        $sql= "select * from sp_khoiluong order by id desc";
-        $listkhoiluong=pdo_query($sql);
-        return $listkhoiluong;
-    }
-
-    function loadone_khoiluong($id){
-        $sql = "select * from sp_khoiluong where id=".$id;
+    function loadone_dungtich($id){
+        $sql = "select * from dung_tich where id=".$id;
         $kl= pdo_query_one($sql);
         return $kl;
     }
 
-    function update_khoiluong($id,$name){
-        $sql =" update sp_khoiluong set name ='".$name."' where id=".$id;
+    function update_dungtich($id,$tendt){
+        $sql =" update dung_tich set ten_dung_tich ='".$tendt."' where id=".$id;
         pdo_execute($sql);
     }
 

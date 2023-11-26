@@ -8,7 +8,7 @@
                     <p>DANH KHỐI LUỌNG</p>
                 </div>
                 <div class="bangdanhmuc">
-                    <form action="index.php?act=update_khoiluong" method="post">
+                    <form action="index.php?act=update_dungtich" method="post">
                                     <?php
                         if(is_array($kl)){
                             extract($kl);
@@ -16,7 +16,7 @@
                     ?>
                     <p>Tên danh mục</p>
                     
-                    <input type="text" name="name" value="<?php if(isset($name)&&($name!="")) echo $name;?>">
+                    <input type="text" name="tendt" value="<?php if(isset($ten_dung_tich)&&($ten_dung_tich!="")) echo $ten_dung_tich;?>">
                     <input type="hidden" name="id" value="<?php if(isset($id)&&($id>0)) echo $id;?>">
                     <input type="submit" name="capnhat" value="CẬP NHẬT">
 

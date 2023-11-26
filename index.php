@@ -1,12 +1,16 @@
 <?php
     ob_start();
     session_start();
+    if(!isset($_SESSION["giohang"])){
+        $_SESSION["giohang"]=array();
+    }
     include "./view/header.php";
     include "./model/pdo.php";
     include "./model/sanpham.php";
+    include "./model/danhmuc.php";
     include "./model/taikhoan.php";
     
-
+    $sp_moi=load_all_sp_home();
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
         $act = $_GET[ 'act' ];
         switch ($act) {
@@ -79,18 +83,53 @@
                     include "./view/tkmuahang/tkmuahang.php";
                     break;
             case 'dangxuat':
+
+
                 session_unset();
                 header( 'Location: index.php' );
                 break;
 
-            case 'giohang':
-                include "./view/cart/giohang.php";
-                break;
 
+            case 'addgiohang':
+                if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
+                    $masp=$_POST['masp'];
+                    $tensp=$_POST['tensp'];
+                    $giasp=$_POST['giasp'];
+                    $anhsp=$_POST['anhsp'];
+                    $dungtich=$_POST['dungtich'];
+                    if(isset($_POST['quantityy'])&&($_POST['quantityy']>0)){
+                        $quantity=$_POST['quantityy'];
+                    }
+                    else {
+                        $quantity=1;
+                    }
+                    if(checktrung_pro($masp)>=0){
+                        $vitritrung=checktrung_pro($masp);
+                        update_quantity_pro($vitritrung);
+                    }else {
+                        $item=array($masp,$tensp,$giasp,$anhsp,$dungtich,$quantity);
+                        array_push($_SESSION["giohang"],$item);
+                        
+                    }
+                    
+                    
+                }
+                header("Location: index.php?act=giohang");
+               
+            case 'giohang':
+                include "./view/giohang.php";
+                break;
             case 'sanpham':
                 include "./view/sanpham.php";
                 break;
             case 'spchitiet':
+                if(isset($_GET['id'])&&($_GET['id'])>0) {
+                    $id=($_GET['id']);
+                    $sp=loadOne_sanpham_chitiet($id);
+                    extract($sp);
+                    
+                }
+                $listdungtich=loadall_dungtich();
                 include "./view/sanphamct.php";
                 break;
 

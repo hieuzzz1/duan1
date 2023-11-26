@@ -10,7 +10,8 @@
 
                         <input type="text" name="tensp" placeholder="Tên sản phẩm">
                         <input type="file" name="anhsp">
-                        <input type="text" name="giasp" placeholder="Giá sản phẩm">
+                        <input type="text" name="gia_sale" placeholder="Giá sale">
+                        <input type="text" name="gia_sp" placeholder="Giá gốc">
 
                         <h2>Chọn</h2>
                         <div>Danh mục</div>
@@ -21,22 +22,7 @@
                             </option>
                             <?php endforeach; ?>
                         </select>
-                        <div>Loại hàng</div>
-                        <select name="idlh" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                            <?php foreach($listloaihang as $lh): ?>
-                            <option value="<?=$lh['id']?>">
-                                <?=$lh['name']?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <div>Dung tích</div>
-                        <select name="idkl" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                            <?php foreach($listkhoiluong as $kl): ?>
-                            <option value="<?=$kl['id']?>">
-                                <?=$kl['name']?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select>
+                       
 
                         <div class="div"></div>
                         <input type="submit" name="add_sp" value="Thêm mới">

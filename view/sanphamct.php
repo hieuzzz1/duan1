@@ -88,323 +88,343 @@
             }
         </style>
     </div>
-    <div class="row mb-5 boxctiet1">
-        <div class="col-md-5">
-            <style>
-                .slides img {
-                    display: none;
-                }
-
-                .slides img.active {
-                    display: block;
-                }
-
-                .slides img {
-                    width: 350px;
-                    margin: 0 auto;
-                }
-
-                .thumbnail {
-                    max-width: 50px;
-                    height: auto;
-                    cursor: pointer;
-                    margin-left: 25px;
-                }
-
-                .thumbnails {
-                    display: flex;
-                    justify-content: center;
-                    margin: 10px;
-                }
-
-                .thumbnails img {
-                    border: 1px solid rgb(209, 209, 209);
-                    max-width: 80px;
-                }
-
-                .cart {
-                    width: 400px;
-                    height: 110px;
-                    margin-top: 18px;
-                    border: 0.1px solid #F08383;
-                    border-radius: 10px;
-                }
-
-                .boxkm {
-                    margin-top: 9px;
-                    display: flex;
-                    justify-content: center;
-                    font-size: 18px;
-                    line-height: 40px;
-                    margin-bottom: 5px;
-                    width: 170px;
-                    height: 40px;
-                    border: 1px solid #ccc;
-                    border-radius: 10px;
-                    font-weight: 600;
-                    background-color: #F08383;
-                    color: #fff;
-                    margin-left: 10px;
-                }
-
-                .boxkm span {
-                    font-size: 15px
-                }
-
-                .cart p {
-                    margin-bottom: 0px;
-                    margin-left: 10px;
-                    font-weight: 300;
-                    color: #555555;
-                }
-
-                * {
-                    box-sizing: border-box;
-                }
-
-                .cart .textkm {
-                    margin-bottom: 10px;
-                }
-
-                .cart .textkm span {
-                    color: #F08383;
-                    font-size: 17px;
-                }
-
-                .soluong input {
-                    outline: none;
-                    border-radius: 5px;
-                    border: 0.5px solid #ccc;
-                    width: 150px;
-                    text-align: center;
-                    height: 30px;
-                    color: #000000;
-                }
-
-                .btt11 button {
-                    border: 1px solid #ffffff;
-                    padding: 10px;
-                    background-color: #FFA2A2;
-                    color: #fff;
-                    border-radius: 5px;
-                    font-size: 15px;
-                }
-
-                .btt22 button {
-                    border: none;
-                    padding: 10px;
-                    background-color: #fff;
-                    color: #F08383;
-                    border-radius: 5px;
-                    font-size: 15px;
-                    border: 1px solid #FFA2A2;
-                    margin-left: 40px;
-                    margin-top: 1px;
-                    height: 48px;
-                }
-
-
-                .btt11 button:hover {
-                    border: 1px solid #FFA2A2;
-                    background-color: #ffffff;
-                    color: #F08383;
-                    border-radius: 5px;
-                }
-
-                .btt22 button:hover {
-                    background-color: #FFA2A2;
-                    color: #ffffff;
-                    border-radius: 5px;
-                }
-
-                .btt11 button {
-                    width: 250px;
-                    height: 50px;
-                }
-
-                .boxtuvan {
-                    background-color: #F08383;
-                    padding: 10px;
-                    color: #fff;
-                    border-radius: 5px;
-                    width: 330px;
-                    text-align: center;
-                    margin-left: -62px;
-                }
-
-                .boxctiet {
-                    margin-left: 60px;
-                }
-
-                .boxctiet1 {
-                    background-color: #FFF;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    padding-top: 20px;
-                    padding-bottom: 20px;
-                }
-
-                body {
-                    background-color: #E7EEF6;
-                }
-
-                .quantity-chitietsp {
-                    margin-left: -40px;
-                }
-            </style>
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    let currentSlide = 0;
-                    const slides = document.querySelectorAll('.slides img');
-                    const thumbnails = document.querySelectorAll('.thumbnail');
-
-                    function showSlide(index) {
-                        slides.forEach(slide => slide.classList.remove('active'));
-                        slides[index].classList.add('active');
-                        currentSlide = index;
-                    }
-
-                    thumbnails.forEach(thumbnail => {
-                        thumbnail.addEventListener('click', function () {
-                            const index = parseInt(this.getAttribute('data-index'));
-                            showSlide(index);
-                        });
-                    });
-
-                    // Hiển thị ảnh đầu tiên khi trang được tải
-                    showSlide(currentSlide);
-                });
-
-
-            </script>
-            <div class="slideshow-container">
-                <div class="slides">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
-                        alt="Ảnh 1">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/iphone-12-pro-max-xanh-561e05b7-eed5-40c8-9065-49b5a1cea423.jpg?v=1623565125390"
-                        alt="Ảnh 2">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-5.png?v=1623565259483"
-                        alt="Ảnh 3">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/iphone-12-pro-max-ba-c.jpg?v=1623565283510"
-                        alt="Ảnh 4">
-                </div>
-                <div class="thumbnails">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
-                        alt="Ảnh nhỏ 1" class="thumbnail" data-index="0">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/iphone-12-pro-max-xanh-561e05b7-eed5-40c8-9065-49b5a1cea423.jpg?v=1623565125390"
-                        alt="Ảnh nhỏ 2" class="thumbnail" data-index="1">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-5.png?v=1623565259483"
-                        alt="Ảnh nhỏ 3" class="thumbnail" data-index="2">
-                    <img src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/iphone-12-pro-max-ba-c.jpg?v=1623565283510"
-                        alt="Ảnh nhỏ 4" class="thumbnail" data-index="3">
-                </div>
-            </div>
-
-        </div>
-        <div class="col-md-6 boxctiet">
-            <h4>Tên sản phẩmm</h4>
-            <div class="mb-2 mt-2">Thương hiệu: <b class="me-2">Kem chống nắng</b> Mã sản phẩm: <b>HT009</b> <br></div>
-            <div><b class="fs-4 text-danger me-2">300.000đ</b> <b class="fw-lighter">Giá niêm yết:</b> <b
-                    class="fw-light text-decoration-line-through">345.000đ</b>
-            </div>
-
-            <div class="cart">
-                <div class="boxkm">
-                    <span><i class="fa-solid fa-gift"></i> Khuyến mãi ưu đãi</span>
-                </div>
-                <div class="textkm">
-                    <p><span>&#8226;</span> Tặng ngay ưu đãi cực sốc</p>
-                    <p><span>&#8226;</span> Tặng phiếu mua sắm 500.000đ</p>
-                </div>
-            </div>
-            <div class="row mt-2 mb-3 chu-tieude">
-                <div class="col-md-6 mt-2 mb-2">
-                    <div class="soluong">
-                        <h6>Loại hàng</h6>
-                        <label class="radio"> <input type="radio" name="size" value="S" checked> <span>Bản
-                                thường</span></label>
-                        <label class="radio"> <input type="radio" name="size" value="M"> <span>Bản plus</span></label>
-                        <br>
-                        <label class="radio mt-2"> <input class="single-choice-checkbox" type="checkbox" name="size"
-                                value="L">
-                            <span>30ml</span></label>
-                        <label class="radio"> <input class="single-choice-checkbox" type="checkbox" name="size"
-                                value="XL">
-                            <span>150ml</span></label>
-                        <label class="radio"> <input class="single-choice-checkbox" type="checkbox" name="size"
-                                value="XXL">
-                            <span>200ml</span></label>
-                    </div>
-                </div>
-                <div class="col-md-6 quantity-chitietsp">
-                    <div class="soluong mt-2 mb-2">
-                        <h6>Số lượng</h6>
-                        <div class="number-input">
-                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                class="minus"></button>
-                            <input class="quantity" min="0" name="quantity" value="1" type="number">
-                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                class="plus"></button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-            <div class="row btn-muahang mt-2 mb-2">
-                <div class="col-4 btt11"><button>THÊM VÀO GIỎ HÀNG <br>
-                    </button></div>
-                <div class="col-3 btt22"><button>MUA NGAY <br></button></div>
+    <form action="index.php?act=addgiohang" method="post">
+        <div class="row mb-5 boxctiet1">
+            <div class="col-md-5">
                 <style>
-                    label.radio {
-                        cursor: pointer
+                    .slides img {
+                        display: none;
                     }
 
-                    label.radio input {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        visibility: hidden;
-                        pointer-events: none
+                    .slides img.active {
+                        display: block;
                     }
 
-                    label.radio span {
-                        padding: 1px 9px;
-                        border: 1px solid#ccc;
-                        display: inline-block;
-                        color: #8c8c8c;
-                        border-radius: 3px;
+                    .slides img {
+                        width: 350px;
+                        margin: 0 auto;
                     }
 
-                    label.radio input:checked+span {
-                        border-color: #F08383;
+                    .thumbnail {
+                        max-width: 50px;
+                        height: auto;
+                        cursor: pointer;
+                        margin-left: 25px;
+                    }
+
+                    .thumbnails {
+                        display: flex;
+                        justify-content: center;
+                        margin: 10px;
+                    }
+
+                    .thumbnails img {
+                        border: 1px solid rgb(209, 209, 209);
+                        max-width: 80px;
+                    }
+
+                    .cart {
+                        width: 400px;
+                        height: 110px;
+                        margin-top: 18px;
+                        border: 0.1px solid #F08383;
+                        border-radius: 10px;
+                    }
+
+                    .boxkm {
+                        margin-top: 9px;
+                        display: flex;
+                        justify-content: center;
+                        font-size: 18px;
+                        line-height: 40px;
+                        margin-bottom: 5px;
+                        width: 170px;
+                        height: 40px;
+                        border: 1px solid #ccc;
+                        border-radius: 10px;
+                        font-weight: 600;
+                        background-color: #F08383;
+                        color: #fff;
+                        margin-left: 10px;
+                    }
+
+                    .boxkm span {
+                        font-size: 15px
+                    }
+
+                    .cart p {
+                        margin-bottom: 0px;
+                        margin-left: 10px;
+                        font-weight: 300;
+                        color: #555555;
+                    }
+
+                    * {
+                        box-sizing: border-box;
+                    }
+
+                    .cart .textkm {
+                        margin-bottom: 10px;
+                    }
+
+                    .cart .textkm span {
+                        color: #F08383;
+                        font-size: 17px;
+                    }
+
+                    .soluong input {
+                        outline: none;
+                        border-radius: 5px;
+                        border: 0.5px solid #ccc;
+                        width: 150px;
+                        text-align: center;
+                        height: 30px;
+                        color: #000000;
+                    }
+
+                    .btt11 input {
+                        border: 1px solid #ffffff;
+                        padding: 10px;
+                        background-color: #FFA2A2;
+                        color: #fff;
+                        border-radius: 5px;
+                        font-size: 15px;
+                    }
+
+                    .btt22 button {
+                        border: none;
+                        padding: 10px;
+                        background-color: #fff;
+                        color: #F08383;
+                        border-radius: 5px;
+                        font-size: 15px;
+                        border: 1px solid #FFA2A2;
+                        margin-left: 40px;
+                        margin-top: 1px;
+                        height: 48px;
+                    }
+
+
+                    .btt11 input:hover {
+                        border: 1px solid #FFA2A2;
                         background-color: #ffffff;
-                        color: #F08383
+                        color: #F08383;
+                        border-radius: 5px;
+                    }
+
+                    .btt22 button:hover {
+                        background-color: #FFA2A2;
+                        color: #ffffff;
+                        border-radius: 5px;
+                    }
+
+                    .btt11 input {
+                        width: 250px;
+                        height: 50px;
+                    }
+
+                    .boxtuvan {
+                        background-color: #F08383;
+                        padding: 10px;
+                        color: #fff;
+                        border-radius: 5px;
+                        width: 330px;
+                        text-align: center;
+                        margin-left: -62px;
+                    }
+
+                    .boxctiet {
+                        margin-left: 60px;
+                    }
+
+                    .boxctiet1 {
+                        background-color: #FFF;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        padding-top: 20px;
+                        padding-bottom: 20px;
+                    }
+
+                    body {
+                        background-color: #E7EEF6;
+                    }
+
+                    .quantity-chitietsp {
+                        margin-left: -150px;
+                        margin-top: 5px
+                    }
+
+
+                    select {
+                        color: black;
+                        padding-top: 7px;
+                        padding-bottom: 7px;
+                        padding-right: 20px;
+                        padding-left: 20px;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        border-radius: 4px;
+                        outline: none
                     }
                 </style>
                 <script>
-                    // Lấy tất cả các checkbox cùng một tên
-                    var checkboxes = document.querySelectorAll('.single-choice-checkbox');
+                    document.addEventListener("DOMContentLoaded", function () {
+                        let currentSlide = 0;
+                        const slides = document.querySelectorAll('.slides img');
+                        const thumbnails = document.querySelectorAll('.thumbnail');
 
-                    // Thêm sự kiện 'change' cho mỗi checkbox
-                    checkboxes.forEach(function (checkbox) {
-                        checkbox.addEventListener('change', function () {
-                            // Nếu checkbox được chọn, hủy chọn tất cả các checkbox khác
-                            if (this.checked) {
-                                checkboxes.forEach(function (otherCheckbox) {
-                                    if (otherCheckbox !== checkbox) {
-                                        otherCheckbox.checked = false;
-                                    }
-                                });
-                            }
-                        });
+                        function showSlide(index) {
+                            slides.forEach(slide => slide.classList.remove('active'));
+                            slides[index].classList.add('active');
+                            currentSlide = index;
+                        }
+
+
+                        // Hiển thị ảnh đầu tiên khi trang được tải
+                        showSlide(currentSlide);
                     });
+
+
                 </script>
+                <div class="slideshow-container">
+                    <div class="slides">
+                        <img src="././upload/<?=$img?>" alt="Ảnh 1">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6 boxctiet">
+                <?php extract($sp);?>
+                <h4>
+                    <p><?=$name?></p>
+                </h4>
+                <?php 
+                $hinh="././upload/".$img;
+                $giaTienFormatted = number_format($price, 0, ',', '.') . '₫';
+                $giaTienFormatted1 = number_format($giasale, 0, ',', '.') . '₫';
+                
+            ?>
+                <div>
+                    <b class="fs-4 text-danger me-2">
+                        <?=$giaTienFormatted?>
+                    </b>
+                    <b class="fw-lighter">Giá niêm yết:</b> <b class="fw-light text-decoration-line-through">
+                        <?=$giaTienFormatted1?>
+                    </b>
+                </div>
+                <input type="hidden" name="tensp" value="<?=$name?>">
+                <input type="hidden" name="masp" value="<?=$id?>">
+                <input type="hidden" name="giasp" value="<?=$price?>">
+                <input type="hidden" name="anhsp" value="<?=$img?>">
+                <div class="cart">
+                    <div class="boxkm">
+                        <span><i class="fa-solid fa-gift"></i> Khuyến mãi ưu đãi</span>
+                    </div>
+                    <div class="textkm">
+                        <p><span>&#8226;</span> Tặng ngay ưu đãi cực sốc</p>
+                        <p><span>&#8226;</span> Tặng phiếu mua sắm 500.000đ</p>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-3 chu-tieude">
+                    <div class="col-md-6 mt-2 mb-2">
+                        <div class="soluong">
+                            <h6>Loại hàng</h6>
+
+                            <select name="dungtich">
+                                <?php foreach ($listdungtich as $key => $value): ?>
+                                <option value="<?=$value['ten_dung_tich']?>">
+                                    <?=$value['ten_dung_tich']?>
+                                </option>
+                                <?php endforeach; ?>
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 quantity-chitietsp">
+                        <div class="soluong mt-2 mb-2">
+                            <h6>Số lượng</h6>
+                            <div class="number-input">
+                                <button onclick="decrement()" class="decrement" type="button">-</button>
+                                <input class="quantity" min="0" name="quantityy" value="1" type="number">
+                                <button onclick="increment()" class="increment" type="button">+</button>
+                                <script>
+                                    function increment() {
+                                        var input = document.getElementById('quantity1');
+                                        input.stepUp();
+                                    }
+
+                                    function decrement() {
+                                        var input = document.getElementById('quantity1');
+                                        input.stepDown();
+                                    }
+                                </script>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="row btn-muahang mt-2 mb-2">
+                    <div class="col-4 btt11"><input type="submit" name="addtocart" value="THÊM VÀO GIỎ HÀNG"><br></div>
+                    <div class="col-3 btt22"><button>MUA NGAY <br></button></div>
+
+                    <style>
+                        label.radio {
+                            cursor: pointer
+                        }
+
+                        label.radio input {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            visibility: hidden;
+                            pointer-events: none
+                        }
+
+                        label.radio span {
+                            padding: 1px 9px;
+                            border: 1px solid#ccc;
+                            display: inline-block;
+                            color: #8c8c8c;
+                            border-radius: 3px;
+                        }
+
+                        label.radio input:checked+span {
+                            border-color: #F08383;
+                            background-color: #ffffff;
+                            color: #F08383
+                        }
+                    </style>
+                    <script>
+                        // Lấy tất cả các checkbox cùng một tên
+                        var checkboxes = document.querySelectorAll('.single-choice-checkbox');
+
+                        // Thêm sự kiện 'change' cho mỗi checkbox
+                        checkboxes.forEach(function (checkbox) {
+                            checkbox.addEventListener('change', function () {
+                                // Nếu checkbox được chọn, hủy chọn tất cả các checkbox khác
+                                if (this.checked) {
+                                    checkboxes.forEach(function (otherCheckbox) {
+                                        if (otherCheckbox !== checkbox) {
+                                            otherCheckbox.checked = false;
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    </script>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <div class="row chitiettexxt mb-4">
         <div class="col-md-9">

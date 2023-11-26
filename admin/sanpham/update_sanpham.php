@@ -1,24 +1,35 @@
     
-
+     <?php
+        if(is_array($sanpham)){
+            extract($sanpham);
+        }
+        
+    ?>
 <div class="be-content">
     <div class="main-content container-fluid">
         <div class="row">
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
-                    <p>DANH MỤC LOẠI HÀNG</p>
+                    <p>CẬP NHẬT SẢN PHẨM</p>
                 </div>
                 <div class="bangdanhmuc">
-                    <form action="index.php?act=update_loaihang" method="post">
-                                    <?php
-                        if(is_array($lh)){
-                            extract($lh);
-                        }
-                    ?>
+                    <form action="index.php?act=capnhatsanpham" method="post" enctype="multipart/form-data">
+                               
                     <p>Tên danh mục</p>
-                    
-                    <input type="text" name="name" value="<?php if(isset($name)&&($name!="")) echo $name;?>">
-                    <input type="hidden" name="id" value="<?php if(isset($id)&&($id>0)) echo $id;?>">
-                    <input type="submit" name="capnhat" value="CẬP NHẬT">
+                    <select name="danhmuc_sua" class="form-select form-select-lg mb-3" aria-label="Large select example">
+                        <?php foreach ($listdanhmuc as $key => $ldt): ?>
+                            <option value="<?=$ldt['id']?>">
+                                <?=$ldt['tendm']?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    <input type="text" name="ten_sua" value="<?=$name?>">
+                    <input type="text" name="gia_sp" value="<?=$price?>">
+                    <input type="text" name="gia_sua" value="<?=$giasale?>">
+                    <br>
+                    <input type="file" name="anhsp"><img src="../upload/<?=$img?> " alt="" height='80'>
+                    <input type="hidden" name="id" value="<?=$id?>">
+                    <input type="submit" name="capnhatsp" value="CẬP NHẬT">
 
                     </form>
                 </div>

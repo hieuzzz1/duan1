@@ -1,80 +1,10 @@
-<!-- <div class="container">
-
-    
-
-    <h2>GIỎ HÀNG CỦA BẠN</h2>
-    <div class="row container-cart mb-5 mt-3">
-        <div class="col-7">
-            <form action="" method="post">
-                <div class="row container-carts">
-
-                    <div class="col-3 v">
-                        <img src="" alt="">
-                    </div>
-                    <div class="col-3 v">
-                        <span>Kem chống nắng</span>
-                    </div>
-                    <div class="col-3 v">
-                        <span>100.000đ</span>
-                    </div>
-                    <div class="col-3 v sb-btn">
-                        <input type="submit" value="Xóa">
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <style>
-        .v {
-            display: flex;
-            justify-content: center;
-        }
-
-        .v span {
-            line-height: 160px;
-        }
-
-        .sb-btn input {
-            margin-top: 70px;
-        }
-
-        .v input[type="submit"] {
-            max-width: 40px;
-            color: #fff;
-            height: 30px;
-            background-color: rgba(225, 61, 61, 0.852);
-            border: none;
-            border-radius: 1px;
-
-        }
-
-        .container-cart {
-            background-color: #fff;
-
-        }
-
-        body {
-            background-color: #F3F3F6;
-        }
-
-
-        .container-carts img {
-            margin-top: 25px;
-            max-width: 120px;
-            height: 120px;
-        }
-    </style>
-
-</div> -->
-
+ 
 <div class="container top-top-dki">
-<div class="col mt-3">
+    <div class="col mt-3">
     <a href="index.php" class="text-decoration-none text-dark uiui">Trang chủ</a> / <span class="text-danger">Giỏ
         hàng</span>
-</div>
-<style>
+    </div>
+    <style>
     
     .top-top-dki {
         margin-top :160px
@@ -84,57 +14,76 @@
     body {
         background-color: #F3F3F6;
     }
-</style>
-<div class="cart_section">
+    </style>
+    
+    <?php $ok= '
+    <div class="cart_section">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="cart_container">
-                    <form action="index.php?act=thanhtoan" method="post">
-                        <div class="cart_title">GIỎ HÀNG CỦA BẠN</div>
-                        <div class="cart_items">
-                            <ul class="cart_list">
-                                <li class="cart_item clearfix">
-                                    <div class="cart_item_image"><img
-                                            src="http://localhost:82/DUAN1/img/sanpham/sp1.png" alt=""></div>
-                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                        <div class="cart_item_name cart_info_col">
-                                            <div class="cart_item_title">Tên sản phẩm</div>
-                                            <div class="cart_item_text">Kem chống nắng</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cart_container">
+                        <form action="index.php?act=thanhtoan" method="post">
+                            <div class="cart_title">GIỎ HÀNG CỦA BẠN</div>';
+                            $tong=0;
+                            for ($i=0; $i < sizeof($_SESSION["giohang"]); $i++) { 
+                                $ttien=$_SESSION["giohang"][$i][2]*$_SESSION["giohang"][$i][5];
+                                $tong+=$ttien;
+                                $ok.='<div class="cart_items">
+                                <ul class="cart_list">
+                                
+                                   
+                                    <li class="cart_item clearfix">
+                                        <div class="cart_item_image"><img
+                                                src="././upload/'.$_SESSION["giohang"][$i][3].'" alt=""></div>
+                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                            <div class="cart_item_name cart_info_col">
+                                                <div class="cart_item_title">Tên hàng hóa</div>
+                                                <div class="cart_item_text">'.$_SESSION["giohang"][$i][1].'</div>
+                                            </div>
+                                            <div class="cart_item_quantity cart_info_col">
+                                                <div class="cart_item_title">Số lượng</div>
+                                                <div class="cart_item_text">'.$_SESSION["giohang"][$i][5].'</div>
+                                            </div>
+                                            <div class="cart_item_price cart_info_col">
+                                                <div class="cart_item_title">Giá</div>
+                                                <div class="cart_item_text">'.$_SESSION["giohang"][$i][2].'</div>
+                                            </div>
+                                            <div class="cart_item_price cart_info_col">
+                                                <div class="cart_item_title">Dung tích</div>
+                                                <div class="cart_item_text">'.$_SESSION["giohang"][$i][4].'</div>
+                                            </div>
+                                            <div class="cart_item_total cart_info_col">
+                                                <div class="cart_item_title">Tổng giá</div>
+                                                <div class="cart_item_text">'.$ttien.'</div>
+
+                                            </div>
+                                        
+                                            
+
                                         </div>
-                                        <div class="cart_item_quantity cart_info_col">
-                                            <div class="cart_item_title">Số lượng</div>
-                                            <div class="cart_item_text">1</div>
-                                        </div>
-                                        <div class="cart_item_price cart_info_col">
-                                            <div class="cart_item_title">Giá</div>
-                                            <div class="cart_item_text">22000</div>
-                                        </div>
-                                        <div class="cart_item_total cart_info_col">
-                                            <div class="cart_item_title">Tổng giá</div>
-                                            <div class="cart_item_text">22000</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="order_total">
-                            <div class="order_total_content text-md-right">
-                                <div class="order_total_title">Tổng đơn:</div>
-                                <div class="order_total_amount">22000</div>
+                                    </li>
+                                </ul>
+                            </div>';}
+                            $ok.='<div class="order_total">
+                                <div class="order_total_content text-md-right">
+                                    <div class="order_total_title">Tổng đơn:</div>
+                                    <div class="order_total_amount">'.$tong.'</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="cart_buttons"> <button type="submit" class="button cart_button_clear">Tiếp tục mua
-                                hàng</button> <button type="submit" class="button cart_button_checkout">Mua
-                                hàng</button>
-                        </div>
-                    </form>
+                            ';
+                            $ok.='<div class="cart_buttons"> <button type="submit" class="button cart_button_clear">Tiếp tục mua
+                                    hàng</button> <button type="submit" class="button cart_button_checkout">Mua
+                                    hàng</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>';
+    echo $ok;
+    ?>
 </div>
 
 
@@ -338,4 +287,4 @@
         cursor: pointer;
         vertical-align: top
     }
-</style>
+</style>  

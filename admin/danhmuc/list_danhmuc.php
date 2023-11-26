@@ -24,8 +24,7 @@
                         </thead>
                         <tbody>
 
-                            <?php
-                             foreach($listdanhmuc as $list=> $ldm):?>
+                            <?php foreach($listdanhmuc as $list=> $ldm):?>
                             <tr>
                                 <th>
                                     <?=$ldm['id']?>

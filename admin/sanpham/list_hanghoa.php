@@ -16,59 +16,49 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-1">Mã</th>
-                                <th class="col-2">Tên sản phẩm</th>
+                                <th class="col-2">Mã sản phẩm</th>
+                                <th class="col-4">Tên sản phẩm</th>
+                                <th class="col-4">Giá gốc</th>
+                                <th class="col-2">Giá sale</th>
                                 <th class="col-1">Ảnh</th>
-                                <th class="col-1">Giá</th>
-                                <th class="col-2">Loại sản phẩm</th>
-                                <th class="col-2">Khối lượng</th>
                                 <th class="col-2">Thuộc danh mục</th>
                                 <th class="col-2">Thao tác</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($listsanpham as $list) {
-                                extract($list);
-                                $hinh="../upload".$img;
-                                if(is_file($hinh)){
-                                    $ok="<img src='".$hinh."' height='80'>";
-                                }
-                            }?>
-                            <?php foreach ($listsanpham as $key => $value):?>
                             
-                            <tr>
-                                <th><?=$value['id']?></th>
-                                <td><?=$value['name']?></td>
-                                <td><img src="../upload/<?=$value['img']?>" alt="" height="80"></td>
-                                <td><?=$value['price']?></td>
-                                <td><?=$value['id_loai']?></td>
-                                <td><?=$value['id_khoiluong']?></td>
-                                <td><?=$value['iddm']?></td>
-                                <td>
-                                    <!-- Sửa danh mục -->
-                                    <a href="index.php?act=suadm&id=">
-                                        <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
-                                    </a>
-                                    <!-- Xóa danh mục -->
-                                    <!-- <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                        <i class="fa-regular fa-trash-can btn"></i>
-                                    </a> -->
-                                    <a href="#" class="openModalButton" data-bs-toggle="modal"
-                                        data-bs-target="#customModal_">
+                        <?php foreach ($listsanpham as $key => $value): ?>
+                        <tr>
+                            <td><?= $value['id'] ?></td>
+                            <td><?= $value['name'] ?></td>
+                            <td><?= $value['price'] ?></td>
+                            <td><?= $value['giasale'] ?></td>
+                            <td><img src="../upload/<?= $value['img'] ?>" alt="" height="80"></td>
+                            <td><?= $value['danhmuc_tendm'] ?></td>
+                            <td>
+                                <!-- Sửa danh mục -->
+                                <a href="index.php?act=sua_sanpham&id=<?=$value['id']?>">
+                                    <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
+                                </a>
+                                <!-- Xóa danh mục -->
+                                <a href="#" class="openModalButton" data-bs-toggle="modal"
+                                        data-bs-target="#customModal_<?php echo $value['id']; ?>">
                                         <i class="fa-regular fa-trash-can btn"></i>
                                     </a>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
+
+                            </td>
+                        </tr>
+                    
                             
 
-                            <div class="modal fade" id="customModal_" data-bs-backdrop="static" data-bs-keyboard="false"
-                                tabindex="-1" aria-labelledby="customModalLabel_" aria-hidden="true">
+                        <div class="modal fade" id="customModal_<?php echo $value['id']; ?>"
+                                data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                aria-labelledby="customModalLabel_<?php echo $value['id']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5">Xác nhận xóa danh mục
+                                        <h1 class="modal-title fs-5">Xác nhận xóa danh mục
                                                 <i class="fa-regular fa-trash-can text-danger"></i> <br>
                                             </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -77,16 +67,16 @@
                                             </button>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
+                                        <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Hủy</button>
-                                            <a href="index.php?act=xoadanhmuc&id=">
+                                            <a href="index.php?act=xoasp&id=<?=$value['id'];?>">
                                                 Xóa
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
 
@@ -173,8 +163,14 @@
         padding: 25px;
         font-weight: 400 !important;
         font-size: 14px;
+        line-height: 50px;
     }
-
+    .table tbody a:hover{
+        color: #FFA2A2;
+    }
+    .table tbody a{
+        color: #000;
+    }
     .table tbody tr td {
         border: 0.1px solid #e6e6e6 !important;
         font-weight: 400 !important;

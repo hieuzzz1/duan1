@@ -90,62 +90,15 @@
             <div class="row bg-white-carosel mt-4">
                 <div class="large-12 columns mt-5">
                     <div class="owl-carousel owl-theme anhcrs">
+                        <?php foreach ($sp_moi as $key => $value):?>
                         <div class="item">
-                            <img src="./img/sanpham/sp1.png" alt="">
-                            <p>Sản phẩm 1</p>
+                            <img src="././upload/<?=$value['img'] ?>" alt="...">
+                            <p>
+                                <?=$value['name']?>
+                            </p>
+
                         </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp2.png" alt="">
-                            <p>Sản phẩm 2</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp3.png" alt="">
-                            <p>Sản phẩm 3</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp4.png" alt="">
-                            <p>Sản phẩm 4</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp5.png" alt="">
-                            <p>Sản phẩm 5</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp6.png" alt="">
-                            <p>Sản phẩm 6</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp7.png" alt="">
-                            <p>Sản phẩm 7</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp1.png" alt="">
-                            <p>Sản phẩm 1</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp2.png" alt="">
-                            <p>Sản phẩm 2</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp3.png" alt="">
-                            <p>Sản phẩm 3</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp4.png" alt="">
-                            <p>Sản phẩm 4</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp5.png" alt="">
-                            <p>Sản phẩm 5</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp6.png" alt="">
-                            <p>Sản phẩm 6</p>
-                        </div>
-                        <div class="item">
-                            <img src="./img/sanpham/sp7.png" alt="">
-                            <p>Sản phẩm 7</p>
-                        </div>
+                        <?php endforeach;?>
                     </div>
                     <style>
                         .bg-white-carosel {
@@ -182,44 +135,44 @@
             if(isset($_SESSION['user'])) {
                 extract($_SESSION['user']);
         ?>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title fw-bold" id="offcanvasRightLabel">GIỎ HÀNG</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="row img mb-5">
-                    <div class="col-3">
-                        <form action="" method="post">
-                            <a href="#">
-                                <img src="https://bizweb.dktcdn.net/thumb/compact/100/429/689/products/apple-iphone-12-mini-3-f12f8dba-9d92-4173-8b32-cc2ce74df353.png"
-                                    alt="sp">
-                            </a>
-                    </div>
-                    <div class="col-6 sphome-ct">
-                        <a href="#">
-                            <div class="tensp">Kem chống nắng</div>
-                        </a>
-                        <div class="quantity">Số lượng</div>
-                        <div class="number-input">
-                            <input type="button" value="&#8722;" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                class="minus"></input>
-                            <input class="quantity" min="0" name="quantity" value="1" type="number">
-                            <input type="button" value="&#43;" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                class="plus"></input>
-                        </div>
-
-                    </div>
-                    <div class="col-3 xoa-gia">
-                        <input type="submit" value="Xóa">
-                        <div class="price-home mt-4">
-                            300.000<span>₫</span>
-                        </div>
-                    </div>
-                    </form>
+        <form action="index.php?act=giohang" method="post">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasRightLabel">GIỎ HÀNG</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-            </div>
-            <form action="index.php?act=giohang" method="post">
+                <div class="offcanvas-body">
+                    <div class="row img mb-5">
+                        <div class="col-3">
+                            <a href="#">
+                                <img src="././upload/<?=$value['img'] ?>" alt="sp">
+                            </a>
+                        </div>
+                        <div class="col-6 sphome-ct">
+                            <a href="#">
+                                <div class="tensp">Kem chống nắng</div>
+                            </a>
+                            <div class="quantity">Số lượng</div>
+                            <div class="number-input">
+                                <input type="button" value="&#8722;"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                    class="minus"></input>
+                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                <input type="button" value="&#43;"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                    class="plus"></input>
+                            </div>
+                        </div>
+                        <div class="col-3 xoa-gia">
+                            <input type="submit" value="Xóa">
+                            <div class="price-home mt-4">
+                                300.000<span>₫</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="dathang-home">
                     <div class="row mb-3">
                         <div class="col-6">Tổng tiền:</div>
@@ -234,402 +187,333 @@
                             <input type="submit" value="Đặt Hàng">
                         </div>
                     </div>
-
                 </div>
-            </form>
-            <style>
-                    input[type="number"] {
-                        -webkit-appearance: textfield;
-                        -moz-appearance: textfield;
-                        appearance: textfield;
-                    }
-
-                    input[type=number]::-webkit-inner-spin-button,
-                    input[type=number]::-webkit-outer-spin-button {
-                        -webkit-appearance: none;
-                    }
-
-                    .number-input {
-                        border: 1px solid #ccc;
-                        display: inline-flex;
-                    }
-
-                    .number-input,
-                    .number-input * {
-                        box-sizing: border-box;
-                    }
-
-                    .number-input input {
-                        outline: none;
-                        -webkit-appearance: none;
-                        background-color: transparent;
-                        border: none;
-                        align-items: center;
-                        justify-content: center;
-                        width: 30px;
-                        height: 20px;
-                        cursor: pointer;
-                        margin: 0;
-                        position: relative;
-                    }
+        </form>
 
 
+        <style>
+            input[type="number"] {
+                -webkit-appearance: textfield;
+                -moz-appearance: textfield;
+                appearance: textfield;
+            }
 
-                    input[class='plus']::after {
-                        display: inline-block;
-                        position: absolute;
-                        font-weight: 100;
-                        font-size: 17px;
-                        font-family: "Font Awesome 5 Free";
-                        content: '\002B';
-                        transform: translate(-50%, -30%) rotate(180deg);
-                    }
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+            }
 
-                    input[class='minus']::after {
-                        display: inline-block;
-                        position: absolute;
-                        font-weight: 500;
-                        font-size: 20px;
-                        font-family: "Font Awesome 5 Free";
-                        content: '\2212';
-                        transform: translate(-50%, -30%) rotate(180deg);
-                    }
+            .number-input {
+                border: 1px solid #ccc;
+                display: inline-flex;
+            }
+
+            .number-input,
+            .number-input * {
+                box-sizing: border-box;
+            }
+
+            .number-input input {
+                outline: none;
+                -webkit-appearance: none;
+                background-color: transparent;
+                border: none;
+                align-items: center;
+                justify-content: center;
+                width: 30px;
+                height: 20px;
+                cursor: pointer;
+                margin: 0;
+                position: relative;
+            }
 
 
 
-                    .number-input input[type=number] {
-                        font-family: sans-serif;
-                        max-width: 50px;
-                        padding: .5rem;
-                        border: solid #ccc;
-                        border-radius: 0%;
-                        border-width: 0 1px;
-                        font-size: 18px;
-                        height: 30px;
-                        text-align: center;
-                    }      
-            </style>
-            <style>
-                .dathang-home {
-                    height: 200px;
-                    padding: 20px;
-                }
+            input[class='plus']::after {
+                display: inline-block;
+                position: absolute;
+                font-weight: 100;
+                font-size: 17px;
+                font-family: "Font Awesome 5 Free";
+                content: '\002B';
+                transform: translate(-50%, -30%) rotate(180deg);
+            }
 
-                .dathang-home input {
-                    width: 350px;
-                    height: 60px;
-                    background-color: #b85050;
-                    color: #fff;
-                    border-radius: 4px;
-                    border: none;
-                    font-size: 18px;
-                }
+            input[class='minus']::after {
+                display: inline-block;
+                position: absolute;
+                font-weight: 500;
+                font-size: 20px;
+                font-family: "Font Awesome 5 Free";
+                content: '\2212';
+                transform: translate(-50%, -30%) rotate(180deg);
+            }
 
-                .dathang-home input:hover {
-                    border: 1px solid #b85050;
-                    background-color: #ffffff;
-                    color: #b85050;
-                }
 
-                .img {
-                    box-sizing: border-box;
-                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                }
 
-                #offcanvasRight {
-                    max-width: 400px;
-                }
+            .number-input input[type=number] {
+                font-family: sans-serif;
+                max-width: 50px;
+                padding: .5rem;
+                border: solid #ccc;
+                border-radius: 0%;
+                border-width: 0 1px;
+                font-size: 18px;
+                height: 30px;
+                text-align: center;
+            }
+        </style>
+        <style>
+            .dathang-home {
+                height: 200px;
+                padding: 20px;
+            }
 
-                .xoa-gia {
-                    margin-left: -15px;
-                }
+            .dathang-home input {
+                width: 350px;
+                height: 60px;
+                background-color: #b85050;
+                color: #fff;
+                border-radius: 4px;
+                border: none;
+                font-size: 18px;
+            }
 
-                .xoa-gia input {
-                    font-size: 14px;
-                    border: 0.3px solid #ccc;
-                    margin-left: 10px;
-                    margin-top: 5px;
-                    color: #fff;
-                    background-color: #b85050;
-                }
+            .dathang-home input:hover {
+                border: 1px solid #b85050;
+                background-color: #ffffff;
+                color: #b85050;
+            }
 
-                .price-home {
-                    font-size: 13px;
-                    color: red;
-                }
+            .img {
+                box-sizing: border-box;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
 
-                .giasp-home-dathang {
-                    color: red;
-                    font-size: 18px;
-                    margin-left: 87px;
-                }
+            #offcanvasRight {
+                max-width: 400px;
+            }
 
-                .quantity {
-                    font-size: 13px;
-                }
+            .xoa-gia {
+                margin-left: -15px;
+            }
 
-                .sphome-ct .tensp {
-                    margin-top: 4px;
-                    margin-bottom: 10px;
-                    font-size: 14px;
-                }
+            .xoa-gia input {
+                font-size: 14px;
+                border: 0.3px solid #ccc;
+                margin-left: 10px;
+                margin-top: 5px;
+                color: #fff;
+                background-color: #b85050;
+            }
 
-                .sphome-ct input {
-                    max-width: 40px;
-                    height: 20px;
-                    font-size: 14px;
-                }
+            .price-home {
+                font-size: 13px;
+                color: red;
+            }
 
-                .img img {
-                    max-width: 80px;
-                }
+            .giasp-home-dathang {
+                color: red;
+                font-size: 18px;
+                margin-left: 87px;
+            }
 
-                .img a {
-                    text-decoration: none;
-                    color: black;
-                }
+            .quantity {
+                font-size: 13px;
+            }
 
-                .img:hover a {
-                    color: rgb(216, 113, 113);
-                }
-            </style>
-        </div>
-        <?php
+            .sphome-ct .tensp {
+                margin-top: 4px;
+                margin-bottom: 10px;
+                font-size: 14px;
+            }
+
+            .sphome-ct input {
+                max-width: 40px;
+                height: 20px;
+                font-size: 14px;
+            }
+
+            .img img {
+                max-width: 80px;
+            }
+
+            .img a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .img:hover a {
+                color: rgb(216, 113, 113);
+            }
+        </style>
+    </div>
+    <?php
         
             }else {
                 echo '';
         ?>
-        <?php } ?>
-        <!-- end giỏ hàng home -->
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Bạn cần nhập thông tin cá nhân để tiếp tục mua hàng tại shop! <a
-                            href="index.php?act=tkmuahang">Nhập thông tin</a>
-                    </div>
+    <?php } ?>
+    <!-- end giỏ hàng home -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn cần nhập thông tin cá nhân để tiếp tục mua hàng tại shop! <a href="index.php?act=tkmuahang">Nhập
+                        thông tin</a>
                 </div>
             </div>
         </div>
-        <!-- End modal -->
-        <div class="product-content">
-            <nav>
-                <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">Kem chống nắng</button>
-                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
-                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Sữa rửa mặt</button>
-                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Nước tẩy
-                        trang</button>
-                </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
-                    tabindex="0">
-                    <div class="row mx-5">
-                        <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body border-spp">
-                                    <div class="anhsppp">
-                                        <a href="index.php?act=spchitiet"><img
-                                                src="https://png.pngtree.com/png-clipart/20200206/ourlarge/pngtree-pink-fresh-cosmetics-set-elements-png-image_2132437.jpg"
-                                                class="card-img-top" alt="...">
-                                            <p class="card-title">
-                                                Kem chống nắng
-                                            </p>
-                                        </a>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-7">
+    </div>
+    <!-- End modal -->
+    <div class="product-content">
+        <nav>
+            <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Kem chống nắng</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Sữa rửa mặt</button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                    type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Nước tẩy
+                    trang</button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                tabindex="0">
 
-                                            <div class="giasp mt-4">
-                                                400.000<span>₫</span>
+                <div class="row mx-5">
 
-                                            </div>
-                                            <span class="giasale text-decoration-line-through">200.000đd</span>
+                    <?php foreach ($sp_moi as $key => $value):?>
+                    <?php $giaTienFormatted2 = number_format($value['price'], 0, ',', '.') . '₫'; 
+                              $giaTienFormatted3 = number_format($value['giasale'], 0, ',', '.') . '₫'; ?>
+                    <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body border-spp">
+                                <div class="anhsppp">
+                                    <a href="index.php?act=spchitiet&id=<?=$value['id']?>"><img
+                                            src="././upload/<?=$value['img'] ?>" class="card-img-top" alt="...">
+                                        <p class="card-title">
+                                            <?=$value['name']?>
+                                        </p>
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-7">
+
+                                        <div class="giasp mt-4">
+                                            <?=$giaTienFormatted2?><span></span>
+
                                         </div>
-                                        <?php
+                                        <span class="giasale text-decoration-line-through">
+                                            <?=$giaTienFormatted3?>
+                                        </span>
+                                    </div>
+                                    <?php
                                         if (isset($_SESSION['user'])){
                                             echo '<div class="col-md-2 mt-5 carrt yttt">
-                                            <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></a>
+                                            <a href="index.php?act=giohang" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></a>
                                         </div>';
                                         }else {
-                                            echo '<div class="col-md-2 mt-5 carrt yttt"><a href="index.php?act=themvaogiohang" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
+                                            echo '<div class="col-md-2 mt-5 carrt yttt"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
                                         }
                                         ?>
-                                        <div class="col-md-2 mt-5 carrt">
-                                            <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                        </div>
+                                    <div class="col-md-2 mt-5 carrt">
+                                        <a href="#"><i class="fa-regular fa-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
-                    tabindex="0">
-                    <div class="row mx-5">
-                        <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
+
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="post-content">
+        <nav>
+            <div class="nav nav-tabs mt-4 baiviet" id="nav-tab" role="tablist">
+                <p class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tin tức mới nhất</p>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+                tabindex="0">
+                <div class="row mx-5">
+                    <div class="col-md-3 my-4 d-flex justify-content-center">
+                        <a href="#" class="baiposs">
                             <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <div class="anhsppp">
-                                        <a href="index.php?act=spchitiet"><img
-                                                src="https://png.pngtree.com/png-clipart/20200206/ourlarge/pngtree-pink-fresh-cosmetics-set-elements-png-image_2132437.jpg"
-                                                class="card-img-top" alt="...">
-                                            <p class="card-title">
-                                                Kem chống nắng
-                                            </p>
-                                        </a>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-7">
-
-                                            <div class="giasp mt-4">
-                                                400.000<span>₫</span>
-
-                                            </div>
-                                            <span class="giasale text-decoration-line-through">200.000đd</span>
-                                        </div>
-                                        <?php
-                                        if (isset($_SESSION['user'])){
-                                            echo '<div class="col-md-2 mt-5 carrt yttt">
-                                            <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></a>
-                                        </div>';
-                                        }else {
-                                            echo '<div class="col-md-2 mt-5 carrt yttt"><a href="index.php?act=themvaogiohang" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
-                                        }
-                                        ?>
-                                        <div class="col-md-2 mt-5 carrt">
-                                            <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                        </div>
-                                    </div>
+                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body bv">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make
+                                        up
+                                        the bulk of the card's content.</p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
-                    tabindex="0">
-                    <div class="row mx-5">
-                        <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
+                    <div class="col-md-3 my-4">
+                        <a href="#" class="baiposs">
                             <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <div class="anhsppp">
-                                        <a href="index.php?act=spchitiet"><img
-                                                src="https://png.pngtree.com/png-clipart/20200206/ourlarge/pngtree-pink-fresh-cosmetics-set-elements-png-image_2132437.jpg"
-                                                class="card-img-top" alt="...">
-                                            <p class="card-title">
-                                                Kem chống nắng
-                                            </p>
-                                        </a>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-7">
-
-                                            <div class="giasp mt-4">
-                                                400.000<span>₫</span>
-
-                                            </div>
-                                            <span class="giasale text-decoration-line-through">200.000đd</span>
-                                        </div>
-                                        <?php
-                                        if (isset($_SESSION['user'])){
-                                            echo '<div class="col-md-2 mt-5 carrt yttt">
-                                            <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></a>
-                                        </div>';
-                                        }else {
-                                            echo '<div class="col-md-2 mt-5 carrt yttt"><a href="index.php?act=themvaogiohang" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
-                                        }
-                                        ?>
-                                        <div class="col-md-2 mt-5 carrt">
-                                            <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                        </div>
-                                    </div>
+                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body bv">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make
+                                        up
+                                        the bulk of the card's content.</p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 my-4">
+                        <a href="#" class="baiposs">
+                            <div class="card" style="width: 18rem;">
+                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body bv">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make
+                                        up
+                                        the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 my-4">
+                        <a href="#" class="baiposs">
+                            <div class="card" style="width: 18rem;">
+                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body bv">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make
+                                        up
+                                        the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="post-content">
-            <nav>
-                <div class="nav nav-tabs mt-4 baiviet" id="nav-tab" role="tablist">
-                    <p class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tin tức mới nhất</p>
-                </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
-                    tabindex="0">
-                    <div class="row mx-5">
-                        <div class="col-md-3 my-4 d-flex justify-content-center">
-                            <a href="#" class="baiposs">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                        class="card-img-top" alt="...">
-                                    <div class="card-body bv">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up
-                                            the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 my-4">
-                            <a href="#" class="baiposs">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                        class="card-img-top" alt="...">
-                                    <div class="card-body bv">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up
-                                            the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 my-4">
-                            <a href="#" class="baiposs">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                        class="card-img-top" alt="...">
-                                    <div class="card-body bv">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up
-                                            the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 my-4">
-                            <a href="#" class="baiposs">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                        class="card-img-top" alt="...">
-                                    <div class="card-body bv">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make
-                                            up
-                                            the bulk of the card's content.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
     <style>
         .mymaincontent {
@@ -671,13 +555,13 @@
 
 
         .product-content img {
-            max-width: 170px;
-            height: 170px;
+            max-width: 150px;
+            height: 120px;
         }
 
         .product-content p {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 17px;
+            font-weight: 500;
         }
 
         .product-content a {
@@ -771,8 +655,6 @@
     </style>
 
     </div>
-
-
 
 
 </section>
