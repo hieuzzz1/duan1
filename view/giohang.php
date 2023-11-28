@@ -18,7 +18,7 @@
     
     <?php $ok= '
     <div class="cart_section">
-
+            <a href="index.php?act=xoagiohang">Xóa</a>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">

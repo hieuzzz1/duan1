@@ -37,14 +37,15 @@
         $sp=pdo_query_one($sql);
         return $sp;
     }
-    function loadOne_sanphamct_(){
-        $sql="SELECT sp.name, sp.img, sp.giasale, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id
-        FROM sanpham_chitiet sanpham_ct 
-        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
-        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id order by id desc limit 10";
-        $sp=pdo_query($sql);
-        return $sp;
-    }
+    // function loadOne_sanphamct_(){    sửa 12:31 27/11
+    //     $sql="SELECT sp.name, sp.img, sp.giasale, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id
+    //     FROM sanpham_chitiet sanpham_ct 
+    //     INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
+    //     INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id order by id desc limit 10";
+    //     $sp=pdo_query($sql);
+    //     return $sp;
+    // }
+   
     function insert_spchitiet($id_dungtich,$id_sp,$gia_sp_chitiet){
         $sql="insert into sanpham_chitiet(id_dung_tich,id_sp,gia_sp_chitiet)values('$id_dungtich','$id_sp','$gia_sp_chitiet')";
         pdo_execute($sql);
@@ -71,19 +72,44 @@
         pdo_execute($sql);
     }
     
-    function load_all_sp_home(){
-        $sql="select * from sanpham order by id desc limit 0,8";
-        $listsanpham=pdo_query($sql);
-        return $listsanpham;
+    // function load_all_sp_home(){  SỬA
+    //     $sql="select * from sanpham order by id desc limit 0,8";
+    //     $listsanpham=pdo_query($sql);
+    //     return $listsanpham;
         
-    }
+    // }
   
     function loadOne_sanpham_chitiet($id){
-        $sql="SELECT sp.name, sp.img, sp.giasale, sp.price, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet
+        $sql="SELECT sp.name, sp.img, sp.giasale, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet
         FROM sanpham_chitiet sanpham_ct 
         INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id
-        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id where sp.id=".$id;
-        $sp=pdo_query_one($sql);
+        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id where sanpham_ct.id=".$id;
+        $sp=pdo_query_one($sql);    
         return $sp;
     }
+
+
+
+    //SỬA 
+    function load_all_sp_home(){
+        $sql="SELECT sp.name, sp.img, sanpham_ct.*
+        FROM sanpham_chitiet sanpham_ct
+        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id where sanpham_ct.id_dung_tich IN (5)";
+        $listsanpham=pdo_query($sql);
+        return $listsanpham;
+    }
+
+
+    function loadOne_sanphamct_(){   
+        $sql="SELECT sp.name, sp.img, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id 
+        FROM sanpham_chitiet sanpham_ct 
+        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
+        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id order by id desc limit 10";
+        $sp=pdo_query($sql);
+        return $sp;
+    }
+
+
+
+
 ?>

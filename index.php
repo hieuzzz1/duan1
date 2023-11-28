@@ -1,16 +1,22 @@
 <?php
+    
     ob_start();
     session_start();
     if(!isset($_SESSION["giohang"])){
         $_SESSION["giohang"]=array();
     }
-    include "./view/header.php";
-    include "./model/pdo.php";
-    include "./model/sanpham.php";
-    include "./model/danhmuc.php";
-    include "./model/taikhoan.php";
     
-    $sp_moi=load_all_sp_home();
+    include "./model/pdo.php";
+    include "./model/danhmuc.php";
+    $listdanhmuc=loadall();
+    include "./model/sanpham.php";
+    include "./model/taikhoan.php";
+    include "./view/header.php";
+    
+    // $sp_moi=load_all_sp_home($id);
+    $one_spct=load_all_sp_home();
+    $spct=loadOne_sanphamct_();
+    extract($one_spct);
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
         $act = $_GET[ 'act' ];
         switch ($act) {
@@ -119,6 +125,10 @@
             case 'giohang':
                 include "./view/giohang.php";
                 break;
+            case 'xoagiohang':
+                if($_SESSION["giohang"]){ unset($_SESSION["giohang"]);};
+                include "./view/giohang.php";
+                break;
             case 'sanpham':
                 include "./view/sanpham.php";
                 break;
@@ -127,7 +137,6 @@
                     $id=($_GET['id']);
                     $sp=loadOne_sanpham_chitiet($id);
                     extract($sp);
-                    
                 }
                 $listdungtich=loadall_dungtich();
                 include "./view/sanphamct.php";
@@ -158,6 +167,7 @@
                 break;
         }
     }else {
+            
         include "./view/home.php";
     }
 

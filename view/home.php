@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col">
                 <div class="slider">
                     <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-indicators">
@@ -38,80 +38,38 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 dm2">
-                <ul class="list-group ">
-                    <div class="list-group-item active dm" aria-current="true">Danh mục sản phẩm</div>
-                    <div class="dm3">
-                        <li class="list-group-item"><a href="">Kem chống nắng</a></li>
-                        <li class="list-group-item"><a href="">Sữa rửa mặt</a></li>
-                        <li class="list-group-item"><a href="">Sữa tắm</a></li>
-                        <li class="list-group-item"><a href="">Nước tẩy trang</a></li>
-                        <li class="list-group-item"><a href="">Nước hoa</a></li>
-                        <li class="list-group-item"><a href="">Sữa tắm</a></li>
-                        <li class="list-group-item"><a href="">Sữa tắm</a></li>
-                    </div>
-                </ul>
-            </div>
-            <style>
-                .dm {
-                    background-color: #F08383 !important;
-                    border: 1px solid #F08383 !important;
-                    text-align: center;
-                    border-radius: 0% !important;
-                }
-
-                .dm2 ul li {
-                    border-radius: 0% !important;
-                }
-
-
-                .dm2 li a {
-                    text-decoration: none !important;
-                    color: black;
-                }
-
-                .dm2 li a:hover {
-                    color: #ff0000;
-                    opacity: 0.7;
-
-                }
-
-                .dm2 li:hover {
-                    transform: scale(1.01);
-                    color: #d51b2e;
-                    border-left: 2px solid #d51b2e;
-                    cursor: pointer;
-                }
-            </style>
         </div>
 
         <!-- slideshow -->
+        .
         <div class="slider">
             <div class="row bg-white-carosel mt-4">
                 <div class="large-12 columns mt-5">
                     <div class="owl-carousel owl-theme anhcrs">
-                        <?php foreach ($sp_moi as $key => $value):?>
-                        <div class="item">
-                            <img src="././upload/<?=$value['img'] ?>" alt="...">
-                            <p>
-                                <?=$value['name']?>
-                            </p>
-
-                        </div>
-                        <?php endforeach;?>
+                        
                     </div>
                     <style>
+                        .carousel-item img {
+                            height: 400px;
+                        }
+
                         .bg-white-carosel {
                             border-radius: 5px;
-                            background-color: #fff;
+                            background-color: #ffff;
                             margin: auto;
+                            padding-bottom: 20px;
                         }
 
                         .item img {
                             margin: 0 auto;
-                            max-width: 70px;
-                            border-radius: 20%;
-                            background-color: #ffffff;
+                            max-width: 100px;
+                            height: auto;
+                            border-radius: 100px;
+
+                        }
+
+                        .item {
+                            border-radius: 50px;
                         }
 
                         .anhcrs .item p {
@@ -131,10 +89,6 @@
         ?>
 
         <!-- giỏ hàng - home -->
-        <?php
-            if(isset($_SESSION['user'])) {
-                extract($_SESSION['user']);
-        ?>
         <form action="index.php?act=giohang" method="post">
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                 aria-labelledby="offcanvasRightLabel">
@@ -146,7 +100,7 @@
                     <div class="row img mb-5">
                         <div class="col-3">
                             <a href="#">
-                                <img src="././upload/<?=$value['img'] ?>" alt="sp">
+                                <img src="././upload/" alt="sp">
                             </a>
                         </div>
                         <div class="col-6 sphome-ct">
@@ -349,6 +303,10 @@
         </style>
     </div>
     <?php
+            if(isset($_SESSION['user'])) {
+                extract($_SESSION['user']);
+        ?>
+    <?php
         
             }else {
                 echo '';
@@ -371,50 +329,57 @@
         </div>
     </div>
     <!-- End modal -->
+    <div class="noidung mt-5 mb-3">
+        <div class="noidung-home text-uppercase fs-6 fw-semibold">
+            <span>sản phẩm mới nhất</span>
+        </div>
+        <hr>
+        <style>
+            hr {
+                border-color: #e34242 !important;
+                border: 1px solid #b85050 !important;
+            }
+
+            .noidung-home span {
+                background-color: #F08383 !important;
+                color: #fff;
+                width: 200px !important;
+                height: 40px !important;
+                padding-left: 20px;
+                padding-right: 30px;
+                padding-top: 10px;
+                padding-bottom: 18px;
+                border-top-right-radius: 15px;
+                border-top-left-radius: 15px;
+            }
+        </style>
+    </div>
     <div class="product-content">
-        <nav>
-            <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
-                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Kem chống nắng</button>
-                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
-                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Sữa rửa mặt</button>
-                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                    type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Nước tẩy
-                    trang</button>
-            </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
-                tabindex="0">
 
-                <div class="row mx-5">
 
-                    <?php foreach ($sp_moi as $key => $value):?>
-                    <?php $giaTienFormatted2 = number_format($value['price'], 0, ',', '.') . '₫'; 
-                              $giaTienFormatted3 = number_format($value['giasale'], 0, ',', '.') . '₫'; ?>
-                    <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body border-spp">
-                                <div class="anhsppp">
-                                    <a href="index.php?act=spchitiet&id=<?=$value['id']?>"><img
-                                            src="././upload/<?=$value['img'] ?>" class="card-img-top" alt="...">
-                                        <p class="card-title">
-                                            <?=$value['name']?>
-                                        </p>
-                                    </a>
+        <!-- <div class="row mx-5">
+            <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
+                <div class="card12" style="width: 18rem;">
+                    <div class="card-body border-spp">
+                        <div class="anhsppp">
+                            <a href=""><img class="card-img-top" alt="...">
+                                <p class="card-title">
+
+                                </p>
+                            </a>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-7">
+
+                                <div class="giasp mt-4">
+                                    <span></span>
+
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-7">
+                                <span class="giasale text-decoration-line-through">
 
-                                        <div class="giasp mt-4">
-                                            <?=$giaTienFormatted2?><span></span>
-
-                                        </div>
-                                        <span class="giasale text-decoration-line-through">
-                                            <?=$giaTienFormatted3?>
-                                        </span>
-                                    </div>
-                                    <?php
+                                </span>
+                            </div>
+                            
                                         if (isset($_SESSION['user'])){
                                             echo '<div class="col-md-2 mt-5 carrt yttt">
                                             <a href="index.php?act=giohang" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></a>
@@ -422,25 +387,59 @@
                                         }else {
                                             echo '<div class="col-md-2 mt-5 carrt yttt"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
                                         }
-                                        ?>
-                                    <div class="col-md-2 mt-5 carrt">
-                                        <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    </div>
-                                </div>
+                                        
+                            <div class="col-md-2 mt-5 carrt">
+                                <a href="#"><i class="fa-regular fa-heart"></i></a>
                             </div>
                         </div>
                     </div>
-                    <?php endforeach; ?>
+                </div>
+            </div>
+
+        </div> -->
+
+
+        
+        <?php foreach ($one_spct as $key => $value):?>
+            <div class="col-md-3 mt-4 mb-3 cantrai">
+                <div class="card">
+                    <span class="percent">-10%</span>
+                    <div class="card-image">
+                        <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
+                            <img src="././upload/<?=$value['img']?>" width="250">
+                        </a>
+                    </div>
+                    <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
+                        <div class="card-inner">
+                            <span>Groceries</span>
+                            <p class="mb-0">
+                            <?=$value['gia_sp_chitiet']?>
+                            </p>
+                            <div class="price">
+                                <span>
+                                <?=$value['name']?>
+                                </span>
+                                <sup>
+                                    
+                                </sup>
+                            </div>
+                    </a>
+                    <form action="index.php?act=spchitiet&id=<?=$value['id']?>" method="post">
+                        <div class="mt-3 d-flex detailss justify-content-between align-items-center">
+                            <button type="submit" class="btn text-uppercase btn-sm details">Mua ngay</button>
+                            <div class="d-flex flex-row">
+                                <span class="wishlist"><i class="fa fa-heart"></i></span>
+                                <span class="cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight"><i class="fa fa-shopping-cart"></i></span>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-
-            </div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-
-            </div>
+            </a>
         </div>
+        <?php endforeach; ?>
     </div>
 
     <div class="post-content">
@@ -516,18 +515,145 @@
     </div>
     </div>
     <style>
+        .percent {
+            width: 63px;
+            height: 30px;
+            position: absolute;
+            background: #F08383;
+            color: #fff;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            right: 0;
+            border-bottom-left-radius: 15px;
+            padding: 10px;
+        }
+
+        .cantrai {
+            margin-left: 10px;
+        }
+
+        .cantrai a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .product-content {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        .card {
+            background-color: #fff;
+            position: relative;
+            width: 300px;
+            border: 1px solid #fff;
+        }
+
+
+
+        .card-image {
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .card-image img {
+            width: 300px;
+            padding: 1px;
+        }
+
+        .card-inner {
+            padding: 20px;
+        }
+
+        .card-inner p {
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .price span {
+            color: #FFA2A2;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .price sup {
+            color: rgb(133, 133, 133);
+            font-weight: 100;
+            font-size: 14px;
+            top: -3px;
+            text-decoration: line-through;
+        }
+
+        .details {
+            background-color: #FFA2A2;
+            color: #fff;
+            border-radius: 10px;
+            width: 110px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .detailss button:hover {
+            background-color: #fff !important;
+            border: 1px solid #ff9494 !important;
+            color: #ff9494 !important;
+        }
+
+        .detailss button:active {
+            background-color: #ffffff !important;
+            border: 1px solid #ff9494 !important;
+            color: #ff9494 !important;
+        }
+
+        .wishlist {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #FFA2A2;
+            background: rgb(253, 220, 220);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.5s all;
+            font-size: 15px;
+        }
+
+        .wishlist:hover {
+
+            color: #fff;
+            background: #FFA2A2;
+
+        }
+
+        .cart {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            background: #FFA2A2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.5s all;
+            margin-left: 5px;
+            font-size: 15px;
+
+        }
+    </style>
+    <style>
         .mymaincontent {
             margin-top: 150px !important;
         }
-
-        #nav-contact,
-        #nav-profile,
-        #nav-tabContent {
-            background-color: #fff;
-            border: none !important;
-        }
-
-
 
         .baiposs {
             text-decoration: none;
@@ -538,121 +664,12 @@
             color: #F08383;
         }
 
-        .bv {
-            border-left: 1px solid #ccc;
-            border-right: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-        }
-
         .baiviet p {
             color: #ffffff !important;
             background-color: #F08383 !important;
         }
-
-        .nav button {
-            color: #000000 !important;
-        }
-
-
-        .product-content img {
-            max-width: 150px;
-            height: 120px;
-        }
-
-        .product-content p {
-            font-size: 17px;
-            font-weight: 500;
-        }
-
-        .product-content a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .product-content a:hover {
-            color: #F08383;
-        }
-
-        .card {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            max-width: 230px;
-            background-color: #fff;
-        }
-
-        .card p {
-            text-align: center;
-            margin-top: 10px;
-        }
     </style>
-    <style>
-        .anhsppp {
-            display: flex;
-            justify-content: center;
-        }
 
-        .yttt {
-            margin-right: 10px;
-        }
-
-        .border-spp {
-            border: 1px solid #FFA2A2 !important;
-            border-radius: 5px;
-        }
-
-
-
-        .card-body img {
-            position: relative;
-            transition: transform 0.5s;
-            cursor: pointer;
-        }
-
-        .card-body:hover img {
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-
-        .card-body:hover .carrt {
-            background-color: #f09f9f;
-            transform: scale(1.05);
-        }
-
-        .card-body:hover i {
-            color: #fff;
-        }
-
-
-        .carrt {
-            float: right;
-            max-width: 40px;
-            height: 30px;
-            transition: 0.6s;
-            border-radius: 15%;
-        }
-
-        .carrt i {
-            position: absolute;
-
-            line-height: 33px;
-            margin-left: -4px;
-            font-size: 20px;
-            color: #d6d6d6;
-        }
-
-
-        .giasp {
-            font-weight: 500;
-            color: rgb(255, 65, 65);
-            margin-top: 5px;
-            font-size: 19px;
-        }
-
-        .giasale {
-            color: #ada6a7;
-            font-size: 14px;
-        }
-    </style>
 
     </div>
 

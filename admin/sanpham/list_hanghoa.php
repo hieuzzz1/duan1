@@ -16,11 +16,11 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-2">Mã sản phẩm</th>
-                                <th class="col-4">Tên sản phẩm</th>
-                                <th class="col-4">Giá gốc</th>
+                                <th class="col-1">Mã sản phẩm</th>
+                                <th class="col-3">Tên sản phẩm</th>
+                                <th class="col-2">Giá gốc</th>
                                 <th class="col-2">Giá sale</th>
-                                <th class="col-1">Ảnh</th>
+                                <th class="col-2">Ảnh</th>
                                 <th class="col-2">Thuộc danh mục</th>
                                 <th class="col-2">Thao tác</th>
                                 

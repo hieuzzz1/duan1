@@ -287,36 +287,38 @@
 
 
                 </script>
+                <?php extract($spct);?>
+                <?php 
+                $hinh="../upload/".$img;
+                
+                $giaTienFormatted = number_format($gia_sp_chitiet, 0, ',', '.') . '₫';
+            ?>
+
                 <div class="slideshow-container">
                     <div class="slides">
-                        <img src="././upload/<?=$img?>" alt="Ảnh 1">
+                        <img src="././upload/<?=$hinh?>" alt="Ảnh 1">
                     </div>
                 </div>
 
             </div>
             <div class="col-md-6 boxctiet">
-                <?php extract($sp);?>
+                
                 <h4>
                     <p><?=$name?></p>
                 </h4>
-                <?php 
-                $hinh="././upload/".$img;
-                $giaTienFormatted = number_format($price, 0, ',', '.') . '₫';
-                $giaTienFormatted1 = number_format($giasale, 0, ',', '.') . '₫';
                 
-            ?>
                 <div>
                     <b class="fs-4 text-danger me-2">
                         <?=$giaTienFormatted?>
                     </b>
                     <b class="fw-lighter">Giá niêm yết:</b> <b class="fw-light text-decoration-line-through">
-                        <?=$giaTienFormatted1?>
                     </b>
                 </div>
                 <input type="hidden" name="tensp" value="<?=$name?>">
                 <input type="hidden" name="masp" value="<?=$id?>">
-                <input type="hidden" name="giasp" value="<?=$price?>">
-                <input type="hidden" name="anhsp" value="<?=$img?>">
+                <input type="hidden" name="giasp" value="<?=$gia_sp_chitiet?>">
+                
+                <input type="hidden" name="anhsp" value="<?=$hinh?>">
                 <div class="cart">
                     <div class="boxkm">
                         <span><i class="fa-solid fa-gift"></i> Khuyến mãi ưu đãi</span>
@@ -336,6 +338,7 @@
                                 <option value="<?=$value['ten_dung_tich']?>">
                                     <?=$value['ten_dung_tich']?>
                                 </option>
+                                <!-- <input type="text" name="giasp" value=""> -->
                                 <?php endforeach; ?>
 
                             </select>
@@ -374,7 +377,7 @@
 
                 <div class="row btn-muahang mt-2 mb-2">
                     <div class="col-4 btt11"><input type="submit" name="addtocart" value="THÊM VÀO GIỎ HÀNG"><br></div>
-                    <div class="col-3 btt22"><button>MUA NGAY <br></button></div>
+                    <div class="col-3 btt22"><button>MUA NGAY<br></button></div>
 
                     <style>
                         label.radio {

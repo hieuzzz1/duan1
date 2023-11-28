@@ -240,8 +240,6 @@
                                         <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </a></div>
-
-
                         </div>
 
 
@@ -261,6 +259,24 @@
                             <div class="container-fluid">
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 cangiua">
+                                        <div class="category">
+                                            <li class="nav-item text-white mt-2">
+
+                                                <i class="fa-solid fa-bars-staggered"></i> Danh mục <span></span>
+                                                <div class="product-list">
+                                                    <ul>
+                                                        <?php foreach ($listdanhmuc as $key => $value):?>
+
+                                                        <li><i class="fa-solid fa-play"></i>
+                                                            <a href="">
+                                                                <?=$value['tendm']?>
+                                                            </a>
+                                                        </li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </div>
                                         <li class="nav-item">
                                             <a class="nav-link active text-white px-4" aria-current="page"
                                                 href="index.php">Trang
@@ -296,8 +312,6 @@
                                         <li class="nav-item">
                                             <a class="nav-link text-white px-4" href="index.php?act=tintuc">Tin tức</a>
                                         </li>
-
-                                        </li>
                                         <li class="nav-item">
                                             <a class="nav-link text-white px-4" href="index.php?act=lienhe">Liên hệ</a>
                                         </li>
@@ -307,17 +321,13 @@
                                         </li>
                                     </ul>
                                     <style>
-                                        .hovermenu ul li a:hover {
-                                            color: rgb(166, 166, 166) ! important;
-                                        }
-
                                         .paddddd {
                                             padding: 2px !important;
                                             background-color: #F08383 !important;
                                         }
 
                                         .cangiua {
-                                            margin: auto !important;
+                                            margin-left: -14px !important;
                                         }
                                     </style>
                                 </div>
@@ -327,4 +337,92 @@
                 </div>
             </div>
         </section>
+
+        <style>
+            .product-list i {
+                font-size: 11px;
+                margin-right: 10px;
+                margin-left: 10px;
+                top: 10px;
+            }
+
+            .category-text,
+            .product-list {
+                max-height: 0;
+                overflow: hidden;
+                transition: 0.3s ease-in-out;
+                position: absolute;
+                /* Thêm thuộc tính này để chắc chắn .product-list không chiếm diện tích trong quá trình ẩn */
+            }
+
+            .category:hover .category-text,
+            .category:hover .product-list {
+                max-height: 1000px;
+                /* Điều chỉnh giá trị max-height tùy theo nhu cầu của bạn */
+            }
+
+            .product-list ul {
+                padding: 0;
+                width: 245px;
+                margin: 0;
+            }
+
+            .product-list ul li {
+                padding: 10px;
+                list-style: none;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .product-list li:hover {
+                background-color: #FFA2A2;
+                color: #fff;
+            }
+
+            .product-list li:hover a {
+                color: #fff;
+            }
+
+            .product-list li:hover i {
+                color: #fff;
+            }
+
+            .product-list ul li a {
+                text-decoration: none;
+
+                color: #000;
+
+            }
+
+            .product-list ul li {
+                padding: 10px 10px;
+                list-style: none !important;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .category span {
+                margin-left: 150px;
+                border-right: 2px solid #fff;
+            }
+
+            .product-list li:hover {
+                background-color: #FFA2A2 !important;
+                color: #fff !important;
+            }
+
+            .category:hover .product-list {
+                margin-top: 5px;
+                display: block;
+                position: absolute;
+                background-color: #fff;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.544);
+                border-radius: 5px;
+            }
+
+            .category {
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+                margin-right: 40px;
+            }
+        </style>
     </div>
