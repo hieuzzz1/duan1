@@ -46,7 +46,6 @@
                                         data-bs-target="#customModal_<?php echo $value['id']; ?>">
                                         <i class="fa-regular fa-trash-can btn"></i>
                                     </a>
-
                             </td>
                         </tr>
                     

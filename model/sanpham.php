@@ -84,7 +84,7 @@
         FROM sanpham_chitiet sanpham_ct 
         INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id
         INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id where sanpham_ct.id=".$id;
-        $sp=pdo_query_one($sql);    
+        $sp=pdo_query_one($sql);
         return $sp;
     }
 
@@ -94,18 +94,36 @@
     function load_all_sp_home(){
         $sql="SELECT sp.name, sp.img, sanpham_ct.*
         FROM sanpham_chitiet sanpham_ct
-        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id where sanpham_ct.id_dung_tich IN (5)";
+        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id where sanpham_ct.id_dung_tich IN (8)";
         $listsanpham=pdo_query($sql);
         return $listsanpham;
     }
 
 
-    function loadOne_sanphamct_(){   
-        $sql="SELECT sp.name, sp.img, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id 
+    function loadOne_sanphamct_(){  // Của admin
+        $sql="SELECT sp.name, sp.img, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id,sanpham_ct.id_dung_tich
         FROM sanpham_chitiet sanpham_ct 
         INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
-        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id order by id desc limit 10";
+        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id order by id desc";
         $sp=pdo_query($sql);
+        return $sp;
+    }
+    function loadOne_sanphamct_home(){  // Của home
+        $sql="SELECT sp.name, sp.img, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id, sanpham_ct.id_dung_tich
+        FROM sanpham_chitiet sanpham_ct 
+        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
+        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id";
+        $sp=pdo_query($sql);
+        return $sp;
+    }
+
+    function loadOne_sanphamct_home2($id){  // Của home
+        $sql="SELECT sp.id, sp_dt.*, sanpham_ct.gia_sp_chitiet, sanpham_ct.id_dung_tich 
+        FROM sanpham_chitiet sanpham_ct 
+        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
+        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id 
+        WHERE sp.id = '.$id.'";
+        $sp=pdo_query_one($sql);
         return $sp;
     }
 

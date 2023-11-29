@@ -15,8 +15,7 @@
     
     // $sp_moi=load_all_sp_home($id);
     $one_spct=load_all_sp_home();
-    $spct=loadOne_sanphamct_();
-    extract($one_spct);
+    $spct=loadOne_sanphamct_home();
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
         $act = $_GET[ 'act' ];
         switch ($act) {
@@ -137,7 +136,9 @@
                     $id=($_GET['id']);
                     $sp=loadOne_sanpham_chitiet($id);
                     extract($sp);
+                    
                 }
+                
                 $listdungtich=loadall_dungtich();
                 include "./view/sanphamct.php";
                 break;

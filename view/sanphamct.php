@@ -302,11 +302,13 @@
 
             </div>
             <div class="col-md-6 boxctiet">
-                
+
                 <h4>
-                    <p><?=$name?></p>
+                    <p>
+                        <?=$name?>
+                    </p>
                 </h4>
-                
+
                 <div>
                     <b class="fs-4 text-danger me-2">
                         <?=$giaTienFormatted?>
@@ -317,7 +319,7 @@
                 <input type="hidden" name="tensp" value="<?=$name?>">
                 <input type="hidden" name="masp" value="<?=$id?>">
                 <input type="hidden" name="giasp" value="<?=$gia_sp_chitiet?>">
-                
+
                 <input type="hidden" name="anhsp" value="<?=$hinh?>">
                 <div class="cart">
                     <div class="boxkm">
@@ -332,17 +334,13 @@
                     <div class="col-md-6 mt-2 mb-2">
                         <div class="soluong">
                             <h6>Loại hàng</h6>
-
-                            <select name="dungtich">
-                                <?php foreach ($listdungtich as $key => $value): ?>
-                                <option value="<?=$value['ten_dung_tich']?>">
-                                    <?=$value['ten_dung_tich']?>
-                                </option>
-                                <!-- <input type="text" name="giasp" value=""> -->
-                                <?php endforeach; ?>
-
-                            </select>
-
+                            
+                            <?php foreach ($spct as $key => $value):?>
+                            <a href="">
+                                <?=$value['ten_dung_tich']?>
+                            </a>
+                            <?php endforeach; ?>
+                            
                         </div>
                     </div>
                     <div class="col-md-6 quantity-chitietsp">

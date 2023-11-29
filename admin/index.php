@@ -153,7 +153,7 @@ session_start();
                 $listdanhmuc=loadall();
                 include "../admin/sanpham/add_sanpham.php";
                 break;
-
+                
             case "view_sanphamct":
                 $listsanpham=loadAll_sanpham();
                 $listsanpham_chitiet=loadOne_sanphamct_();
