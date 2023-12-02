@@ -53,7 +53,7 @@
                             <div class="modal fade" id="customModal_<?php echo $ldm['id']; ?>"
                                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                                 aria-labelledby="customModalLabel_<?php echo $ldm['id']; ?>" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                         <h1 class="modal-title fs-5">Xác nhận xóa danh mục
@@ -107,7 +107,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <input type="submit" name="themmoidm" value="Thêm mới">
+                    <input type="submit" name="themmoidm" value="Thêm mới" class="themdanhmucnew">
                 </div>
             </form>
         </div>
@@ -115,12 +115,29 @@
 </div>
 
 <style>
+    .modal-footer a{
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: #fff;
+        background-color: #FFA2A2;
+    }
+    .themdanhmucnew {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: #fff;
+        background-color: #FFA2A2;
+        border: none;
+    }
     .danhmucsp a:hover i {
-        color: #DC3545;
+        color: #FFA2A2;
     }
 
     .danhmucsp a:hover {
-        color: #DC3545;
+        color: #FFA2A2;
     }
 
     .add_hang_hoa {
@@ -138,15 +155,15 @@
     }
 
     .table a:hover i {
-        color: #DC3545 !important;
+        color: #FFA2A2 !important;
         cursor: pointer;
     }
 
 
 
     .table thead {
-        background-color: #DC3545 !important;
-        border: 0.2px solid #DC3545 !important;
+        background-color: #FFA2A2 !important;
+        border: 0.2px solid #FFA2A2 !important;
         color: #ffffff;
         font-size: 15px;
     }

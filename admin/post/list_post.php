@@ -7,67 +7,56 @@
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
                     <!-- Thêm danh mục -->
-                    <a href="index.php?act=add_sanpham" class="add_hang_hoa mt-2 mb-4">
-                        Thêm mới hàng hóa<i class="fa-solid fa-arrow-up-from-bracket btn"></i>
+                    <a href="index.php?act=add_post" class="add_hang_hoa mt-2 mb-4">
+                        Thêm bài viết mới<i class="fa-solid fa-arrow-up-from-bracket btn"></i>
                     </a>
-                    <p><b>SẢN PHẨM</b></p>
+                    
+                    <p><b>Bài viết</b></p>
                 </div>
                 <div class="bangdanhmuc">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-1">Mã</th>
-                                <th class="col-2">Tên sản phẩm</th>
-                                <th class="col-2">Giá gốc</th>
-                                <th class="col-1">Sale</th>
-                                <th class="col-2">Ảnh</th>
-                                <th class="col-2">Thuộc danh mục</th>
-                                <th class="col-2">Thao tác</th>
-
+                                <th class="col-1">Mã post</th>
+                                <th class="col-1">Tên bài viết</th>
+                                <th class="col-1">Giới thiệu</th>
+                                <th class="col-1">Image</th>
+                                <th class="col-3">Nội dung 1</th>
+                                <th class="col-3">Nội dung 2</th>
+                                <th class="col-3">Nội dung 3</th>
+                                <th class="col-3">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            <?php foreach ($listsanpham as $key => $value): ?>
+                            <?php foreach($list_post as $list=> $ldm):?>
                             <tr>
-                                <td>
-                                    <?= $value['id'] ?>
-                                </td>
-                                <td>
-                                    <?= $value['name'] ?>
-                                </td>
-                                <td>
-                                    <?= $value['price'] ?>
-                                </td>
-                                <td>
-                                    <?= $value['giasale'] ?>
-                                </td>
-                                <td><img src="../upload/<?= $value['img'] ?>" alt="" height="80"></td>
-                                <td>
-                                    <?= $value['danhmuc_tendm'] ?>
-                                </td>
+                                <th><?=$ldm['id']?></th>
+                                <td ><?=$ldm['name_post']?></td>
+                                <td><div class="an"><?=$ldm['gioithieu']?></div></td>
+                                <td><img src="../upload/<?= $ldm['image'] ?>" alt="" height="80"></td>
+                                <td><div class="an"><?=$ldm['noidung1']?></div></td>
+                                <td><div class="an"><?=$ldm['noidung2']?></div></td>
+                                <td><div class="an"><?=$ldm['noidung3']?></div></td>
                                 <td>
                                     <!-- Sửa danh mục -->
-                                    <a href="index.php?act=sua_sanpham&id=<?=$value['id']?>">
+                                    <a href="index.php?act=suapost&id=<?=$ldm['id']?>">
                                         <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
                                     </a>
                                     <!-- Xóa danh mục -->
+
                                     <a href="#" class="openModalButton" data-bs-toggle="modal"
-                                        data-bs-target="#customModal_<?php echo $value['id']; ?>">
+                                        data-bs-target="#customModal_<?php echo $ldm['id']; ?>">
                                         <i class="fa-regular fa-trash-can btn"></i>
                                     </a>
                                 </td>
                             </tr>
-
-
-
-                            <div class="modal fade" id="customModal_<?php echo $value['id']; ?>"
+                            <div class="modal fade" id="customModal_<?php echo $ldm['id']; ?>"
                                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                                aria-labelledby="customModalLabel_<?php echo $value['id']; ?>" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
+                                aria-labelledby="customModalLabel_<?php echo $ldm['id']; ?>" aria-hidden="true">
+                                <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5">Xác nhận xóa danh mục
+                                        <h1 class="modal-title fs-5">Xác nhận xóa danh mục
                                                 <i class="fa-regular fa-trash-can text-danger"></i> <br>
                                             </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -76,9 +65,9 @@
                                             </button>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
+                                        <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Hủy</button>
-                                            <a href="index.php?act=xoasp&id=<?=$value['id'];?>">
+                                            <a href="index.php?act=xoapost&id=<?=$ldm['id'];?>">
                                                 Xóa
                                             </a>
                                         </div>
@@ -88,9 +77,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -124,20 +111,24 @@
 </div>
 
 <style>
-    .modal-footer a{
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        color: #fff;
-        background-color: #FFA2A2;
+    .an{
+        display: block;
+  	display: -webkit-box;
+  	height: 16px*1.3*3;
+  	font-size: 16px;
+  	line-height: 1.3;
+  	-webkit-line-clamp: 3;  /* số dòng hiển thị */
+  	-webkit-box-orient: vertical;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	margin-top:10px;
     }
     .danhmucsp a:hover i {
-        color: #FFA2A2;
+        color: #DC3545;
     }
 
     .danhmucsp a:hover {
-        color: #FFA2A2;
+        color: #DC3545;
     }
 
     .add_hang_hoa {
@@ -155,15 +146,15 @@
     }
 
     .table a:hover i {
-        color: #FFA2A2 !important;
+        color: #DC3545 !important;
         cursor: pointer;
     }
 
 
 
     .table thead {
-        background-color: #FFA2A2 !important;
-        border: 0.2px solid #FFA2A2 !important;
+        background-color: #DC3545 !important;
+        border: 0.2px solid #DC3545 !important;
         color: #ffffff;
         font-size: 15px;
     }
@@ -180,15 +171,6 @@
         padding: 25px;
         font-weight: 400 !important;
         font-size: 14px;
-        line-height: 50px;
-    }
-
-    .table tbody a:hover {
-        color: #FFA2A2;
-    }
-
-    .table tbody a {
-        color: #000;
     }
 
     .table tbody tr td {

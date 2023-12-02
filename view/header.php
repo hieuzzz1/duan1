@@ -227,9 +227,8 @@
                             <div class="col"><a href="index.php?act=giohang" class="position-relative ms-1">
                                     <span><i class="fa-solid fa-cart-shopping text-white fs-4"></i></span>
                                     <span
-                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        1
-                                        <span class="visually-hidden">unread messages</span>
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalProduct">
+                                        0
                                     </span>
                                 </a></div>
                             <div class="col"><a href="index.php?act=spyeuthich" class="position-relative ms-2">
@@ -237,7 +236,6 @@
                                     <span
                                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         0
-                                        <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </a></div>
                         </div>

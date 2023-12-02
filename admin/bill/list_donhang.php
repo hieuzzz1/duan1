@@ -6,56 +6,57 @@
         <div class="row">
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
-                    <!-- Thêm danh mục -->
-                    <a href="index.php?act=add_sanpham" class="add_hang_hoa mt-2 mb-4">
-                        Thêm mới hàng hóa<i class="fa-solid fa-arrow-up-from-bracket btn"></i>
-                    </a>
                     <p><b>SẢN PHẨM</b></p>
+                    
                 </div>
                 <div class="bangdanhmuc">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th class="col-1">Mã</th>
-                                <th class="col-2">Tên sản phẩm</th>
-                                <th class="col-2">Giá gốc</th>
-                                <th class="col-1">Sale</th>
-                                <th class="col-2">Ảnh</th>
-                                <th class="col-2">Thuộc danh mục</th>
-                                <th class="col-2">Thao tác</th>
+                                <th class="col-2">Tên khách hàng</th>
+                                <th class="col-2">Tổng tiền</th>
+                                <th class="col-2">Trạng thái</th>
+                                <th class="col-1">Thao tác</th>
 
                             </tr>
                         </thead>
                         <tbody>
 
-                            <?php foreach ($listsanpham as $key => $value): ?>
+                            <?php foreach ($loadbill as $key => $value): ?>
                             <tr>
                                 <td>
                                     <?= $value['id'] ?>
                                 </td>
                                 <td>
-                                    <?= $value['name'] ?>
+                                    <?= $value['bill_name'] ?>
                                 </td>
                                 <td>
-                                    <?= $value['price'] ?>
+                                <?=number_format($value['total'], 0, ',', '.')?> ₫
                                 </td>
                                 <td>
-                                    <?= $value['giasale'] ?>
-                                </td>
-                                <td><img src="../upload/<?= $value['img'] ?>" alt="" height="80"></td>
-                                <td>
-                                    <?= $value['danhmuc_tendm'] ?>
+                                    <?php if($value['trangthai'] == 0) {?>
+                                        <span class="text-danger">Chưa xử lí</span>
+                                    <?php }elseif ($value['trangthai'] == 1) {?>
+                                        <span class="text-primary">Đã xử lí</span>
+                                    <?php }elseif ($value['trangthai'] == 2) {?>
+                                        <span class="text-warning">Đang giao hàng</span>
+                                    <?php }elseif ($value['trangthai'] == 3) {?>
+                                        <span class="text-success">Giao hàng thành công</span>
+                                    <?php }elseif ($value['trangthai'] == 4) {?>
+                                        <span class="text-danger"><strong>Hủy đơn hàng</strong></span>
+                                    <?php }?>
                                 </td>
                                 <td>
                                     <!-- Sửa danh mục -->
-                                    <a href="index.php?act=sua_sanpham&id=<?=$value['id']?>">
+                                    <a href="index.php?act=chitiet_BILL&id=<?=$value['id']?>">
                                         <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
                                     </a>
                                     <!-- Xóa danh mục -->
-                                    <a href="#" class="openModalButton" data-bs-toggle="modal"
+                                    <!-- <a href="#" class="openModalButton" data-bs-toggle="modal"
                                         data-bs-target="#customModal_<?php echo $value['id']; ?>">
                                         <i class="fa-regular fa-trash-can btn"></i>
-                                    </a>
+                                    </a> -->
                                 </td>
                             </tr>
 
@@ -97,31 +98,7 @@
 </div>
 
 
-<!-- Thêm mới danh mục -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1>Thêm mới hàng hóa</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                        class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form action="index.php?act=themdanhmuc" method="post">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Tên hàng hóa</label>
-                        <input type="text" class="form-control" name="tenhanghoa">
-                    </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <input type="submit" name="themmoidm" value="Thêm mới">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <style>
     .modal-footer a{

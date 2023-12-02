@@ -1,7 +1,11 @@
 <?php
 function dangky($user,$pass,$email,$tel) {
-    $sql = "insert into taikhoan(user,pass,email,diachi,tel,role) values('$user','$pass','$email','null','$tel','null')";
-    pdo_execute($sql);
+    $sql = "insert into taikhoan(user,pass,email,tel) values(?,?,?,?)";
+    pdo_execute($sql,$user,$pass,$email,$tel);
+}
+function dangky_id($user,$pass,$hoten,$email,$diachi,$sodienthoai) {
+    $sql = "insert into taikhoan(user,pass,ten,email,diachi,tel) values(?,?,?,?,?,?)";
+    return pdo_execute_id($sql,$user,$pass,$hoten,$email,$diachi,$sodienthoai);
 }
 function themtt($diachimuahang,$sdtmuahang) {
     $sql = "insert into taikhoanmuahang(diachimuahang,sdtmuahang) values('$diachimuahang','$sdtmuahang')";

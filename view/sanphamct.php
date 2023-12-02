@@ -16,11 +16,7 @@
             }
         </style>
         <style>
-            input[type="number"] {
-                -webkit-appearance: textfield;
-                -moz-appearance: textfield;
-                appearance: textfield;
-            }
+         
 
             input[type=number]::-webkit-inner-spin-button,
             input[type=number]::-webkit-outer-spin-button {
@@ -51,8 +47,6 @@
                 position: relative;
             }
 
-
-
             button[class='plus']::after {
                 display: inline-block;
                 position: absolute;
@@ -72,9 +66,6 @@
                 content: '\2212';
                 transform: translate(-50%, -30%) rotate(180deg);
             }
-
-
-
             .number-input input[type=number] {
                 font-family: sans-serif;
                 max-width: 50px;
@@ -287,11 +278,10 @@
 
 
                 </script>
-                <?php extract($spct);?>
+
                 <?php 
                 $hinh="../upload/".$img;
-                
-                $giaTienFormatted = number_format($gia_sp_chitiet, 0, ',', '.') . '₫';
+                $giaTienFormatted = number_format($price, 0, ',', '.') . '₫';
             ?>
 
                 <div class="slideshow-container">
@@ -302,25 +292,20 @@
 
             </div>
             <div class="col-md-6 boxctiet">
-
                 <h4>
                     <p>
                         <?=$name?>
                     </p>
                 </h4>
-
                 <div>
                     <b class="fs-4 text-danger me-2">
                         <?=$giaTienFormatted?>
                     </b>
-                    <b class="fw-lighter">Giá niêm yết:</b> <b class="fw-light text-decoration-line-through">
-                    </b>
                 </div>
-                <input type="hidden" name="tensp" value="<?=$name?>">
                 <input type="hidden" name="masp" value="<?=$id?>">
-                <input type="hidden" name="giasp" value="<?=$gia_sp_chitiet?>">
-
+                <input type="hidden" name="tensp" value="<?=$name?>">
                 <input type="hidden" name="anhsp" value="<?=$hinh?>">
+                <input type="hidden" name="giasp" value="<?=$price?>">
                 <div class="cart">
                     <div class="boxkm">
                         <span><i class="fa-solid fa-gift"></i> Khuyến mãi ưu đãi</span>
@@ -331,24 +316,11 @@
                     </div>
                 </div>
                 <div class="row mt-2 mb-3 chu-tieude">
-                    <div class="col-md-6 mt-2 mb-2">
-                        <div class="soluong">
-                            <h6>Loại hàng</h6>
-                            
-                            <?php foreach ($spct as $key => $value):?>
-                            <a href="">
-                                <?=$value['ten_dung_tich']?>
-                            </a>
-                            <?php endforeach; ?>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-6 quantity-chitietsp">
-                        <div class="soluong mt-2 mb-2">
+                        <div class="soluong mt-6 mb-2">
                             <h6>Số lượng</h6>
                             <div class="number-input">
                                 <button onclick="decrement()" class="decrement" type="button">-</button>
-                                <input class="quantity" min="0" name="quantityy" value="1" type="number">
+                                <input name="quantityy" min="0" value="1" type="number" id="quantity1">
                                 <button onclick="increment()" class="increment" type="button">+</button>
                                 <script>
                                     function increment() {
@@ -361,67 +333,15 @@
                                         input.stepDown();
                                     }
                                 </script>
-
                             </div>
-                        </div>
 
                     </div>
                 </div>
-
-
-
-
-
-
                 <div class="row btn-muahang mt-2 mb-2">
                     <div class="col-4 btt11"><input type="submit" name="addtocart" value="THÊM VÀO GIỎ HÀNG"><br></div>
                     <div class="col-3 btt22"><button>MUA NGAY<br></button></div>
 
-                    <style>
-                        label.radio {
-                            cursor: pointer
-                        }
-
-                        label.radio input {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            visibility: hidden;
-                            pointer-events: none
-                        }
-
-                        label.radio span {
-                            padding: 1px 9px;
-                            border: 1px solid#ccc;
-                            display: inline-block;
-                            color: #8c8c8c;
-                            border-radius: 3px;
-                        }
-
-                        label.radio input:checked+span {
-                            border-color: #F08383;
-                            background-color: #ffffff;
-                            color: #F08383
-                        }
-                    </style>
-                    <script>
-                        // Lấy tất cả các checkbox cùng một tên
-                        var checkboxes = document.querySelectorAll('.single-choice-checkbox');
-
-                        // Thêm sự kiện 'change' cho mỗi checkbox
-                        checkboxes.forEach(function (checkbox) {
-                            checkbox.addEventListener('change', function () {
-                                // Nếu checkbox được chọn, hủy chọn tất cả các checkbox khác
-                                if (this.checked) {
-                                    checkboxes.forEach(function (otherCheckbox) {
-                                        if (otherCheckbox !== checkbox) {
-                                            otherCheckbox.checked = false;
-                                        }
-                                    });
-                                }
-                            });
-                        });
-                    </script>
+                   
                 </div>
             </div>
         </div>
@@ -465,27 +385,31 @@
                 <br><br>
 
             </p>
+            <div class="danhgia">
+                        <b>Đánh giá sản phẩm</b> <br> <br><br>
+                        <iframe src="view/binhluan/binhluanfrom.php?idsp=<?=$id?>" width="100%" height="300px" frameborder="0"></iframe>
+            </div>
         </div>
         <div class="col-md-3 okk">
             <div class="nav nav-tabs mt-4 oko" id="nav-tab" role="tablist">
                 <p class="nav-link active">Sản phẩm liên quan</p>
                 <div class="row tintucc">
                     <div class="col-md-4"><a href="#"><img
-                                src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
+                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
-                    <div class="col-md-8">Tiêu đề ở đây
+                    <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
                     <div class="col-md-4"><a href="#"><img
-                                src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
+                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
-                    <div class="col-md-8">Tiêu đề ở đây
+                    <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
                     <div class="col-md-4"><a href="#"><img
-                                src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
+                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
-                    <div class="col-md-8">Tiêu đề ở đâyk
+                    <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
                 </div>
@@ -502,21 +426,21 @@
                 <p class="nav-link active">Sản phẩm liên quan</p>
                 <div class="row tintucc">
                     <div class="col-md-4"><a href="#"><img
-                                src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
+                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
-                    <div class="col-md-8">Tiêu đề ở đây
+                    <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
                     <div class="col-md-4"><a href="#"><img
-                                src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
+                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
-                    <div class="col-md-8">Tiêu đề ở đây
+                    <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
                     <div class="col-md-4"><a href="#"><img
-                                src="https://bizweb.dktcdn.net/thumb/medium/100/429/689/products/apple-iphone-12-mini-2-0340d148-dd79-40b3-b8ad-95ed589c7b5a.png?v=1623564588267"
+                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
-                    <div class="col-md-8">Tiêu đề ở đâyk
+                    <div class="col-md-8">Kem chống nắngk
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
                 </div>
@@ -561,11 +485,5 @@
             </style>
         </div>
     </div>
-
-
-
-
 </div>
-
-
 </div>

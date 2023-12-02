@@ -12,51 +12,56 @@
                             </div>
                             <div class="col-6 ngdung-tt ">
                                 <i class="fa-regular fa-user"></i>
+                                
                                 <p>Tên người dùng</p>
                             </div>
                         </div>
+                        <?php
+                                if(isset($_SESSION['user'])) {
+                                    $name=$_SESSION['user']['user'];
+                                    $email=$_SESSION['user']['email'];
+                                    $tel=$_SESSION['user']['tel'];
+                                    $diachi=$_SESSION['user']['diachi'];
+                        ?>
+                        <div class="thongtininput mb-3">
+                            <input type="text" name="hoten" value="<?=$name?>">
+                        </div>
                         <div class="thongtininput mb-2">
-                            <input type="email" placeholder="Email">
+                            <input type="email" name="email" value="<?=$email?>">
                         </div>
                         <div class="thongtininput mt-3 mb-2">
-                            <input type="text" placeholder="Số điện thoại">
+                            <input type="text" name="sodienthoai" value="<?=$tel?>">
                         </div>
                         <div class="thongtininput mt-3 mb-2">
-                            <input type="text" placeholder="Địa chỉ">
+                            <input type="text" name="diachi" placeholder="Địa chỉ" value="<?=$diachi?>">
                         </div>
-                        <div class="select-box">
-                            <div class="select-option">
-                                <input type="text" placeholder="Thành phố" id="soValue" readonly name="">
-                            </div>
-                            <div class="content">
-                                <div class="search">
-                                    <input type="text" id="optionSearch" name="">
-                                </div>
-                                <ul class="options">
-                                    <li>Hà Nội</li>
-                                    <li>Thái Bình</li>
-                                    <li>Hải Phòng</li>
-                                    <li>Lạng Sơn</li>
-                                    <li>Nam Định</li>
-                                    <li>Phú Thọ</li>
-                                    <li>Thái Nguyên</li>
-                                    <li>Yên Bái</li>
-                                    <li>Sơn La</li>
-                                    <li>Điện Biên</li>
-                                    <li>Lào Cai</li>
-                                    <li>Hòa Bình</li>
-                                    <li>Hải Dương</li>
-                                    <li>Tuyên Quang</li>
-                                    <li>Ninh Bình</li>
-                                    <li>Thanh Hóa</li>
-                                    <li>Nghệ An</li>
-                                    <li>Hà Tĩnh</li>
-                                </ul>
-                            </div>
-                        </div>
+
                         <div class="thongtininput mt-3 mb-2">
                             <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         </div>
+                        <?php
+                            
+                                }else {
+                                    echo '';
+                            ?>
+                            <div class="thongtininput mb-3">
+                            <input type="text" name="hoten" placeholder="Họ tên">
+                        </div>
+                        <div class="thongtininput mb-2">
+                            <input type="email" placeholder="Email" name="email">
+                        </div>
+                        <div class="thongtininput mt-3 mb-2">
+                            <input type="text" placeholder="Số điện thoại" name="sodienthoai">
+                        </div>
+                        <div class="thongtininput mt-3 mb-2">
+                            <input type="text" placeholder="Địa chỉ" name="diachi">
+                        </div>
+
+                        <div class="thongtininput mt-3 mb-2">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
+                        </div>
+                        <?php } ?>
+                        
 
                     </div>
                     <div class="col-6">
@@ -64,11 +69,22 @@
                             <div class="col">
                                 <div class="vanchuyen thongtininput">
                                     <p>Vận chuyển</p>
-                                    <input type="text" value="Giao hàng tận nơi">
+                                    <input type="text" value="30.000đ">
                                 </div>
-                                <div class="thanhtoan mt-5 thongtininput">
-                                    <p>Thanh toán</p>
-                                    <input type="text" value="Thanh toán khi nhận hàng (COD)">
+                                <div class="section payment-method mt-4">
+                                    <p>Phương Thức Thanh Toán</p>
+                                    <select name="pttt" id="">
+                                        <option value="">Thanh toán online</option>
+                                        <option value="">Thanh toán khi nhận hàng</option>
+                                    </select>
+                                    <!-- <label>
+                                        <input type="radio" name="pttt" value="online" checked>
+                                        Thanh toán online
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="pttt" value="on_delivery">
+                                        Thanh toán khi nhận hàng
+                                    </label> -->
                                 </div>
                             </div>
                         </div>
@@ -76,23 +92,32 @@
                 </div>
             </div>
 
+
+            <?php $okk='
             <div class="col-4 container-cttt-ctn">
                 <div class="sidebar-header">
-                    <P>Đơn hàng của quý khách (1 sản phẩm)</P>
+                    <P>Đơn hàng của quý khách</P>
                 </div>
 
                 <div class="sidebar-cont">
                     <div class="ctttdonhang">
                         <div class="row">
-                            <div class="col-3">
-                                <img src="./img//sanpham/sp1.png" alt="">
-                            </div>
-                            <div class="col-6">
-                                <p>Kem chống nắng</p>
-                            </div>
-                            <div class="col-3 sb-ct-price">
-                                <p>300.000đ</p>
-                            </div>
+                            <div class="product-container">
+                                <!-- Sản phẩm 1 -->';
+                               $tong=0;
+                                for ($i=0; $i < sizeof($_SESSION["giohang"]); $i++) { 
+                                    $ttien=$_SESSION["giohang"][$i][2]*$_SESSION["giohang"][$i][4];
+                                    $tong+=$ttien;
+                                $okk.='<div class="product">
+                                    <img src="././upload/'.$_SESSION["giohang"][$i][3].'">
+                                    <h6>'.$_SESSION["giohang"][$i][1].'</h6>
+                                    <div class="product-details">
+                                        <p>Số lượng: '.$_SESSION["giohang"][$i][4].'</p>
+                                        <p>Giá: '.number_format($_SESSION["giohang"][$i][2], 0, ',', '.').'₫</p>
+                                    </div>
+                                </div>';} 
+                               
+                            $okk.='</div>
                         </div>
 
                     </div>
@@ -103,46 +128,101 @@
                                 <p>Tạm tính</p>
                                 <p>Phí vận chuyển</p>
                             </div>
+                            
                             <div class="col-7 cttt-price-gia">
                                 <div class="ppp">
-                                    <p>300.000đ</p>
+                                    <p>'.number_format($tong, 0, ',', '.').'₫</p>
                                 </div>
-
+                            
                                 <p>30.000đ</p>
                             </div>
                         </div>
-                    </div>
+                    </div>';
 
-                    <div class="cttt-tongtatca">
+                    $okk.='<div class="cttt-tongtatca">
                         <div class="row">
                             <div class="col-6 ttt-ten mt-2">
                                 <p>Tổng cộng</p>
-                                <a href="#"><i class="fa-solid fa-chevron-left"></i> Quay về giỏ hàng</a>
+                                <a href="index.php?act=giohang"><i class="fa-solid fa-chevron-left"></i> Quay về giỏ
+                                    hàng</a>
                             </div>
                             <div class="col-6 thanhtien-tongtatca">
-                                <p>330.000đ</p>
-                                <button type="submit">Đặt hàng</button>
+                                <p>'.number_format($tong, 0, ',', '.').'₫</p>
+                                <button type="submit" name="thanhtoandh">Đặt hàng</button>
                             </div>
                         </div>
-                    </div>
-
+                    </div>';
+                    echo $okk;
+                   ?>
                 </div>
-
             </div>
         </div>
     </form>
 
 </div>
 <style>
+    .payment-method {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-method label {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-method input {
+            margin-right: 10px;
+        }
+    /* Thiết lập CSS cho khung chứa sản phẩm */
+    .product-container {
+        max-height: 400px;
+        /* Chiều cao tối đa của khung chứa */
+        overflow-y: auto;
+        /* Tự động cuộn khi nội dung vượt quá kích thước */
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    h6 {
+        margin-left: -10px !important;
+        margin-top: 10px;
+    }
+
+    .product p {
+        margin-left: 0px !important;
+    }
+
+    /* Thiết lập CSS cho mỗi sản phẩm */
+    .product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .product img {
+        max-width: 50px;
+        /* Kích thước tối đa của ảnh sản phẩm */
+    }
+
+    .product-details {
+        display: flex;
+        flex-direction: column;
+    }
+
     .top-top-dki {
         margin-top: 160px
     }
+
     .cttt-tongtatca {
         padding: 10px;
     }
 
     .cttt-tongtatca .thanhtien-tongtatca p {
-        margin-left: 95px;
+        margin-left: 80px;
         color: #DC3545;
         font-size: 22px;
     }
@@ -201,7 +281,7 @@
     }
 
     .cttt-price .ppp p {
-        margin-left: 162px !important;
+        margin-left: 150px !important;
     }
 
     .cttt-price {
@@ -307,7 +387,7 @@
     .thongtininput textarea {
         width: 100%;
         padding: 5px 10px;
-        height: 60px;
+        height: 200px;
         outline: none;
         border: 1px solid #ccc;
         color: #6b6b6b;

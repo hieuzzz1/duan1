@@ -11,11 +11,14 @@
     $listdanhmuc=loadall();
     include "./model/sanpham.php";
     include "./model/taikhoan.php";
+    
     include "./view/header.php";
+    include "./model/donhang.php";
     
     // $sp_moi=load_all_sp_home($id);
     $one_spct=load_all_sp_home();
-    $spct=loadOne_sanphamct_home();
+    
+    // $spct=loadOne_sanphamct_home();
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
         $act = $_GET[ 'act' ];
         switch ($act) {
@@ -25,7 +28,6 @@
                     $pass = $_POST['pass'];
                     $email = $_POST['email'];
                     $tel = $_POST['tel'];
-    
                     dangky($user,$pass,$email,$tel);
                     $thongbao = '<div class="alert alert-success" role="alert">
                     Đăng ký thành công <a href="index.php?act=dangnhap" class="alert-link">Đăng nhập</a> 
@@ -60,7 +62,6 @@
                     $address = $_POST['diachi'];
                     $tel = $_POST['tel'];
                     $id = $_POST['id'];
-                    
                     update_tk($id,$user,$pass,$email,$address,$tel);
                     $_SESSION[ 'user' ] = check( $user, $pass );
                     $thongbao = '<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
@@ -89,7 +90,6 @@
                     break;
             case 'dangxuat':
 
-
                 session_unset();
                 header( 'Location: index.php' );
                 break;
@@ -101,7 +101,6 @@
                     $tensp=$_POST['tensp'];
                     $giasp=$_POST['giasp'];
                     $anhsp=$_POST['anhsp'];
-                    $dungtich=$_POST['dungtich'];
                     if(isset($_POST['quantityy'])&&($_POST['quantityy']>0)){
                         $quantity=$_POST['quantityy'];
                     }
@@ -112,22 +111,49 @@
                         $vitritrung=checktrung_pro($masp);
                         update_quantity_pro($vitritrung);
                     }else {
-                        $item=array($masp,$tensp,$giasp,$anhsp,$dungtich,$quantity);
+                        $item=array($masp,$tensp,$giasp,$anhsp,$quantity);
+                        array_push($_SESSION["giohang"],$item);
+                    }
+                }
+                header("Location: index.php?act=giohang");
+               
+            case 'addgiohang123':
+                if(isset($_POST['add_sp_home'])&&($_POST['add_sp_home'])){
+                    $masp=$_POST['masp'];
+                    $tensp=$_POST['tensp'];
+                    $giasp=$_POST['giasp'];
+                    $anhsp=$_POST['anhsp'];
+                    if(isset($_POST['quantityy'])&&($_POST['quantityy']>0)){
+                        $quantity=$_POST['quantityy'];
+                    }
+                    else {
+                        $quantity=1;
+                    }
+                    if(checktrung_pro($masp)>=0){
+                        $vitritrung=checktrung_pro($masp);
+                        update_quantity_pro($vitritrung);
+                    }else {
+                        $item=array($masp,$tensp,$giasp,$anhsp,$quantity);
                         array_push($_SESSION["giohang"],$item);
                         
                     }
                     
-                    
+                    echo '<script>window.location.href = "index.php";</script>';
                 }
-                header("Location: index.php?act=giohang");
-               
+                break;
             case 'giohang':
+
                 include "./view/giohang.php";
                 break;
-            case 'xoagiohang':
-                if($_SESSION["giohang"]){ unset($_SESSION["giohang"]);};
-                include "./view/giohang.php";
-                break;
+                case 'Xoagiohang':
+                    if ( isset( $_GET[ 'id' ] ) && ( $_GET[ 'id' ] >= 0 ) ) {
+                        array_splice( $_SESSION[ 'giohang' ], $_GET[ 'id' ], 1 );
+            
+                    } else {
+                        $_SESSION[ 'giohang' ] = [];
+                    }
+                    header( 'Location: index.php?act=giohang' );
+                    break;
             case 'sanpham':
                 include "./view/sanpham.php";
                 break;
@@ -138,15 +164,59 @@
                     extract($sp);
                     
                 }
-                
-                $listdungtich=loadall_dungtich();
                 include "./view/sanphamct.php";
                 break;
 
             case 'thanhtoan':
                 include "./view/cart/thanhtoan.php";
                 break;
+
             case 'donhangthanhcong':
+                if(isset($_POST['thanhtoandh'])){
+                    $hoten=$_POST['hoten'];
+                    $email=$_POST['email'];
+                    $diachi=$_POST['diachi'];
+                    $sodienthoai=$_POST['sodienthoai'];
+                    $pttt=$_POST['pttt'];
+                    //thêm user mới
+                    $user="user".rand(1,999);
+                    $pass="pass123";
+                    $iduser=dangky_id($user,$pass,$hoten,$email,$diachi,$sodienthoai);
+                    //Tạo đơn hàng
+                    $madh="HTB".$iduser."-".date("His-dmY");
+
+                    function total_donhang() {
+                        $tong=0;
+                        for ($i=0; $i < sizeof($_SESSION["giohang"]); $i++) { 
+                            $ttien=$_SESSION["giohang"][$i][2]*$_SESSION["giohang"][$i][4];
+                            $tong+=$ttien;
+                    }
+                    return $tong;
+                    }
+                    $total=total_donhang();
+                    $id_bill=bill_insert_id($madh,$iduser,$hoten,$diachi,$sodienthoai,$email,$total,$pttt);
+                    // $thanhtien=thanhtien_donhang();
+                    if(isset($_SESSION["giohang"])&&(count($_SESSION["giohang"])>0)) {
+                        for ($i=0; $i < sizeof($_SESSION["giohang"]); $i++) { 
+                            $ttien=$_SESSION["giohang"][$i][2]*$_SESSION["giohang"][$i][4];
+                            insert_cart($_SESSION["giohang"][$i][0],
+                            $_SESSION["giohang"][$i][3],
+                            $_SESSION["giohang"][$i][1],
+                            $_SESSION["giohang"][$i][2],
+                            $_SESSION["giohang"][$i][4],
+                            $ttien,$id_bill);
+                        }
+                    // unset($_SESSION["giohang"]);
+                    $_SESSION["giohang"]=null;
+                    // echo '<meta http-equiv="refresh" content="0;url=index.php?act=donhangthanhcong">';
+                    
+                }
+                
+                
+                }
+                $listcart=Loadcart($id_bill);
+                $listbill=Load_bill($id_bill);
+                
                 include "./view/cart/donhangthanhcong.php";
                 break;
 

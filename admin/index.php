@@ -5,6 +5,9 @@ session_start();
     include "../model/pdo.php";
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
+    include "../model/donhang.php";
+    include "../model/binhluan.php";
+    
     $listdanhmuc=loadall();
     $listdungtich=loadall_dungtich();
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
@@ -182,10 +185,62 @@ session_start();
                 include "../admin/sanpham/view_sanphamct.php";
                 break;
     
+            
+            //Hàng hóa
+            case "list_donhang":
+                $loadbill=Load_bill_admin();
+                include "../admin/bill/list_donhang.php";
+                break;
+            case "chitiet_BILL":
+                if(isset($_GET['id'])&&($_GET['id'])){
+                    $id=$_GET['id'];
+                    $load_one_bill=Load_one_bill_admin($id);
+                    $load_one_cart=Load_one_cart_admin($id);
+                    if(isset($_POST['trangthai'])){
+                        $trangthai=$_POST['trangthai'];
+                        update_trangthai($id,$trangthai);
+                        echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_donhang">';
+                    }
+                }
+                
+                include "../admin/bill/chitiet_BILL.php";
+                break;
+                case "list_bl":
+                    $list_bl=loadall_bl();
+                    include "../admin/binhluan/list_bl.php";
+                break;
+            case 'update_bl':
+                if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                    $phanhoi=$_POST['phanhoi'];
+                    $id=$_POST['id'];
+                    update_phanhoi($id,$phanhoi);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_bl">';
+                }
+                $list_bl=loadall_bl();
+                include "../admin/danhmuc/list_bl.php";
+                break;
+            case 'suabl':
+                if(isset($_GET['id'])&&($_GET['id']>0)){
+                    $binhluan=loadone_bl($_GET['id']);
+                }
+                include "../admin/binhluan/phanhoi.php";
+                break;
+            case 'xoabl':
+                if(isset($_GET['id'])&&($_GET['id'])){
+                    delete_bl($_GET['id']);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_bl">';
+                }
+                $list_bl=loadall_bl();
+                include "../admin/danhmuc/list_bl.php";
+                break;
+
+
+
 
 
             case "list_tk":
                 include "../admin/taikhoan/list_tk.php";
+                break;
                 
 
             default:

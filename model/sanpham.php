@@ -2,7 +2,7 @@
     function update_quantity_pro($vitri){
         for ($i=0; $i < sizeof($_SESSION["giohang"]); $i++) { 
            if($i==$vitri){
-                $_SESSION["giohang"][$i][5]+=1;
+                $_SESSION["giohang"][$i][4]+=1;
            }
         }
     }
@@ -72,32 +72,37 @@
         pdo_execute($sql);
     }
     
-    // function load_all_sp_home(){  SỬA
-    //     $sql="select * from sanpham order by id desc limit 0,8";
-    //     $listsanpham=pdo_query($sql);
-    //     return $listsanpham;
-        
-    // }
+    function load_all_sp_home(){ 
+        $sql="select * from sanpham order by id desc limit 0,8";
+        $listsanpham=pdo_query($sql);
+        return $listsanpham;
+    }
   
     function loadOne_sanpham_chitiet($id){
-        $sql="SELECT sp.name, sp.img, sp.giasale, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet
-        FROM sanpham_chitiet sanpham_ct 
-        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id
-        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id where sanpham_ct.id=".$id;
+        $sql="SELECT * from sanpham where sanpham.id=".$id;
         $sp=pdo_query_one($sql);
+        return $sp;
+    }
+    
+    function loadOne_sanpham_chitietdd($id){
+        $sql="SELECT sanpham_chitiet.gia_sp_chitiet,sanpham_chitiet.id_dung_tich, dung_tich.ten_dung_tich,dung_tich.id, sanpham.name, sanpham.img 
+        FROM sanpham_chitiet 
+        JOIN dung_tich ON sanpham_chitiet.id_dung_tich = dung_tich.id 
+        JOIN sanpham ON sanpham_chitiet.id_sp = sanpham.id where sanpham.id=".$id;
+        $sp=pdo_query($sql);
         return $sp;
     }
 
 
 
     //SỬA 
-    function load_all_sp_home(){
-        $sql="SELECT sp.name, sp.img, sanpham_ct.*
-        FROM sanpham_chitiet sanpham_ct
-        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id where sanpham_ct.id_dung_tich IN (8)";
-        $listsanpham=pdo_query($sql);
-        return $listsanpham;
-    }
+    // function load_all_sp_home(){
+    //     $sql="SELECT sp.name, sp.img, sanpham_ct.*
+    //     FROM sanpham_chitiet sanpham_ct
+    //     INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id where sanpham_ct.id_dung_tich IN (8)";
+    //     $listsanpham=pdo_query($sql);
+    //     return $listsanpham;
+    // }
 
 
     function loadOne_sanphamct_(){  // Của admin
@@ -114,16 +119,6 @@
         INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
         INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id";
         $sp=pdo_query($sql);
-        return $sp;
-    }
-
-    function loadOne_sanphamct_home2($id){  // Của home
-        $sql="SELECT sp.id, sp_dt.*, sanpham_ct.gia_sp_chitiet, sanpham_ct.id_dung_tich 
-        FROM sanpham_chitiet sanpham_ct 
-        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
-        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id 
-        WHERE sp.id = '.$id.'";
-        $sp=pdo_query_one($sql);
         return $sp;
     }
 

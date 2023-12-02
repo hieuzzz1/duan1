@@ -24,10 +24,14 @@
                                 <li><a href="index.php?act=view_sanphamct">Sản phẩm chi tiết</a></li>
                             </ul>
                         </li>
-                        <li><a href=""><i class="fa-regular fa-rectangle-list icon"
+                        <li class="parent"><a href=""><i class="fa-regular fa-rectangle-list icon"
                                     style="font-size: 16px;"></i><span>Đơn hàng</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="index.php?act=list_donhang">Tất cả đơn hàng</a></li>
+                                <li><a href="index.php?act=view_sanphamct">Sản phẩm chi tiết</a></li>
+                            </ul>
                         </li>
-                        <li><a href=""><i class="fa-solid fa-comment icon" style="font-size: 16px;"></i><span>Bình
+                        <li><a href="index.php?act=list_bl"><i class="fa-solid fa-comment icon" style="font-size: 16px;"></i><span>Bình
                                     luận</span></a>
                         </li>
                         <li class="parent"><a href=""><i class="icon mdi mdi-chart-donut"></i><span>Thống

@@ -1,9 +1,8 @@
 <!-- maincontent -->
 <section class="mymaincontent my-3">
-
-    <div class="container">
+    <div class="Slide_Home">
         <div class="row">
-            <div class="col">
+            <div class="col no-paddding-lide">
                 <div class="slider">
                     <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-indicators">
@@ -39,19 +38,43 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
+
 
         <!-- slideshow -->
-        .
+
+
+
+
         <div class="slider">
             <div class="row bg-white-carosel mt-4">
                 <div class="large-12 columns mt-5">
                     <div class="owl-carousel owl-theme anhcrs">
-                        
+                        <?php foreach ($one_spct as $key => $value):?>
+                        <img src="././upload/<?=$value['img']?>" alt="">
+                        <?php endforeach; ?>
                     </div>
+
                     <style>
-                        .carousel-item img {
-                            height: 400px;
+                        .Slide_Home {
+                            width: 1496px;
+                            margin: 0 auto;
+                            left: 0;
+                            right: 0;
                         }
+
+                        .no-paddding-lide {
+                            padding: 0 !important;
+                        }
+
+                        /* .carousel-item {
+                            
+                            width: 1500px !important;
+                        } */
+                        /* .carousel-inner{
+                            
+                        } */
 
                         .bg-white-carosel {
                             border-radius: 5px;
@@ -65,7 +88,6 @@
                             max-width: 100px;
                             height: auto;
                             border-radius: 100px;
-
                         }
 
                         .item {
@@ -97,34 +119,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
+                    <?php foreach ($_SESSION["giohang"] as $item): ?>
                     <div class="row img mb-5">
                         <div class="col-3">
                             <a href="#">
-                                <img src="././upload/" alt="sp">
+                                <img src="././upload/<?php echo $item[3]; ?>" alt="sp">
                             </a>
                         </div>
                         <div class="col-6 sphome-ct">
                             <a href="#">
-                                <div class="tensp">Kem chống nắng</div>
+                                <div class="tensp">
+                                    <?php echo $item[1]; ?>
+                                </div>
                             </a>
-                            <div class="quantity">Số lượng</div>
-                            <div class="number-input">
-                                <input type="button" value="&#8722;"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                    class="minus"></input>
-                                <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                <input type="button" value="&#43;"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                    class="plus"></input>
-                            </div>
                         </div>
                         <div class="col-3 xoa-gia">
                             <input type="submit" value="Xóa">
                             <div class="price-home mt-4">
-                                300.000<span>₫</span>
+                                <?php echo number_format($item[2]); ?><span>₫</span>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
 
                 </div>
                 <div class="dathang-home">
@@ -399,47 +415,89 @@
         </div> -->
 
 
-        
+
         <?php foreach ($one_spct as $key => $value):?>
-            <div class="col-md-3 mt-4 mb-3 cantrai">
-                <div class="card">
-                    <span class="percent">-10%</span>
-                    <div class="card-image">
-                        <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
-                            <img src="././upload/<?=$value['img']?>" width="250">
-                        </a>
-                    </div>
+        <?php  $giaTienFormatted = number_format($value['price'], 0, ',', '.') . '₫';
+
+        ?>
+        <div class="col-md-3 mt-4 mb-3 cantrai">
+            <div class="card">
+                <span class="percent">
+                    <?=$value['giasale']?>
+                </span>
+                <div class="card-image">
                     <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
-                        <div class="card-inner">
-                            <span>Groceries</span>
-                            <p class="mb-0">
-                            <?=$value['gia_sp_chitiet']?>
-                            </p>
-                            <div class="price">
-                                <span>
-                                <?=$value['name']?>
-                                </span>
-                                <sup>
-                                    
-                                </sup>
-                            </div>
+                        <img src="././upload/<?=$value['img']?>" width="250">
                     </a>
-                    <form action="index.php?act=spchitiet&id=<?=$value['id']?>" method="post">
-                        <div class="mt-3 d-flex detailss justify-content-between align-items-center">
-                            <button type="submit" class="btn text-uppercase btn-sm details">Mua ngay</button>
-                            <div class="d-flex flex-row">
-                                <span class="wishlist"><i class="fa fa-heart"></i></span>
-                                <span class="cart" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight"><i class="fa fa-shopping-cart"></i></span>
-                            </div>
-                        </div>
-                    </form>
                 </div>
+                <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
+                    <div class="card-inner">
+                        <p class="mb-0">
+                            <?=$giaTienFormatted?>
+                        </p>
+                        <div class="price">
+                            <span>
+                                <?=$value['name']?>
+                            </span>
+                            <sup>
+
+                            </sup>
+                        </div>
+                </a>
+                <form action="index.php?act=spchitiet&id=<?=$value['id']?>" method="post">
+                    <div class="mt-3 d-flex detailss justify-content-between align-items-center">
+                        <button type="submit" class="btn text-uppercase btn-sm details">Mua ngay</button>
+                </form>
+                <form action="index.php?act=addgiohang123" method="post">
+                    <input type="hidden" name="masp" value="<?=$value['id']?>">
+                    <input type="hidden" name="tensp" value="<?=$value['name']?>">
+                    <input type="hidden" name="anhsp" value="<?=$value['img']?>">
+                    <input type="hidden" name="giasp" value="<?=$value['price']?>">
+                    <div class="d-flex flex-row">
+                        <span class="wishlist" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"><i class="fa fa-heart"></i></span>
+                        <span class="cart">
+                            <input type="submit" name="add_sp_home" class="hidden-submit"
+                                data-id="<?php echo $value['id']; ?>">
+
+                            <!-- Icon để kích hoạt nút ẩn đi -->
+                            <i class="fa fa-shopping-cart" data-id="<?php echo $value['id']; ?>"></i>
+                        </span>
+                        <!-- <button type="submit" id="">ass</button> -->
+                    </div>
+                </form>
+                <style>
+                    .hidden-submit {
+                        visibility: hidden;
+                    }
+                </style>
+                <script>
+                    // Lấy tất cả các thẻ <i> có class "fa-shopping-cart"
+                    var icons = document.querySelectorAll('.fa-shopping-cart');
+
+                    // Lắng nghe sự kiện click trên từng thẻ <i>
+                    icons.forEach(function (icon) {
+                        icon.addEventListener('click', function () {
+                            // Lấy giá trị data-id để biết nút "Submit" tương ứng
+                            var productId = icon.getAttribute('data-id');
+                            var hiddenSubmitBtn = document.querySelector('[data-id="' + productId + '"].hidden-submit');
+
+                            // Kiểm tra xem nút có tồn tại không trước khi kích hoạt sự kiện click
+                            if (hiddenSubmitBtn) {
+                                hiddenSubmitBtn.click();
+                            }
+                        });
+                    });
+                </script>
 
             </div>
-            </a>
+
         </div>
-        <?php endforeach; ?>
+
+    </div>
+    </a>
+    </div>
+    <?php endforeach; ?>
     </div>
 
     <div class="post-content">
@@ -634,6 +692,10 @@
 
         }
 
+        .cart i {
+            margin-left: -40px
+        }
+
         .cart {
             width: 40px;
             height: 40px;
@@ -652,7 +714,7 @@
     </style>
     <style>
         .mymaincontent {
-            margin-top: 150px !important;
+            margin-top: 137px !important;
         }
 
         .baiposs {
