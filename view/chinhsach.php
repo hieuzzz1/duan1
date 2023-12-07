@@ -53,7 +53,7 @@
 
         </div>
         <div class="col-3 mb-3">
-            <?php 
+            <?php
                 include "boxright.php";
             ?>
         </div>

@@ -196,19 +196,38 @@ session_start();
                     $id=$_GET['id'];
                     $load_one_bill=Load_one_bill_admin($id);
                     $load_one_cart=Load_one_cart_admin($id);
-                    if(isset($_POST['trangthai'])){
-                        $trangthai=$_POST['trangthai'];
-                        update_trangthai($id,$trangthai);
-                        echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_donhang">';
-                    }
                 }
                 
+                if(isset($_POST['trangthai'])){
+                    $trangthai=$_POST['trangthai'];
+                    update_trangthai($id,$trangthai);
+                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_donhang">';
+
+                }
+                $loadbill=Load_bill_admin();
                 include "../admin/bill/chitiet_BILL.php";
                 break;
-                case "list_bl":
-                    $list_bl=loadall_bl();
-                    include "../admin/binhluan/list_bl.php";
+
+            case 'update_bill_chitiet':
+                if(isset($_POST['capnhat_billchitiet'])&&($_POST['capnhat_billchitiet'])){
+                    $ten_user=$_POST['ten_user'];
+                    $diachi_user=$_POST['diachi_user'];
+                    $sdt_user=$_POST['sdt_user'];
+                    $email_user=$_POST['email_user'];
+                    $id=$_POST['id'];
+                    update_bill_chitiet($id,$ten_user,$diachi_user,$sdt_user,$email_user);
+                    // echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_donhang">';
+                }
+                $loadbill=Load_bill_admin();
+                include "../admin/bill/list_donhang.php";
                 break;
+
+
+            case "list_bl":
+                $list_bl=loadall_bl();
+                include "../admin/binhluan/list_bl.php";
+                break;
+            
             case 'update_bl':
                 if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
                     $phanhoi=$_POST['phanhoi'];
@@ -228,10 +247,10 @@ session_start();
             case 'xoabl':
                 if(isset($_GET['id'])&&($_GET['id'])){
                     delete_bl($_GET['id']);
-                    echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_bl">';
+                    // echo '<meta http-equiv="refresh" content="0;url=index.php?act=list_bl">';
                 }
                 $list_bl=loadall_bl();
-                include "../admin/danhmuc/list_bl.php";
+                include "../admin/binhluan/list_bl.php";
                 break;
 
 

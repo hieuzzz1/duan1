@@ -5,134 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        /* Thiết lập màu chủ đạo */
+        :root {
+            --primary-color: #FFA2A2;
         }
 
-        .order-summary {
-            border: 1px solid #ddd;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 800px;
-            border-radius: 8px;
+        /* Thiết lập style cho select box */
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            background-color: white;
+            /* Màu nền của select box */
+            color: var(--primary-color);
+            /* Màu chữ */
+            appearance: none;
+            /* Ẩn mũi tên mặc định của select box */
+            outline: none;
+            cursor: pointer;
         }
 
-        h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .section {
-            margin-bottom: 20px;
-        }
-
-        .section p {
-            margin: 10px 0;
-            line-height: 1.5;
-        }
-
-        .order-items,
-        .customer-details {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .item {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-
-        .item:last-child {
-            border-bottom: none;
-        }
-
-        .item span {
-            flex: 1;
-        }
-
-        .item strong {
-            margin-left: 10px;
-            color: #555;
-        }
-
-        .thank-you {
-            text-align: center;
-            margin-top: -10px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            color: #FFA2A2;
-            font-size: 1.8em;
-        }
-
-        .check-mark {
-            color: #FFA2A2;
+        /* Thiết lập style cho mỗi option trong select box */
+        select option {
+            background-color: white;
+            color: var(--primary-color);
         }
     </style>
-    <title>Đơn Hàng</title>
 </head>
 
 <body>
 
-    <div class="order-summary">
-        <div class="thank-you">
-            Cảm ơn quý khách đã đặt hàng tại shop <span class="check-mark">&#10003;</span>
-        </div>
-
-        <h2>Thông Tin Đơn Hàng và Khách Hàng</h2>
-
-        <div class="section customer-details">
-            <p><strong>Mã Đơn:</strong> #DH123456</p>
-            <p><strong>Email:</strong> example@example.com</p>
-            <p><strong>Phương Thức Thanh Toán:</strong> Thẻ Tín Dụng</p>
-
-            <p><strong>Tên:</strong> Nguyễn Văn A</p>
-            <p><strong>Địa Chỉ:</strong> 123 Đường ABC, Quận XYZ, Thành Phố HCM</p>
-            <p><strong>Số Điện Thoại:</strong> 0123 456 789</p>
-        </div>
-
-        <div class="section order-items">
-            <h2>Chi Tiết Đơn Hàng</h2>
-
-            <div class="item">
-                <span>Áo Thun</span>
-                <span>2 x $20.00</span>
-                <strong>$40.00</strong>
-            </div>
-
-            <div class="item">
-                <span>Quần Jeans</span>
-                <span>1 x $60.00</span>
-                <strong>$60.00</strong>
-            </div>
-
-            <p><strong>Tổng Tiền:</strong> $100.00</p>
-        </div>
-    </div>
-    <div class="section payment-method">
-        <h2>Phương Thức Thanh Toán</h2>
-        <label>
-            <input type="radio" name="payment" value="online" checked>
-            Thanh toán online
-        </label>
-        <label>
-            <input type="radio" name="payment" value="on_delivery">
-            Thanh toán khi nhận hàng
-        </label>
-    </div>
+    <!-- Đoạn mã HTML cho select box -->
+    <label for="colorSelector">Chọn một màu:</label>
+    <select id="colorSelector">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+    </select>
 
 </body>
 

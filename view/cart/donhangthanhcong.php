@@ -11,29 +11,59 @@
         <h2>Thông Tin Đơn Hàng và Khách Hàng</h2>
 
         <div class="section customer-details">
-            <p><strong>Mã Đơn: </strong><?=$listbill['madh']?></p>
-            <p><strong>Email: </strong> <?=$listbill['bill_email']?></p>
-            <p><strong>Phương Thức Thanh Toán: </strong><?=$listbill['pttt']?></p>
+            <p><strong>Mã Đơn: </strong>
+                <?=$listbill['madh']?>
+            </p>
+            <p><strong>Email: </strong>
+                <?=$listbill['bill_email']?>
+            </p>
+            <p><strong>Phương Thức Thanh Toán: </strong>
+                <?php if($listbill['pttt'] == 0){?>
+                    Thanh toán khi nhận hàng
+                <?php } else {?>
+                    Thanh toán online
+                <?php } ?>
+            </p>
 
-            <p><strong>Tên: </strong> <?=$listbill['bill_name']?></p>
-            <p><strong>Địa Chỉ: </strong> <?=$listbill['bill_diachi']?></p>
-            <p><strong>Số Điện Thoại: </strong> <?=$listbill['bill_phone']?></p>
+            <p><strong>Tên: </strong>
+                <?=$listbill['bill_name']?>
+            </p>
+            <p><strong>Địa Chỉ: </strong>
+                <?=$listbill['bill_diachi']?>
+            </p>
+            <p><strong>Số Điện Thoại: </strong>
+                <?=$listbill['bill_phone']?>
+            </p>
+        </div>
+        <div class="section customer-details">
+            <a href="index.php?act=donhang" class="text-decoration-none text-dark">
+                <p class="fs-4">Xem đơn hàng của bạn</p>
+            </a>
         </div>
 
         <div class="section order-items">
             <h2>Chi Tiết Đơn Hàng</h2>
-            
+
             <?php foreach ($listcart as $key => $value) :?>
             <div class="item">
-                <span><?=$value['name']?></span>
-                <span><?=$value['soluong']?> x <?=number_format($value['giasp'], 0, ',', '.')?>₫</span>
-                <strong class="text-danger"><?=number_format($value['thanhtien'], 0, ',', '.')?>₫</strong>
+                <span>
+                    <?=$value['name']?>
+                </span>
+                <span>
+                    <?=$value['soluong']?> x
+                    <?=number_format($value['giasp'], 0, ',', '.')?>₫
+                </span>
+                <strong class="text-danger">
+                    <?=number_format($value['thanhtien'], 0, ',', '.')?>₫
+                </strong>
             </div>
             <?php endforeach; ?>
-            
-            
 
-            <p class="text-danger"><strong>Tổng Tiền: </strong><?=number_format($listbill['total'], 0, ',', '.')?>₫</p>
+
+
+            <p class="text-danger"><strong>Tổng Tiền: </strong>
+                <?=number_format($listbill['total'], 0, ',', '.')?>₫
+            </p>
         </div>
     </div>
 </div>
@@ -61,6 +91,10 @@
 
     .section {
         margin-bottom: 20px;
+    }
+
+    .section a:hover p {
+        color: #FFA2A2;
     }
 
     .section p {

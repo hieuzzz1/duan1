@@ -49,14 +49,12 @@
                                 </td>
                                 <td>
                                     <!-- Sửa danh mục -->
-                                    <a href="index.php?act=chitiet_BILL&id=<?=$value['id']?>">
+                                    <a href="index.php?act=chitiet_BILL&id=<?=$value['id']?>"  class="mt-5">
                                         <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
                                     </a>
-                                    <!-- Xóa danh mục -->
-                                    <!-- <a href="#" class="openModalButton" data-bs-toggle="modal"
-                                        data-bs-target="#customModal_<?php echo $value['id']; ?>">
-                                        <i class="fa-regular fa-trash-can btn"></i>
-                                    </a> -->
+                                    <a href="index.php?act=chitiet_BILL&id=<?=$value['id']?>">
+                                       Chi tiết
+                                    </a>
                                 </td>
                             </tr>
 

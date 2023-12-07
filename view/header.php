@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/owlcarousel/assets/owl.theme.default.min.css">
     <script src="./assets/vendors/jquery.min.js"></script>
     <script src="./assets/owlcarousel/owl.carousel.js"></script>
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/boosted@5.2.3/dist/js/boosted.bundle.min.js" integrity="sha384-MANW37RG4MpFWPMCcNZBnvSobOkBpIGlbBkEzTtD4FbbOzJXbW8TddND1ak2lfsB" crossorigin="anonymous"></script> -->
 </head>
 <script>
@@ -28,8 +29,75 @@
         }
     });
 </script>
+<style></style>
 
 <body>
+    
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>Đăng nhập</h1>
+                </div>
+                <form action="index.php?act=dangnhap" method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="username" class="col-form-label">Tên tài
+                                khoản</label>
+                            <input type="text" class="form-control" name="user" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="col-form-label">Mật
+                                khẩu</label>
+                            <input type="password" class="form-control" name="pass" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary">
+                    </div>
+                    <p class="text-center mt-3">Bạn chưa có tài khoản? <a href="#" data-bs-dismiss="modal"
+                            data-bs-toggle="modal" data-bs-target="#registerModal">Đăng ký</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>Đăng ký tài khoản</h1>
+                    <button type="button" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <form action="index.php?act=dangky" method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="newUsername" class="col-form-label">Họ & tên</label>
+                            <input type="text" class="form-control" name="user" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newUsername" class="col-form-label">Số điện thoại</label>
+                            <input type="text" class="form-control" name="tel" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newUsername" class="col-form-label">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="col-form-label">Mật khẩu mới</label>
+                            <input type="password" class="form-control" name="pass" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <input type="submit" name="dangky" value="Đăng ký" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></div>
     <style>
         body {
@@ -174,15 +242,15 @@
                                     <?php
                                     if(isset($_SESSION['user'])) {
                                         extract($_SESSION['user']);
-                                ?>
+                                    ?>
 
                                     <div class="col-10">
                                         <a href="#" class="text-decoration-none text-white">Xin chào!</a><br>
-                                        <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <?=$user?>
-                                        </a>
+                                        <a href="index.php?act=trang_taikhoan"  class="no_text"><?=$user?></a>
                                         <ul class="dropdown-menu active-menuu">
+                                            <li><a class="dropdown-item" href="index.php?act=trang_taikhoan">Trang tài
+                                                khoản</a>
+                                            </li>
                                             <li><a class="dropdown-item" href="index.php?act=update_tk">Cập nhật tài
                                                     khoản</a>
                                             </li>
@@ -192,6 +260,10 @@
                                             <li><a class="dropdown-item" href="index.php?act=dangxuat">Đăng xuất</a>
                                             </li>
                                             <style>
+                                                a.no_text {
+                                                    color: #fff;
+                                                    text-decoration: none;
+                                                }
                                                 .active-menuu li a:active {
                                                     background-color: none !important;
                                                 }
@@ -210,7 +282,8 @@
 
                                     <div class="col-10">
                                         <a href="#" class="text-decoration-none text-white">Xin chào!</a><br> <a
-                                            href="index.php?act=dangnhap" class="text-decoration-none">
+                                            href="index.php?act=dangnhap" class="text-decoration-none"
+                                            data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@mdo">
                                             <p class="text-white fs-6">Đăng
                                                 nhập</p>
                                         </a>
@@ -226,23 +299,13 @@
                         <div class="row">
                             <div class="col"><a href="index.php?act=giohang" class="position-relative ms-1">
                                     <span><i class="fa-solid fa-cart-shopping text-white fs-4"></i></span>
-                                    <span
-                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="totalProduct">
-                                        0
-                                    </span>
+                                   
                                 </a></div>
                             <div class="col"><a href="index.php?act=spyeuthich" class="position-relative ms-2">
                                     <span><i class="fa-solid fa-heart text-white fs-4"></i></span>
-                                    <span
-                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        0
-                                    </span>
+                                    
                                 </a></div>
                         </div>
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -262,11 +325,11 @@
 
                                                 <i class="fa-solid fa-bars-staggered"></i> Danh mục <span></span>
                                                 <div class="product-list">
-                                                    <ul>
+                                                    <ul><li><a href="index.php?act=sanpham">Tất cả sản phẩm</a></li>
                                                         <?php foreach ($listdanhmuc as $key => $value):?>
 
                                                         <li><i class="fa-solid fa-play"></i>
-                                                            <a href="">
+                                                            <a href="index.php?act=load_toanbodanhmuc&id=<?=$value['id']?>">
                                                                 <?=$value['tendm']?>
                                                             </a>
                                                         </li>
@@ -285,10 +348,10 @@
                                                 thiệu</a>
                                         </li>
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle text-white px-4"
+                                            <!-- <a class="nav-link dropdown-toggle text-white px-4"
                                                 href="index.php?act=sanpham" data-bs-toggle="dropdown">
                                                 Sản phẩm
-                                            </a>
+                                            </a> -->
                                             <ul class="dropdown-menu active-menuu">
                                                 <li><a class="dropdown-item" href="index.php?act=sanpham">Tất cả sản
                                                         phẩm</a></li>

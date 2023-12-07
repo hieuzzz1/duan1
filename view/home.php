@@ -45,14 +45,14 @@
         <!-- slideshow -->
 
 
-
-
         <div class="slider">
             <div class="row bg-white-carosel mt-4">
                 <div class="large-12 columns mt-5">
                     <div class="owl-carousel owl-theme anhcrs">
                         <?php foreach ($one_spct as $key => $value):?>
+                            <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
                         <img src="././upload/<?=$value['img']?>" alt="">
+                        </a>
                         <?php endforeach; ?>
                     </div>
 
@@ -372,50 +372,6 @@
     </div>
     <div class="product-content">
 
-
-        <!-- <div class="row mx-5">
-            <div class="col-md-3 mt-3 mb-3 d-flex justify-content-center">
-                <div class="card12" style="width: 18rem;">
-                    <div class="card-body border-spp">
-                        <div class="anhsppp">
-                            <a href=""><img class="card-img-top" alt="...">
-                                <p class="card-title">
-
-                                </p>
-                            </a>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col-md-7">
-
-                                <div class="giasp mt-4">
-                                    <span></span>
-
-                                </div>
-                                <span class="giasale text-decoration-line-through">
-
-                                </span>
-                            </div>
-                            
-                                        if (isset($_SESSION['user'])){
-                                            echo '<div class="col-md-2 mt-5 carrt yttt">
-                                            <a href="index.php?act=giohang" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></a>
-                                        </div>';
-                                        }else {
-                                            echo '<div class="col-md-2 mt-5 carrt yttt"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></a></div>';
-                                        }
-                                        
-                            <div class="col-md-2 mt-5 carrt">
-                                <a href="#"><i class="fa-regular fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
-
-
-
         <?php foreach ($one_spct as $key => $value):?>
         <?php  $giaTienFormatted = number_format($value['price'], 0, ',', '.') . '₫';
 
@@ -632,12 +588,13 @@
         .card-inner p {
             font-size: 17px;
             font-weight: 500;
+            color: #FFA2A2;
         }
 
         .price span {
-            color: #FFA2A2;
+            color: #000;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 16px;
         }
 
         .price sup {

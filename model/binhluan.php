@@ -32,7 +32,8 @@
         return $dm;
     }
     function loadall_bl(){
-        $sql= "select * from binhluan order by id desc";
+        $sql= "select binhluan.*, taikhoan.user
+         from binhluan join taikhoan on binhluan.id_user = taikhoan.id order by id desc";
         $listbl=pdo_query($sql);
         return $listbl;
     }

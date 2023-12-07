@@ -22,6 +22,7 @@
     if ( ( isset( $_GET[ 'act' ] ) ) && ( $_GET[ 'act' ] != '' ) ){
         $act = $_GET[ 'act' ];
         switch ($act) {
+            
             case "dangky":
                 if(isset($_POST['dangky']) && $_POST['dangky']) {
                     $user = $_POST['user'];
@@ -29,11 +30,9 @@
                     $email = $_POST['email'];
                     $tel = $_POST['tel'];
                     dangky($user,$pass,$email,$tel);
-                    $thongbao = '<div class="alert alert-success" role="alert">
-                    Đăng ký thành công <a href="index.php?act=dangnhap" class="alert-link">Đăng nhập</a> 
-                  </div>';
+                    header("Location: index.php");
                 }
-                include "./view/taikhoan/dangky.php";
+                include "./view/home.php";
                 break;
 
             case "dangnhap":
@@ -68,9 +67,9 @@
                     <b>Cập nhật tài khoản thành công</b>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>';
-                    header( 'Location: index.php?act=update_tk' );  
+                    header( 'Location: index.php?act=trang_taikhoan' );  
                 }
-                include "./view/taikhoan/update_tk.php";
+                include "./view/trang_taikhoan.php";
                 break;
             
             case 'tkmuahang':
@@ -155,6 +154,9 @@
                     header( 'Location: index.php?act=giohang' );
                     break;
             case 'sanpham':
+                $listsp_count=listcount();
+                $listsp_count_dm=listcountoo();
+                // $one_spct=load_all_sp_home();
                 include "./view/sanpham.php";
                 break;
             case 'spchitiet':
@@ -167,6 +169,56 @@
                 include "./view/sanphamct.php";
                 break;
 
+            case 'locgia_sp':
+                $one_spct = array(); 
+                if (isset($_POST['locgia_sp'])) {
+                    if (isset($_POST['price_range'])) {
+                        $priceRange = $_POST['price_range'];
+                
+                        switch ($priceRange) {
+                            case '1':
+                                $one_spct=load_giasp1();
+                                break;
+                            case '2':
+                                $one_spct=load_giasp2();
+                                break;
+                            case '3':
+                                $one_spct=load_giasp3();
+                                break;
+                            case '4':
+                                $one_spct=load_giasp4();
+                                break;
+                            case '5':
+                                $one_spct=load_giasp5();
+                                break;
+                            case 'newest':
+                                $one_spct=load_giasp6();
+                                break;
+                            case 'oldest':
+                                $one_spct=load_giasp7();
+                                break;
+                            default:
+                            $one_spct=load_all_sp_home();
+                                break;
+                            
+                        }
+                        
+                        
+                    }
+                   
+                }
+                
+                include "./view/sanpham.php";
+                break;
+            case 'load_toanbodanhmuc':
+                if(isset($_GET['id'])&&$_GET['id']) {
+                    $id=$_GET['id'];
+                    $loaddanhmuc=loaddanhmuc($id);
+                    extract($loaddanhmuc);
+                    $loadtendm=loadtendm($id);
+                }
+                include "./view/loaddanhmuc.php";
+                break;
             case 'thanhtoan':
                 include "./view/cart/thanhtoan.php";
                 break;
@@ -181,9 +233,14 @@
                     //thêm user mới
                     $user="user".rand(1,999);
                     $pass="pass123";
-                    $iduser=dangky_id($user,$pass,$hoten,$email,$diachi,$sodienthoai);
+                    if(isset($_SESSION['user'])){
+                        $iduser=$_SESSION['user']['id'];
+                    }else {
+                        $iduser=dangky_id($user,$pass,$hoten,$email,$diachi,$sodienthoai);
+                    }
+                    
                     //Tạo đơn hàng
-                    $madh="HTB".$iduser."-".date("His-dmY");
+                    $madh="#HTB".$iduser."-".rand(1,99);
 
                     function total_donhang() {
                         $tong=0;
@@ -211,15 +268,38 @@
                     // echo '<meta http-equiv="refresh" content="0;url=index.php?act=donhangthanhcong">';
                     
                 }
-                
-                
                 }
                 $listcart=Loadcart($id_bill);
                 $listbill=Load_bill($id_bill);
-                
                 include "./view/cart/donhangthanhcong.php";
                 break;
-
+            case "donhang":
+                $list_BILL=Load_bill_home($_SESSION['user']['id']);
+                include "./view/view_tk/donhang.php";
+                break;
+            case "update_huydonhang":
+                if(isset($_GET['id'])&&($_GET['id'])){
+                    update_bill_home($_GET['id']);
+                    // echo '<meta http-equiv="refresh" content="0;url=index.php?act=donhang">';
+                }
+                $list_BILL=Load_bill_home($_SESSION['user']['id']);
+                include "./view/view_tk/donhang.php";
+                break;
+            case "trang_taikhoan":
+                include "./view/view_tk/trang_taikhoan.php";
+                break;
+            case "chitiet_bill_home":
+                if(isset($_GET['id']) && $_GET['id']){
+                    $id=$_GET['id'];
+                    $loadchitiet_bill=loadchitietone_bill($id);
+                    $loadchitiet_cart=loadchitietone_cart($id);
+                }
+                include "./view/view_tk/chitiet_bill_home.php";
+                break;
+            case "lichsumuahang":
+                $list_BILL=Load_bill_home_lich_su($_SESSION['user']['id']);
+                include "./view/view_tk/lichsumuahang.php";
+                break;
             case 'gioithieu':
                 include "./view/gioithieu.php";
                 break;

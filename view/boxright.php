@@ -9,7 +9,7 @@
             <li class="list-group-item"><a href="#">Nước hoa</a></li>
         </ul>
 
-        <div class="col mt-3 container-spnew">
+        <!-- <div class="col mt-3 container-spnew">
             <div class="list-group-item active dm text-white">Sản phẩm mới nhất</div>
             <div class="row">
                 <div class="col container-img">
@@ -33,7 +33,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <style>

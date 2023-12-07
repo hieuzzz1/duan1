@@ -14,12 +14,12 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-1">Mã Bình Luận</th>
-                                <th class="col-1">Mã Sản Phẩm</th>
-                                <th class="col-3">User</th>
+                                <th class="col-2">Mã Bình Luận</th>
+                                <th class="col-2">Mã Sản Phẩm</th>
+                                <th class="col-2">User</th>
                                 <th class="col-3">Nội dung</th>
-                                <th class="col-3">Phản hồi của admin</th>
-                                <th class="col-3">Thao tác</th>
+                                <th class="col-2">Phản hồi của admin</th>
+                                <th class="col-2">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,7 +28,7 @@
                             <tr>
                                 <th><?=$ldm['id']?></th>
                                 <td><?=$ldm['id_sp']?></td>
-                                <td><?=$ldm['id_user']?></td>
+                                <td><?=$ldm['user']?></td>
                                 <td><?=$ldm['noidung']?></td>
                                 <td><?=$ldm['phanhoi']?></td>
                                 <td>

@@ -16,8 +16,6 @@
             }
         </style>
         <style>
-         
-
             input[type=number]::-webkit-inner-spin-button,
             input[type=number]::-webkit-outer-spin-button {
                 -webkit-appearance: none;
@@ -66,6 +64,7 @@
                 content: '\2212';
                 transform: translate(-50%, -30%) rotate(180deg);
             }
+
             .number-input input[type=number] {
                 font-family: sans-serif;
                 max-width: 50px;
@@ -76,6 +75,19 @@
                 font-size: 18px;
                 height: 30px;
                 text-align: center;
+            }
+
+            .slideshow-container {
+                background-color: #fff;
+                padding-bottom: 10px !important;
+            }
+
+            .slides {
+                padding-bottom: 30px !important;
+            }
+
+            .slides img {
+                width: 500px !important;
             }
         </style>
     </div>
@@ -94,6 +106,8 @@
                     .slides img {
                         width: 350px;
                         margin: 0 auto;
+                        padding: 10px;
+                        margin-top: 30px;
                     }
 
                     .thumbnail {
@@ -111,7 +125,7 @@
 
                     .thumbnails img {
                         border: 1px solid rgb(209, 209, 209);
-                        max-width: 80px;
+                        width: 150px;
                     }
 
                     .cart {
@@ -229,7 +243,7 @@
                     }
 
                     .boxctiet1 {
-                        background-color: #FFF;
+                        background-color: #ffffff;
                         padding-left: 10px;
                         padding-right: 10px;
                         padding-top: 20px;
@@ -282,7 +296,7 @@
                 <?php 
                 $hinh="../upload/".$img;
                 $giaTienFormatted = number_format($price, 0, ',', '.') . '₫';
-            ?>
+                ?>
 
                 <div class="slideshow-container">
                     <div class="slides">
@@ -316,24 +330,24 @@
                     </div>
                 </div>
                 <div class="row mt-2 mb-3 chu-tieude">
-                        <div class="soluong mt-6 mb-2">
-                            <h6>Số lượng</h6>
-                            <div class="number-input">
-                                <button onclick="decrement()" class="decrement" type="button">-</button>
-                                <input name="quantityy" min="0" value="1" type="number" id="quantity1">
-                                <button onclick="increment()" class="increment" type="button">+</button>
-                                <script>
-                                    function increment() {
-                                        var input = document.getElementById('quantity1');
-                                        input.stepUp();
-                                    }
+                    <div class="soluong mt-6 mb-2">
+                        <h6>Số lượng</h6>
+                        <div class="number-input">
+                            <button onclick="decrement()" class="decrement" type="button">-</button>
+                            <input name="quantityy" min="0" value="1" type="number" id="quantity1">
+                            <button onclick="increment()" class="increment" type="button">+</button>
+                            <script>
+                                function increment() {
+                                    var input = document.getElementById('quantity1');
+                                    input.stepUp();
+                                }
 
-                                    function decrement() {
-                                        var input = document.getElementById('quantity1');
-                                        input.stepDown();
-                                    }
-                                </script>
-                            </div>
+                                function decrement() {
+                                    var input = document.getElementById('quantity1');
+                                    input.stepDown();
+                                }
+                            </script>
+                        </div>
 
                     </div>
                 </div>
@@ -341,7 +355,7 @@
                     <div class="col-4 btt11"><input type="submit" name="addtocart" value="THÊM VÀO GIỎ HÀNG"><br></div>
                     <div class="col-3 btt22"><button>MUA NGAY<br></button></div>
 
-                   
+
                 </div>
             </div>
         </div>
@@ -386,28 +400,26 @@
 
             </p>
             <div class="danhgia">
-                        <b>Đánh giá sản phẩm</b> <br> <br><br>
-                        <iframe src="view/binhluan/binhluanfrom.php?idsp=<?=$id?>" width="100%" height="300px" frameborder="0"></iframe>
+                <b>Đánh giá sản phẩm</b> <br> <br><br>
+                <iframe src="view/binhluan/binhluanfrom.php?idsp=<?=$id?>" width="100%" height="300px"
+                    frameborder="0"></iframe>
             </div>
         </div>
         <div class="col-md-3 okk">
             <div class="nav nav-tabs mt-4 oko" id="nav-tab" role="tablist">
                 <p class="nav-link active">Sản phẩm liên quan</p>
                 <div class="row tintucc">
-                    <div class="col-md-4"><a href="#"><img
-                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
+                    <div class="col-md-4"><a href="#"><img src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
                     <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
-                    <div class="col-md-4"><a href="#"><img
-                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
+                    <div class="col-md-4"><a href="#"><img src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
                     <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
-                    <div class="col-md-4"><a href="#"><img
-                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
+                    <div class="col-md-4"><a href="#"><img src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
                     <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
@@ -425,20 +437,17 @@
             <div class="nav nav-tabs mt-4 oko" id="nav-tab" role="tablist">
                 <p class="nav-link active">Sản phẩm liên quan</p>
                 <div class="row tintucc">
-                    <div class="col-md-4"><a href="#"><img
-                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
+                    <div class="col-md-4"><a href="#"><img src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
                     <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
-                    <div class="col-md-4"><a href="#"><img
-                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
+                    <div class="col-md-4"><a href="#"><img src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
                     <div class="col-md-8">Kem chống nắng
                         <br><b class="text-danger fs-6">45.000đ</b>
                     </div>
-                    <div class="col-md-4"><a href="#"><img
-                                src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
+                    <div class="col-md-4"><a href="#"><img src="http://localhost:82/DUAN1/upload/kemchongnang1.webp"
                                 alt=""></a></div>
                     <div class="col-md-8">Kem chống nắngk
                         <br><b class="text-danger fs-6">45.000đ</b>

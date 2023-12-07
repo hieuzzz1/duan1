@@ -25,21 +25,13 @@
                 body {
                     background-color: #e6e6f1;
                 }
-                select {
-                    padding: 5px;
-                    border: 1px solid #FFA2A2;
-                    color: #ffa2a2;
-                    appearance: none;
-            /* Ẩn mũi tên mặc định của select box */
-            outline: none;
-            border-radius: 5px;
-                }
             </style>
         </div>
         <div class="row">
             <div class="wrapper mb-3">
                 <div class="d-md-flex align-items-md-center">
-                    <div class="h3">Tất cả sản phẩm</div>
+                    <?php extract($loadtendm);?>
+                    <div class="h5"><strong><?=$tendm?></strong></div>
                 </div>
                 <div class="d-lg-flex align-items-lg-center pt-2">
                     <div class="d-flex align-items-center my-2 bg-light border mx-lg-2">
@@ -93,8 +85,7 @@
                 </div>
 
                 <div class="padddding">
-                    <?php if (empty($_POST['price_range'])): ?>
-                        <?php foreach ($one_spct  as $key => $value):?>
+                        <?php foreach ($loaddanhmuc  as $key => $value):?>
                         <?php  $giaTienFormatted = number_format($value['price'], 0, ',', '.') . '₫';?>
                         <div class="col-md-3 cantrai">
                             <div class="card mt-3 okkkkkk">
@@ -171,87 +162,7 @@
 
                         </div>
                     <?php endforeach; ?>
-                    <?php else: ?>
-                    <?php foreach ($one_spct  as $key => $value):?>
-                    <?php  $giaTienFormatted = number_format($value['price'], 0, ',', '.') . '₫';
-
-                                ?>
-                    <div class="col-md-3 cantrai">
-                        <div class="card mt-3 okkkkkk">
-
-                            <span class="percent">
-                                <?=$value['giasale']?>
-                            </span>
-                            <div class="card-image">
-                                <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
-                                    <img src="././upload/<?=$value['img']?>" width="200">
-                                </a>
-                            </div>
-                            <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
-                                <div class="card-inner">
-                                    <p class="mb-0">
-                                        <?=$giaTienFormatted?>
-                                    </p>
-                                </div>
-                                <div class="price">
-                                    <span>
-                                        <?=$value['name']?>
-                                    </span>
-                                </div>
-                            </a>
-                            <form action="index.php?act=spchitiet&id=<?=$value['id']?>" method="post">
-                                <div class="mt-3 d-flex detailss justify-content-between align-items-center">
-                                    <button type="submit" class="btn text-uppercase btn-sm details">Mua
-                                        ngay</button>
-                                </div>
-                            </form>
-                            <form action="index.php?act=addgiohang123" method="post">
-                                <input type="hidden" name="masp" value="<?=$value['id']?>">
-                                <input type="hidden" name="tensp" value="<?=$value['name']?>">
-                                <input type="hidden" name="anhsp" value="<?=$value['img']?>">
-                                <input type="hidden" name="giasp" value="<?=$value['price']?>">
-                                <div class="d-flex flex-row">
-                                    <span class="wishlist" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                        aria-controls="offcanvasRight"><i class="fa fa-heart"></i></span>
-                                    <span class="cart">
-                                        <input type="submit" name="add_sp_home" class="hidden-submit"
-                                            data-id="<?php echo $value['id']; ?>">
-
-                                        <!-- Icon để kích hoạt nút ẩn đi -->
-                                        <i class="fa fa-shopping-cart" data-id="<?php echo $value['id']; ?>"></i>
-                                    </span>
-                                    <!-- <button type="submit" id="">ass</button> -->
-                                </div>
-                            </form>
-
-                            <style>
-                                .hidden-submit {
-                                    visibility: hidden;
-                                }
-                            </style>
-                            <script>
-                                // Lấy tất cả các thẻ <i> có class "fa-shopping-cart"
-                                var icons = document.querySelectorAll('.fa-shopping-cart');
-
-                                // Lắng nghe sự kiện click trên từng thẻ <i>
-                                icons.forEach(function (icon) {
-                                    icon.addEventListener('click', function () {
-                                        // Lấy giá trị data-id để biết nút "Submit" tương ứng
-                                        var productId = icon.getAttribute('data-id');
-                                        var hiddenSubmitBtn = document.querySelector('[data-id="' + productId + '"].hidden-submit');
-
-                                        // Kiểm tra xem nút có tồn tại không trước khi kích hoạt sự kiện click
-                                        if (hiddenSubmitBtn) {
-                                            hiddenSubmitBtn.click();
-                                        }
-                                    });
-                                });
-                            </script>
-                        </div>
-
-                    </div>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
+                   
                 </div>
             </div>
         </div>
@@ -260,7 +171,6 @@
 
 
 <style>
-   
     .fon_checkbox label {
         font-size: 15px;
     }

@@ -6,7 +6,7 @@
                     <ul class="sidebar-elements">
                         <li class="divider">Menu</li>
                         <li class="active"><a href="index.php"><i
-                                    class="icon mdi mdi-home"></i><span>Trangchủ</span></a></li>
+                                    class="icon mdi mdi-home"></i><span>Trang chủ</span></a></li>
 
                         <li class="parent"><a href="index.php?act=list_tk"><i class="icon mdi mdi-face"></i><span>Tài
                                     khoản</span></a></li>
@@ -15,20 +15,20 @@
                                     mục</span></a>
                             <ul class="sub-menu">
                                 <li><a href="index.php?act=list_danhmuc">Danh mục sản phẩm</a></li>
-                                <li><a href="index.php?act=list_dungtich">Danh mục dung tích</a></li>
+                                <!-- <li><a href="index.php?act=list_dungtich">Danh mục dung tích</a></li> -->
                             </ul>
                         </li>
                         <li class="parent"><a href=""><i class="icon mdi mdi-chart-donut"></i><span>Hàng hóa</span></a>
                             <ul class="sub-menu">
                                 <li><a href="index.php?act=list_hanghoa">Sản phẩm</a></li>
-                                <li><a href="index.php?act=view_sanphamct">Sản phẩm chi tiết</a></li>
+                                <!-- <li><a href="index.php?act=view_sanphamct">Sản phẩm chi tiết</a></li> -->
                             </ul>
                         </li>
                         <li class="parent"><a href=""><i class="fa-regular fa-rectangle-list icon"
                                     style="font-size: 16px;"></i><span>Đơn hàng</span></a>
                             <ul class="sub-menu">
                                 <li><a href="index.php?act=list_donhang">Tất cả đơn hàng</a></li>
-                                <li><a href="index.php?act=view_sanphamct">Sản phẩm chi tiết</a></li>
+                                <!-- <li><a href="index.php?act=view_sanphamct">Sản phẩm chi tiết</a></li> -->
                             </ul>
                         </li>
                         <li><a href="index.php?act=list_bl"><i class="fa-solid fa-comment icon" style="font-size: 16px;"></i><span>Bình

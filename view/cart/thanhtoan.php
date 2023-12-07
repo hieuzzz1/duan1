@@ -10,11 +10,6 @@
                             <div class="col-6">
                                 <p>Thông tin nhận hàng</p>
                             </div>
-                            <div class="col-6 ngdung-tt ">
-                                <i class="fa-regular fa-user"></i>
-                                
-                                <p>Tên người dùng</p>
-                            </div>
                         </div>
                         <?php
                                 if(isset($_SESSION['user'])) {
@@ -40,7 +35,6 @@
                             <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         </div>
                         <?php
-                            
                                 }else {
                                     echo '';
                             ?>
@@ -67,16 +61,56 @@
                     <div class="col-6">
                         <div class="row ms-2 mt-3">
                             <div class="col">
-                                <div class="vanchuyen thongtininput">
-                                    <p>Vận chuyển</p>
-                                    <input type="text" value="30.000đ">
-                                </div>
-                                <div class="section payment-method mt-4">
+                                <div class="section payment-method">
                                     <p>Phương Thức Thanh Toán</p>
-                                    <select name="pttt" id="">
-                                        <option value="">Thanh toán online</option>
-                                        <option value="">Thanh toán khi nhận hàng</option>
-                                    </select>
+                                    <div class="payment-method">
+                                        <div class="payment-option">
+                                            <input type="radio" id="onlinePayment" name="pttt" value="1">
+                                            <label for="onlinePayment">Thanh toán online</label>
+                                        </div>
+
+                                        <div class="payment-option">
+                                            <input type="radio" id="cashOnDelivery" name="pttt" value="0">
+                                            <label for="cashOnDelivery">Thanh toán khi nhận hàng</label>
+                                        </div>
+                                    </div>
+                                    <style>
+                                        .payment-method {
+                                        display: flex;
+                                        background-color: #fff;
+                                        border: 1px solid #ccc;
+                                        border-radius: 8px;
+                                        padding: 20px;
+                                        margin-top: 42px;
+                                    }
+
+                                    .payment-option {
+                                        margin: 0 20px;
+                                        text-align: center;
+                                    }
+
+                                    input[type="radio"] {
+                                        display: none;
+                                    }
+
+                                    label {
+                                        cursor: pointer;
+                                        padding: 10px;
+                                        border-radius: 5px;
+                                        transition: background-color 0.3s;
+                                        display: block;
+                                    }
+
+                                    input[type="radio"]:checked + label {
+                                        background-color: #FFA2A2;
+                                        color: #fff;
+                                    }
+
+                                    label:hover {
+                                        background-color: #FFA2A2;
+                                        color: #fff;
+                                    }
+                                    </style>
                                     <!-- <label>
                                         <input type="radio" name="pttt" value="online" checked>
                                         Thanh toán online
@@ -126,7 +160,6 @@
                         <div class="row">
                             <div class="col-5 cttt-price-text">
                                 <p>Tạm tính</p>
-                                <p>Phí vận chuyển</p>
                             </div>
                             
                             <div class="col-7 cttt-price-gia">
@@ -134,7 +167,6 @@
                                     <p>'.number_format($tong, 0, ',', '.').'₫</p>
                                 </div>
                             
-                                <p>30.000đ</p>
                             </div>
                         </div>
                     </div>';
@@ -387,7 +419,7 @@
     .thongtininput textarea {
         width: 100%;
         padding: 5px 10px;
-        height: 200px;
+        height: 100px;
         outline: none;
         border: 1px solid #ccc;
         color: #6b6b6b;

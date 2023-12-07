@@ -103,7 +103,7 @@
                         <label for="recipient-name" class="col-form-label">Tên hàng hóa</label>
                         <input type="text" class="form-control" name="tenhanghoa">
                     </div>
-
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
