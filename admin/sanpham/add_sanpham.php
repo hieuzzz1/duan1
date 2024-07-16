@@ -10,20 +10,20 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-4 mt-3">
                                 <span>Tên sản phẩm</span>
-                                <input type="text" name="tensp" placeholder="Tên sản phẩm">
+                                <input type="text" name="tensp" placeholder="Tên sản phẩm" required>
                             </div>
                             <div class="col-md-4 mt-3">
                                 <span>Giá sản phẩm</span>
-                                <input type="text" name="gia_sp" placeholder="Giá gốc">
+                                <input type="text" name="gia_sp" placeholder="Giá gốc" required>
                             </div>
                             <div class="col-md-4 mt-3">
                                 <span>Sale</span>
-                                <input type="text" name="gia_sale" placeholder="Giá sale">
+                                <input type="text" name="gia_sale" placeholder="Giá sale" required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" name="anhsp">
+                            <input class="form-control" type="file" name="anhsp" required>
                         </div>
                         <div class="tendanhmucccc">Danh mục</div>
                         <select name="iddm" class="form-select mb-3" aria-label="Large select example">

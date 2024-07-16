@@ -1,147 +1,281 @@
-<div class="be-content">
-    <div class="main-content container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-6 col-xl-3">
-                <div class="widget widget-tile">
-                    <div class="chart sparkline" id="spark1"></div>
-                    <div class="data-info">
-                        <div class="desc">Người dùng mới</div>
-                        <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span
-                                class="number" data-toggle="counter" data-end="113">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3">
-                <div class="widget widget-tile">
-                    <div class="chart sparkline" id="spark2"></div>
-                    <div class="data-info">
-                        <div class="desc">Tháng giảm giá</div>
-                        <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span
-                                class="number" data-toggle="counter" data-end="80" data-suffix="%">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3">
-                <div class="widget widget-tile">
-                    <div class="chart sparkline" id="spark3"></div>
-                    <div class="data-info">
-                        <div class="desc">Số lần hiện thị</div>
-                        <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span
-                                class="number" data-toggle="counter" data-end="532">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3">
-                <div class="widget widget-tile">
-                    <div class="chart sparkline" id="spark4"></div>
-                    <div class="data-info">
-                        <div class="desc">Tải xuống</div>
-                        <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-down"></span><span
-                                class="number" data-toggle="counter" data-end="113">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .col-md-4 {
+    max-width: 25%;
+  }
+
+  .card-img-absolute {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+  }
+
+  .row {
+    top: 20px;
+    left: 300px;
+    width: 1200px;
+    position: relative;
+  }
+
+  #bar-chart {
+    width: 500px;
+    height: 300px;
+    position: relative;
+  }
+
+  #line-chart {
+    width: 500px;
+    height: 300px;
+    position: relative;
+  }
+
+  #bar-chart::before,
+  #line-chart::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 240px;
+    height: 30px;
+    left: 155px;
+    top: 254px;
+    background: #FAFAFA;
+    box-shadow: 1px 1px 0 0 #DDD;
+  }
+
+  #pie-chart {
+    width: 500px;
+    height: 250px;
+    position: relative;
+  }
+
+  #pie-chart::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 115px;
+    left: 315px;
+    top: 0;
+    background: #FAFAFA;
+    box-shadow: 1px 1px 0 0 #DDD;
+  }
+
+  #pie-chart::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 260px;
+    left: 70px;
+    width: 170px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    box-shadow: 0 0 3px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .g {
+    color: white;
+    background-color: cadetblue;
+    height: 200px;
+  }
+</style>
+
+<body>
+  <div class="row">
+    <div class="col-md-4 stretch-card grid-margin">
+      <div class="card bg-danger card-img-holder text-white" style="height: 200px;">
+        <div class="card-body">
+          <img src="dashboard_img/circle.png" class="card-img-absolute" alt="circle-image" />
+          <h4 class="font-weight-normal mb-3" style="font-size: 25px;margin-top: 40px;}">Tổng sản phẩm <i class="	fas fa-gem mdi-24px " style="margin-left: 10px;"></i>
+          </h4> <?php
+
+                foreach ($listthongke as $thongke) {
+                  extract($thongke);
+                  echo '
+                    <h2 class="mb-5">' . $tsp . '</h2>
+                  ';
+                } ?>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="widget widget-fullwidth be-loading">
-                    <div class="widget-head">
-                        <div class="tools">
-                            <div class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span
-                                        class="icon mdi mdi-more-vert d-inline-block d-md-none"></span></a>
-                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" href="#">Week</a><a
-                                        class="dropdown-item" href="#">Month</a><a class="dropdown-item"
-                                        href="#">Year</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#">Today</a>
-                                </div>
-                            </div><span class="icon mdi mdi-chevron-down"></span><span
-                                class="icon toggle-loading mdi mdi-refresh-sync"></span><span
-                                class="icon mdi mdi-close"></span>
-                        </div>
-                        <div class="button-toolbar d-none d-md-block">
-                            <div class="btn-group">
-                                <button class="btn btn-secondary" type="button">Week</button>
-                                <button class="btn btn-secondary active" type="button">Month</button>
-                                <button class="btn btn-secondary" type="button">Year</button>
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn btn-secondary" type="button">Today</button>
-                            </div>
-                        </div><span class="title">Recent Movement</span>
-                    </div>
-                    <div class="widget-chart-container">
-                        <div class="widget-chart-info">
-                            <ul class="chart-legend-horizontal">
-                                <li><span data-color="main-chart-color1"></span> Purchases</li>
-                                <li><span data-color="main-chart-color2"></span> Plans</li>
-                                <li><span data-color="main-chart-color3"></span> Services</li>
-                            </ul>
-                        </div>
-                        <div class="widget-counter-group widget-counter-group-right">
-                            <div class="counter counter-big">
-                                <div class="value">25%</div>
-                                <div class="desc">Purchase</div>
-                            </div>
-                            <div class="counter counter-big">
-                                <div class="value">5%</div>
-                                <div class="desc">Plans</div>
-                            </div>
-                            <div class="counter counter-big">
-                                <div class="value">5%</div>
-                                <div class="desc">Services</div>
-                            </div>
-                        </div>
-                        <div id="main-chart" style="height: 260px;"></div>
-                    </div>
-                    <div class="be-spinner">
-                        <svg width="40px" height="40px" viewbox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="circle" fill="none" stroke-width="4" stroke-linecap="round" cx="33" cy="33"
-                                r="30">
-                            </circle>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
+    <div class="col-md-4 stretch-card grid-margin">
+      <div class="g" style="height: 200px;">
+        <div class="card-body">
+          <img src="dashboard_img/circle.png" class="card-img-absolute" alt="circle-image" />
+          <h4 class="font-weight-normal mb-3" style="font-size: 25px;margin-top: 40px;}">Tài khoản<i class="far fa-address-card mdi-24px" style="margin-left: 10px;"></i>
+          </h4> <?php
+                foreach ($listthongke3 as $thongke) {
+                  extract($thongke);
+                  echo '
+                    <h2 class="mb-5">' . $ttk . '</h2>
+                  ';
+                } ?>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 stretch-card grid-margin">
+      <div class="card bg-info card-img-holder text-white" style="height: 200px;">
+        <div class="card-body">
+          <img src="dashboard_img/circle.png" class="card-img-absolute" alt="circle-image" />
+          <h4 class="font-weight-normal mb-3" style="font-size: 25px;margin-top: 40px;}">Tổng số danh mục <i class="mdi mdi-bookmark-outline mdi-24px"></i>
+          </h4>
+          <?php
+
+          foreach ($listthongke1 as $thongke) {
+            extract($thongke);
+            echo '
+                    <h2 class="mb-5">' . $tdm . '</h2>
+                  ';
+          } ?>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 stretch-card grid-margin">
+      <div class="card bg-success card-img-holder text-white" style="height: 200px;">
+        <div class="card-body">
+          <img src="dashboard_img/circle.png" class="card-img-absolute" alt="circle-image" />
+          <h4 class="font-weight-normal mb-3" style="font-size: 25px;margin-top: 40px;}">Tổng đơn hàng <i class="	far fa-credit-card mdi-24px " style="margin-left: 10px;"></i>
+          </h4>
+          <?php
+
+          foreach ($listthongke2 as $thongke) {
+            extract($thongke);
+            echo '
+                    <h2 class="mb-5">' . $tdh . '</h2>
+                  ';
+          } ?>
+
+        </div>
+
+      </div>
+    </div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <h3>Phân tích danh mục</h3>
+    <main style="display: flex;column-gap: 70px;">
+      <br>
+      <div style="float: left;" id="bar-chart"></div>
+      <div style="width: 700px;float: right;">
+        <h3>Đơn hàng mới chờ xác nhận</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-3">Mã đơn hàng</th>
+              <th class="col-3">Tên khách hàng</th>
+              <th class="col-3">Trạng thái</th>
+              <th class="col-3">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($listbill as $thongke) {
+              extract($thongke);
+
+              echo '<tr>
+                    <th>' . $id . '</th>
+                    <td>' . $bill_name . '</td>
+                    <td class="text-danger">Đang chờ xác nhận</td>
+                    <td><a href="index.php?act=chitiet_BILL&id=' . $id . '">Xem</a></td>
+                </tr>';
+            } ?>
+          </tbody>
+        </table>
+    </main>
 
 
+    <script>
+      google.load("visualization", "1", {
+        packages: ["corechart"]
+      });
+      google.setOnLoadCallback(drawCharts);
 
+      function drawCharts() {
+        var barData = google.visualization.arrayToDataTable([
+          ['Tên Danh Mục', 'Số Lượng'],
 
-</div>
-<script src="../beagle-dashboard/assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+          <?php
+          $tongdm = count($listthongkebieudo);
+          $i = 1;
+          foreach ($listthongkebieudo as $thongke) {
+            extract($thongke);
+            if ($i == $tongdm) $dauphay = "";
+            else $dauphay = ",";
+            echo "['" . $thongke['tendm'] . "', " . $thongke['countsp'] . "]" . $dauphay;
+            $i += 1;
+          }
+          ?>
+        ]);
+        var barOptions = {
+          focusTarget: 'category',
+          backgroundColor: 'transparent',
+          colors: ['cornflowerblue', 'tomato'],
+          fontName: 'Open Sans',
+          chartArea: {
+            left: 50,
+            top: 10,
+            width: '100%',
+            height: '70%'
+          },
+          bar: {
+            groupWidth: '80%'
+          },
+          hAxis: {
+            textStyle: {
+              fontSize: 11
+            }
+          },
+          vAxis: {
+            minValue: 0,
+            maxValue: 10,
+            baselineColor: '#DDD',
+            gridlines: {
+              color: '#DDD',
+              count: 4
+            },
+            textStyle: {
+              fontSize: 11
+            }
+          },
+          legend: {
+            position: 'bottom',
+            textStyle: {
+              fontSize: 12
+            }
+          },
+          animation: {
+            duration: 1200,
+            easing: 'out',
+            startup: true
+          }
+        };
+        // draw bar chart twice so it animates
+        var barChart = new google.visualization.ColumnChart(document.getElementById('bar-chart'));
+        //barChart.draw(barZeroData, barOptions);
+        barChart.draw(barData, barOptions);
 
-<script src="../beagle-dashboard/assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js"
-    type="text/javascript"></script>
+        // BEGIN LINE GRAPH
 
-<script src="../beagle-dashboard/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/js/app.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.time.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-flot/plugins/jquery.flot.orderBars.js"
-    type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-flot/plugins/curvedLines.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-flot/plugins/jquery.flot.tooltip.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery.sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/countup/countUp.min.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
-<script src="../beagle-dashboard/assets/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        //-initialize the javascript
-        App.init();
-        App.dashboard();
+        function randomNumber(base, step) {
+          return Math.floor((Math.random() * step) + base);
+        }
 
-    });
-</script>
+        function createData(year, start1, start2, step, offset) {
+          var ar = [];
+          for (var i = 0; i < 12; i++) {
+            ar.push([new Date(year, i), randomNumber(start1, step) + offset, randomNumber(start2, step) + offset]);
+          }
+          return ar;
+        }
+      };
+    </script>
 </body>
 
 </html>

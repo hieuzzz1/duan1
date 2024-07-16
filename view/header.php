@@ -17,7 +17,7 @@
 </head>
 <script>
     // Thêm sự kiện cuộn chuột
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
         // Lấy đối tượng phần header
         var header = document.getElementById('siteHeader');
 
@@ -29,10 +29,47 @@
         }
     });
 </script>
-<style></style>
+<style>
+    .modal-header h2 {
+        /* padding: 10px; */
+        text-align: center;
+    }
+
+    .modal-body span {
+        color: red;
+    }
+
+    .modal-footer input[type="submit"] {
+        background-color: #FFA2A2;
+        color: #fff;
+        border: 1px solid #FFA2A2
+    }
+
+    .modal-footer input[type="submit"]:hover {
+        background-color: #fff;
+        color: #FFA2A2;
+        border: 1px solid #FFA2A2
+    }
+
+    .modal-footer button {
+        background-color: #fff;
+        color: #FFA2A2;
+        border: 1px solid #FFA2A2
+    }
+
+    .modal-footer button:hover {
+        background-color: #FFA2A2;
+        color: #fff;
+        border: 1px solid #fff
+    }
+
+    .modal-content a {
+        color: #FFA2A2;
+    }
+</style>
 
 <body>
-    
+
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -56,8 +93,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                         <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary">
                     </div>
-                    <p class="text-center mt-3">Bạn chưa có tài khoản? <a href="#" data-bs-dismiss="modal"
-                            data-bs-toggle="modal" data-bs-target="#registerModal">Đăng ký</a></p>
+                    <p class="text-center mt-3">Bạn chưa có tài khoản? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">Đăng ký</a></p>
                 </form>
             </div>
         </div>
@@ -99,9 +135,13 @@
         </div>
     </div>
     <div id="scrollToTopBtn" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></div>
+    <!-- <img src="" alt=""> -->
     <style>
         body {
             background-color: #f2f6f6 !important;
+            cursor: url('./upload/cursor.png'), auto !important;
+            /* cursor: url('../upload/cursor.png'), auto !important; */
+            /* cursor: default; */
         }
 
         .header-visible {
@@ -139,12 +179,12 @@
     </style>
     <script>
         // Wait for the DOM to be ready
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             // Get the button
             var scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
             // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function () {
+            window.onscroll = function() {
                 if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                     scrollToTopBtn.style.display = "block";
                 } else {
@@ -158,7 +198,6 @@
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
         }
-
     </script>
     <!-- header -->
     <div class="trangheader-fixed" id="siteHeader">
@@ -167,16 +206,13 @@
                 <div class="row">
                     <!-- logo -->
                     <div class="col-md-2">
-                        <a href="index.php"><img src="./img/logo/anh_logo_duan3.png"
-                                style="max-width: 100%; height: 65px;" class="img-fluid" alt=""></a>
+                        <a href="index.php"><img src="./img/logo/anh_logo_duan3.png" style="max-width: 100%; height: 65px;" class="img-fluid" alt=""></a>
                     </div>
                     <!-- search -->
                     <div class="col-md-4">
-                        <form class="css input-group mb-3 mt-2 pt-2 focus-input-search">
-                            <input type="text" class="form-control search" placeholder="Bạn muốn tìm kiếm gì?"
-                                aria-label="Tìm kiếm sản phẩm" aria-describedby="basic-addon2">
-                            <button class="input-group-text" type="submit" id="basic-addon2"><i
-                                    class="fa-solid fa-magnifying-glass"></i></button>
+                        <form action="index.php?act=sanphamkey" method="POST" class="css input-group mb-3 mt-2 pt-2 focus-input-search">
+                            <input type="text" name="kyw" class="form-control search" placeholder="Bạn muốn tìm kiếm gì?" aria-label="Tìm kiếm sản phẩm" aria-describedby="basic-addon2">
+                            <button class="input-group-text" type="submit" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
                             <style>
                                 .mymainmenu {
                                     background-color: #f08383 !important;
@@ -240,54 +276,53 @@
                                         </div>
                                     </div>
                                     <?php
-                                    if(isset($_SESSION['user'])) {
+                                    if (isset($_SESSION['user'])) {
                                         extract($_SESSION['user']);
                                     ?>
 
-                                    <div class="col-10">
-                                        <a href="#" class="text-decoration-none text-white">Xin chào!</a><br>
-                                        <a href="index.php?act=trang_taikhoan"  class="no_text"><?=$user?></a>
-                                        <ul class="dropdown-menu active-menuu">
-                                            <li><a class="dropdown-item" href="index.php?act=trang_taikhoan">Trang tài
-                                                khoản</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="index.php?act=update_tk">Cập nhật tài
-                                                    khoản</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="index.php?act=dangxuat">Đơn hàng của
-                                                    bạn</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="index.php?act=dangxuat">Đăng xuất</a>
-                                            </li>
-                                            <style>
-                                                a.no_text {
-                                                    color: #fff;
-                                                    text-decoration: none;
-                                                }
-                                                .active-menuu li a:active {
-                                                    background-color: none !important;
-                                                }
+                                        <div class="col-10">
+                                            <a href="#" class="text-decoration-none text-white">Xin chào!</a><br>
+                                            <a href="index.php?act=trang_taikhoan" class="no_text"><?= $user ?></a>
+                                            <ul class="dropdown-menu active-menuu">
+                                                <li><a class="dropdown-item" href="index.php?act=trang_taikhoan">Trang tài
+                                                        khoản</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="index.php?act=update_tk">Cập nhật tài
+                                                        khoản</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="index.php?act=dangxuat">Đơn hàng của
+                                                        bạn</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="index.php?act=dangxuat">Đăng xuất</a>
+                                                </li>
+                                                <style>
+                                                    a.no_text {
+                                                        color: #fff;
+                                                        text-decoration: none;
+                                                    }
 
-                                                .active-menuu li a:hover {
-                                                    background-color: rgb(247, 207, 207) !important;
-                                                }
-                                            </style>
-                                        </ul>
-                                    </div>
+                                                    .active-menuu li a:active {
+                                                        background-color: none !important;
+                                                    }
+
+                                                    .active-menuu li a:hover {
+                                                        background-color: rgb(247, 207, 207) !important;
+                                                    }
+                                                </style>
+                                            </ul>
+                                        </div>
                                     <?php
-                                    }else {
+                                    } else {
 
-                                        
-                                ?>
 
-                                    <div class="col-10">
-                                        <a href="#" class="text-decoration-none text-white">Xin chào!</a><br> <a
-                                            href="index.php?act=dangnhap" class="text-decoration-none"
-                                            data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@mdo">
-                                            <p class="text-white fs-6">Đăng
-                                                nhập</p>
-                                        </a>
-                                    </div>
+                                    ?>
+
+                                        <div class="col-10">
+                                            <a href="#" class="text-decoration-none text-white">Xin chào!</a><br> <a href="index.php?act=dangnhap" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-whatever="@mdo">
+                                                <p class="text-white fs-6">Đăng
+                                                    nhập</p>
+                                            </a>
+                                        </div>
                                     <?php }  ?>
 
                                 </div>
@@ -299,11 +334,11 @@
                         <div class="row">
                             <div class="col"><a href="index.php?act=giohang" class="position-relative ms-1">
                                     <span><i class="fa-solid fa-cart-shopping text-white fs-4"></i></span>
-                                   
+
                                 </a></div>
                             <div class="col"><a href="index.php?act=spyeuthich" class="position-relative ms-2">
                                     <span><i class="fa-solid fa-heart text-white fs-4"></i></span>
-                                    
+
                                 </a></div>
                         </div>
                     </div>
@@ -325,22 +360,22 @@
 
                                                 <i class="fa-solid fa-bars-staggered"></i> Danh mục <span></span>
                                                 <div class="product-list">
-                                                    <ul><li><a href="index.php?act=sanpham">Tất cả sản phẩm</a></li>
-                                                        <?php foreach ($listdanhmuc as $key => $value):?>
+                                                    <ul>
+                                                        <li><a href="index.php?act=sanpham">Tất cả sản phẩm</a></li>
+                                                        <?php foreach ($listdanhmuc as $key => $value) : ?>
 
-                                                        <li><i class="fa-solid fa-play"></i>
-                                                            <a href="index.php?act=load_toanbodanhmuc&id=<?=$value['id']?>">
-                                                                <?=$value['tendm']?>
-                                                            </a>
-                                                        </li>
+                                                            <li><i class="fa-solid fa-play"></i>
+                                                                <a href="index.php?act=load_toanbodanhmuc&id=<?= $value['id'] ?>">
+                                                                    <?= $value['tendm'] ?>
+                                                                </a>
+                                                            </li>
                                                         <?php endforeach; ?>
                                                     </ul>
                                                 </div>
                                             </li>
                                         </div>
                                         <li class="nav-item">
-                                            <a class="nav-link active text-white px-4" aria-current="page"
-                                                href="index.php">Trang
+                                            <a class="nav-link active text-white px-4" aria-current="page" href="index.php">Trang
                                                 chủ</a>
                                         </li>
                                         <li class="nav-item">

@@ -12,7 +12,7 @@
         </style>
     </div>
     <div class="row">
-        <div class="col-9">
+        <div class="col-9" style="width: 75%;">
            <div class="tinmoi">
                 <h1 class="">Tin mới nhất</h1>
            </div>
@@ -69,15 +69,17 @@
         </div>
         
     </div>
-    <div class="col-3 mb-3">
+    <div class="col-3 mb-3" style="margin-top: 100px;">
             <?php 
                 include "boxright.php";
             ?>
         </div>
+</div>
+</div>
 <style>
     img.card-img-top{
-        left: 200px;
-        height: 200px;
+        left: 110px;
+
         width: 200px;
         position: relative;
     }

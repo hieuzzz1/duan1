@@ -1,4 +1,3 @@
-    
 <?php
     if(is_array($sanpham)){
         extract($sanpham);
@@ -10,7 +9,7 @@
         <div class="row">
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
-                <p>CẬP NHẬT SẢN PHẨM</p>
+                    <p>CẬP NHẬT SẢN PHẨM</p>
                 </div>
                 <div class="bangdanhmuc">
                     <form action="index.php?act=capnhatsanpham" method="post" enctype="multipart/form-data">
@@ -29,21 +28,32 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                        <input type="file" name="anhsp"><img src="../upload/<?=$img?> " alt="" height='80'>
-                    <input type="hidden" name="id" value="<?=$id?>">
+                            <input type="file" name="anhsp"><img src="../upload/<?=$img?> " alt="" height='80'>
+                            <input type="hidden" name="id" value="<?=$id?>">
                         </div>
                         <div class="tendanhmucccc">Danh mục</div>
-                        <select name="danhmuc_sua" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                        <?php foreach ($listdanhmuc as $key => $ldt): ?>
-                            <option value="<?=$ldt['id']?>">
-                                <?=$ldt['tendm']?>
-                            </option>
-                            <?php endforeach; ?>
+                        <select name="danhmuc_sua" class="form-select form-select-lg mb-3"
+                            aria-label="Large select example">
+                            
+
+                            <?php foreach ($listdanhmuc as $key => $value) {
+                                extract($value);
+                                if($iddm==$id) {
+                                    echo '<option value="'.$id.'" selected>
+                                            '.$tendm.'
+                                          </option>';
+                                }else {
+                                    echo '<option value="'.$id.'">
+                                            '.$tendm.'
+                                          </option>';
+                                }
+                            }
+                            ?>
                         </select>
 
 
                         <div class="div">
-                        <input type="submit" name="capnhatsp" class="adddd_sp" value="CẬP NHẬT">
+                            <input type="submit" name="capnhatsp" class="adddd_sp" value="CẬP NHẬT">
                         </div>
                     </form>
                 </div>
@@ -57,6 +67,7 @@
         background-color: #FFA2A2 !important;
         color: #fff !important;
     }
+
     .tendanhmucccc {
         font-size: 15px;
     }

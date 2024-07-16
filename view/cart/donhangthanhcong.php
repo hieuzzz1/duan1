@@ -24,6 +24,7 @@
                     Thanh toán online
                 <?php } ?>
             </p>
+            <p><strong>Ghi chú: </strong><?=$listbill['ghichu']?></p>
 
             <p><strong>Tên: </strong>
                 <?=$listbill['bill_name']?>
@@ -35,11 +36,18 @@
                 <?=$listbill['bill_phone']?>
             </p>
         </div>
-        <div class="section customer-details">
+        
+
+          
+        <?php if($listbill['pass'] == 'pass123') {?>
+        <?php } else {?>
+            <div class="section customer-details">
             <a href="index.php?act=donhang" class="text-decoration-none text-dark">
                 <p class="fs-4">Xem đơn hàng của bạn</p>
             </a>
         </div>
+        <?php } ?>
+        
 
         <div class="section order-items">
             <h2>Chi Tiết Đơn Hàng</h2>

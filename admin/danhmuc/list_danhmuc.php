@@ -101,7 +101,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Tên hàng hóa</label>
-                        <input type="text" class="form-control" name="tenhanghoa">
+                        <input type="text" class="form-control" name="tenhanghoa" required>
                     </div>
                     
                 </div>

@@ -27,7 +27,8 @@
                                     <thead>
                                         <tr>
                                             <th class="col-1">Mã đơn</th>
-                                            <th class="col-3">Tình trạng</th>
+                                            <th class="col-2">Ngày đặt</th>
+                                            <th class="col-2">Tình trạng</th>
                                             <th class="col-2">Tổng tiền</th>
                                             <th class="col-2">Thao tác</th>
                                         </tr>
@@ -37,6 +38,9 @@
                                         <tr>
                                             <td>
                                                 <?=$list['madh']?>
+                                            </td>
+                                            <td>
+                                                <?=$list['ngaydathang']?>
                                             </td>
                                             <td>
                                                 <?php if($list['trangthai'] == 0) {?>
@@ -59,14 +63,20 @@
                                                     <i class="fa-regular fa-pen-to-square btn"></i>
                                                 </a>
                                                 <?php if ($list['trangthai'] != 4) { ?>
-                                                <?php if ($list['trangthai'] != 1 && $list['trangthai'] != 2 && $list['trangthai'] != 3) { ?>
+                                                    <?php if ($list['trangthai'] != 1 && $list['trangthai'] != 2 && $list['trangthai'] != 3) { ?>
+                                                        <a href="#" class="openModalButton" data-bs-toggle="modal"
+                                                            data-bs-target="#customModal_<?php echo $list['id']; ?>">
+                                                            Hủy đơn
+                                                        </a>
+                                                    <?php } elseif ($list['trangthai'] == 2) { ?>
+                                                        <!-- Hiển thị nút "Nhận hàng" khi trạng thái là "Đang giao hàng" -->
+                                                        <a href="#" class="openModalButton" data-bs-toggle="modal"
+                                                            data-bs-target="#nhanHangModal_<?php echo $list['id']; ?>">
+                                                            Đã nhận hàng
+                                                        </a>
+                                                    <?php } ?>
+                                                <?php } ?>
 
-                                                <a href="#" class="openModalButton" data-bs-toggle="modal"
-                                                    data-bs-target="#customModal_<?php echo $list['id']; ?>">
-                                                    Hủy đơn
-                                                </a>
-                                                <?php } ?>
-                                                <?php } ?>
                                             </td>
                                             <div class="modal fade" id="customModal_<?php echo $list['id']; ?>"
                                                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -93,6 +103,30 @@
                                                 </div>
                                             </div>
 
+                                            <!-- Modal Nhận hàng -->
+                                            <div class="modal fade" id="nhanHangModal_<?php echo $list['id']; ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="nhanHangModalLabel_<?php echo $list['id']; ?>" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="nhanHangModalLabel_<?php echo $list['id']; ?>">Xác nhận giao hàng thành công</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn"
+                                                                data-bs-dismiss="modal">Hủy</button>
+                                                            <a href="index.php?act=update_thanhconghang&id=<?=$list['id'];?>"
+                                                                class="btn-view">
+                                                                Đồng ý
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -107,6 +141,9 @@
     </div>
 </div>
 <style>
+    .modal-footer a {
+        color: #fff;
+    }
     .botexxt a {
         text-decoration: none;
         color: #000;
@@ -178,6 +215,7 @@
     td {
         padding: 10px;
         text-align: center;
+        border: 1px solid #eaeaea;
     }
 
     th {

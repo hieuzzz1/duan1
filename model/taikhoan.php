@@ -31,4 +31,30 @@ function update_tk($id,$user,$pass,$email,$address,$tel){
 
 pdo_execute($sql);
 }
+
+
+// 
+function add_tk($pass,$ten,$email,$diachi,$tel,$role) {
+    $sql = "INSERT INTO taikhoan(pass,user,email,diachi,tel,role)VALUES('$pass','$ten','$email','$diachi',$tel,'$role')";
+    pdo_execute($sql);
+}
+
+function loadAll_taikhoan(){
+    $sql = "select * from taikhoan order by id desc";
+    $listtk=pdo_query($sql);
+    return $listtk;
+}
+function delete_tk($id){
+    $sql = "delete from taikhoan where id=".$id;
+    pdo_execute($sql);
+}
+function loadone_tk($id){
+    $sql = "select * from taikhoan where id=".$id;
+    $tk= pdo_query_one($sql);
+    return $tk;
+}
+function sua_tk($id,$pass,$ten,$email,$address,$tel,$role){
+    $sql ="update taikhoan set  pass ='".$pass."',user ='".$ten."', email ='".$email."', diachi ='".$address."', tel ='".$tel."', role ='".$role."' where id=".$id;
+    pdo_execute($sql);
+}
 ?>

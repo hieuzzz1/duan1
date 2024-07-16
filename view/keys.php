@@ -51,12 +51,9 @@
                     </select>
                     </div>
                 </div>
-
-
                 <div class="py-md-0 py-3">
                     <section id="sidebar">
                         <div class="py-3 fon_checkbox">
-                            
                                 <h5 class="font-weight-bold">Giá</h5>
                                 <div class="form-inline d-flex align-items-center py-1">
                                     <label class="tick">Dưới 300.000đ
@@ -86,16 +83,12 @@
                                 <input type="submit" value="lọc sản phẩm" name="locgia_sp">
                             </form>
                         </div>
-
-
-                    </section> <!-- Products Section -->
-
+                    </section> 
                 </div>
-                <div class="padddding">
-                    <?php if (empty($_POST['price_range'])): ?>
-                        <?php foreach ($one_spct  as $key => $value):?>
+                <div class="padding" style="margin-top: -95px;display: grid;grid-template-columns: 1fr 1fr 1fr 1fr;">
+                    <?php foreach ($dssp  as $key => $value):?>
                         <?php  $giaTienFormatted = number_format($value['price'], 0, ',', '.') . '₫';?>
-                        <div class="col-md-3 cantrai">
+                    <div class="col-md-3 cantrai">
                             <div class="card mt-3 okkkkkk">
                             <span class="percent">
                                 <?=$value['giasale']?>
@@ -129,8 +122,8 @@
                                 <input type="hidden" name="anhsp" value="<?=$value['img']?>">
                                 <input type="hidden" name="giasp" value="<?=$value['price']?>">
                                 <div class="d-flex flex-row">
-                                    <!-- <span class="wishlist" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                        aria-controls="offcanvasRight"><i class="fa fa-heart"></i></span> -->
+                                    <span class="wishlist" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                        aria-controls="offcanvasRight"><i class="fa fa-heart"></i></span>
                                     <span class="cart">
                                         <input type="submit" name="add_sp_home" class="hidden-submit"
                                             data-id="<?php echo $value['id']; ?>">
@@ -166,99 +159,13 @@
                                 });
                             </script>
                         </div>
-
-                        </div>
-                    <?php endforeach; ?>
-                    <?php else: ?>
-                    <?php foreach ($one_spct  as $key => $value):?>
-                    <?php  $giaTienFormatted = number_format($value['price'], 0, ',', '.') . '₫';
-
-                                ?>
-                    <div class="col-md-3 cantrai">
-                        <div class="card mt-3 okkkkkk">
-
-                            <span class="percent">
-                                <?=$value['giasale']?>
-                            </span>
-                            <div class="card-image">
-                                <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
-                                    <img src="././upload/<?=$value['img']?>" width="200">
-                                </a>
-                            </div>
-                            <a href="index.php?act=spchitiet&id=<?=$value['id']?>">
-                                <div class="card-inner">
-                                    <p class="mb-0">
-                                        <?=$giaTienFormatted?>
-                                    </p>
-                                </div>
-                                <div class="price">
-                                    <span>
-                                        <?=$value['name']?>
-                                    </span>
-                                </div>
-                            </a>
-                            <form action="index.php?act=spchitiet&id=<?=$value['id']?>" method="post">
-                                <div class="mt-3 d-flex detailss justify-content-between align-items-center">
-                                    <button type="submit" class="btn text-uppercase btn-sm details">Mua
-                                        ngay</button>
-                                </div>
-                            </form>
-                            <form action="index.php?act=addgiohang123" method="post">
-                                <input type="hidden" name="masp" value="<?=$value['id']?>">
-                                <input type="hidden" name="tensp" value="<?=$value['name']?>">
-                                <input type="hidden" name="anhsp" value="<?=$value['img']?>">
-                                <input type="hidden" name="giasp" value="<?=$value['price']?>">
-                                <div class="d-flex flex-row">
-                                    <!-- <span class="wishlist" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                        aria-controls="offcanvasRight"><i class="fa fa-heart"></i></span> -->
-                                    <span class="cart">
-                                        <input type="submit" name="add_sp_home" class="hidden-submit"
-                                            data-id="<?php echo $value['id']; ?>">
-
-                                        <!-- Icon để kích hoạt nút ẩn đi -->
-                                        <i class="fa fa-shopping-cart" data-id="<?php echo $value['id']; ?>"></i>
-                                    </span>
-                                    <!-- <button type="submit" id="">ass</button> -->
-                                </div>
-                            </form>
-
-                            <style>
-                                .hidden-submit {
-                                    visibility: hidden;
-                                }
-                            </style>
-                            <script>
-                                // Lấy tất cả các thẻ <i> có class "fa-shopping-cart"
-                                var icons = document.querySelectorAll('.fa-shopping-cart');
-
-                                // Lắng nghe sự kiện click trên từng thẻ <i>
-                                icons.forEach(function (icon) {
-                                    icon.addEventListener('click', function () {
-                                        // Lấy giá trị data-id để biết nút "Submit" tương ứng
-                                        var productId = icon.getAttribute('data-id');
-                                        var hiddenSubmitBtn = document.querySelector('[data-id="' + productId + '"].hidden-submit');
-
-                                        // Kiểm tra xem nút có tồn tại không trước khi kích hoạt sự kiện click
-                                        if (hiddenSubmitBtn) {
-                                            hiddenSubmitBtn.click();
-                                        }
-                                    });
-                                });
-                            </script>
-                        </div>
-
-                    </div>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
+                    </div><?php endforeach; ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 <style>
-   
     .fon_checkbox label {
         font-size: 15px;
     }
@@ -280,9 +187,9 @@
     }
 
     .flex-row {
-        margin-top: -40px;
-        margin-left: 185px;
-        padding-bottom: 18px;
+        margin-top: -38px;
+        margin-left: 155px;
+        padding-bottom: 10px;
     }
 
     .padddding {

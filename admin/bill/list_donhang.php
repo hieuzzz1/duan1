@@ -1,19 +1,32 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
-<div class="be-content">
+    <div class="be-content">
     <div class="main-content container-fluid">
         <div class="row">
             <div class="col danhmucsp-content">
                 <div class="danhmucsp">
                     <p><b>SẢN PHẨM</b></p>
-                    
+                    <div class="locsanpham">
+                        <form action="index.php?act=list_donhang" method="post">
+                            <input type="text" placeholder="Tìm đơn hàng" name="kyw">
+                                <select name="trangthai" id="input">
+                                    <option value="0"selected>Tất cả</option>
+                                    <!-- <option value="0">Chưa Xử lí</option> -->
+                                    <option value="1">Đã Xử lí</option>
+                                    <option value="2">Đang giao hàng</option>
+                                    <option value="3">Giao hàng thành công</option>
+                                    <option value="4">Hủy</option>
+                                </select>
+                            <input type="submit" value="Tìm kiếm" name="timkh">
+                        </form>
+                    </div>
                 </div>
                 <div class="bangdanhmuc">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-1">Mã</th>
+                                <th class="col-1">Mã đơn hàng</th>
                                 <th class="col-2">Tên khách hàng</th>
                                 <th class="col-2">Tổng tiền</th>
                                 <th class="col-2">Trạng thái</th>
@@ -26,10 +39,19 @@
                             <?php foreach ($loadbill as $key => $value): ?>
                             <tr>
                                 <td>
-                                    <?= $value['id'] ?>
+                                    <?php if($value['pass'] == 'pass123') {?>
+                                        <span class="text-danger"><?=$value['madh'] ?></span>
+                                    <?php } else {?>
+                                        <?=$value['madh'] ?>
+                                    <?php } ?>
                                 </td>
                                 <td>
-                                    <?= $value['bill_name'] ?>
+                                    <?php if($value['pass'] == 'pass123') {?>
+                                        <span class="text-danger"><?= $value['ten'] ?></span>
+                                    <?php } else {?>
+                                        <?= $value['bill_name'] ?>
+                                    <?php } ?>
+
                                 </td>
                                 <td>
                                 <?=number_format($value['total'], 0, ',', '.')?> ₫
@@ -49,9 +71,9 @@
                                 </td>
                                 <td>
                                     <!-- Sửa danh mục -->
-                                    <a href="index.php?act=chitiet_BILL&id=<?=$value['id']?>"  class="mt-5">
+                                    <!-- <a href="index.php?act=chitiet_BILL&id="  class="mt-5">
                                         <i class="fa-regular fa-pen-to-square mx-2 btn"></i>
-                                    </a>
+                                    </a> -->
                                     <a href="index.php?act=chitiet_BILL&id=<?=$value['id']?>">
                                        Chi tiết
                                     </a>
@@ -99,6 +121,30 @@
 
 
 <style>
+    .locsanpham {
+        margin-top: 30px;
+        margin-bottom: 10px;
+
+    }
+
+    .locsanpham select {
+        padding: 9px;
+        outline: none;
+
+    }
+
+    .locsanpham input {
+        padding: 8px;
+        outline: none;
+
+    }
+
+    .locsanpham input[type="submit"] {
+        padding: 8px;
+        background-color: #FFA2A2;
+        border: 1px solid #FFA2A2;
+        color: #fff
+    }
     .modal-footer a{
         padding-left: 10px;
         padding-right: 10px;

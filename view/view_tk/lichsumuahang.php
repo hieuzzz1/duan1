@@ -27,9 +27,10 @@
                                     <thead>
                                         <tr>
                                             <th class="col-1">Mã đơn</th>
-                                            <th class="col-3">Tình trạng</th>
+                                            <th class="col-2">Thời gian</th>
+                                            <th class="col-2">Tình trạng</th>
                                             <th class="col-2">Tổng tiền</th>
-                                            <th class="col-2">Thao tác</th>
+                                            <th class="col-1">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -37,6 +38,9 @@
                                         <tr>
                                             <td>
                                                 <?=$list['madh']?>
+                                            </td>
+                                            <td>
+                                                <?=$list['ngaygiaohang']?>
                                             </td>
                                             <td>
                                                 <?php if($list['trangthai'] == 0) {?>
@@ -51,6 +55,7 @@
                                                 <span class="text-danger"><strong>Hủy đơn hàng</strong></span>
                                                 <?php }?>
                                             </td>
+
                                             <td>
                                                 <?=number_format($list['total'], 0, ',', '.')?>₫
                                             </td>
@@ -178,10 +183,12 @@
     td {
         padding: 10px;
         text-align: center;
+        border: 1px solid #eaeaea
     }
 
     th {
         background-color: #fff;
+
     }
 
     .btn-view {

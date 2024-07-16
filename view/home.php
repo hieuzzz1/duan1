@@ -1,4 +1,14 @@
 <!-- maincontent -->
+<?php
+
+    if(isset($thongbao2) && ($thongbao2 !="")){
+        echo $thongbao2;
+    }?>
+<?php
+
+    if(isset($thongbao) && ($thongbao !="")){
+        echo $thongbao;
+    }?>
 <section class="mymaincontent my-3">
     <div class="Slide_Home">
         <div class="row">
@@ -410,8 +420,8 @@
                     <input type="hidden" name="anhsp" value="<?=$value['img']?>">
                     <input type="hidden" name="giasp" value="<?=$value['price']?>">
                     <div class="d-flex flex-row">
-                        <span class="wishlist" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight"><i class="fa fa-heart"></i></span>
+                        <!-- <span class="wishlist" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"><i class="fa fa-heart"></i></span> -->
                         <span class="cart">
                             <input type="submit" name="add_sp_home" class="hidden-submit"
                                 data-id="<?php echo $value['id']; ?>">
@@ -467,66 +477,26 @@
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
                 tabindex="0">
                 <div class="row mx-5">
+                <?php foreach ($post as $p) {
+                    extract($p);
+                    $linkpost = "index.php?act=postct&id=" . $id;
+                    ?>
                     <div class="col-md-3 my-4 d-flex justify-content-center">
-                        <a href="#" class="baiposs">
+                        <a href="<?=$linkpost?>" class="baiposs">
                             <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
+                                <img src="././upload/<?=$image ?>"
                                     class="card-img-top" alt="...">
                                 <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
+                                    <h5 class="card-title"><?=$name_post?></h5>
+                                    <p class="card-text"><?=$gioithieu?></p>
                                 </div>
                             </div>
                         </a>
-                    </div>
-                    <div class="col-md-3 my-4">
-                        <a href="#" class="baiposs">
-                            <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 my-4">
-                        <a href="#" class="baiposs">
-                            <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 my-4">
-                        <a href="#" class="baiposs">
-                            <div class="card" style="width: 18rem;">
-                                <img src="http://nhom2mp.vnn.mn/files/tin/11/jpg/cach-dung-serum-cho-lan-da-khoe-cang-muot-tu-nhien.jpg"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body bv">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make
-                                        up
-                                        the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    </div><?php } ?>
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
     </div>
     <style>
         .percent {
@@ -560,6 +530,7 @@
         }
 
         .card {
+            height: 100%;
             background-color: #fff;
             position: relative;
             width: 300px;

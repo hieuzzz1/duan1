@@ -1,118 +1,146 @@
-<div class="be-content">
-    <div class="main-content container-fluid">
+<div class="container top-top-dki">
+    <div class="dieuhuong mb-4">
+        <div class="dhmenu mb-4">
+            <style>
+                .dhmenu {
+                    margin-left: 20px;
+                }
+
+                body {
+                    background-color: #e6e6f1;
+                }
+            </style>
+        </div>
         <div class="row">
-            <div class="col danhmucsp-content">
-                <div class="danhmucsp">
-                    <p>THÊM Tài Khoản</p>
-                </div>
-                <div class="bangdanhmuc">
-                    <form action="index.php?act=add_tk" method="post" enctype="multipart/form-data">
+            <div class="col container0">
+                <form action="index.php?act=add_tk" method="post">
+                    <h5 class="tt">Thêm tài khoản</h5>
+                    <div class="col">
+                        <label for="validationDefault01" class="form-label">Họ & Tên</label><span> &#x2217;</span>
+                        <input name="ten" type="text" class="form-control" id="validationDefault01"
+                            placeholder="Họ tên" required>
+                    </div>
+                    <div class="col">
+                        <label for="validationDefault01" class="form-label">Số điện thoại</label><span> &#x2217;</span>
+                        <input type="text" name='tel' class="form-control" id="validationDefault01"
+                            placeholder="Số điện thoại" required>
+                    </div>
+                    <div class="col">
+                        <label for="validationDefault01" class="form-label">Email</label><span> &#x2217;</span>
+                        <input name="email" type="email" class="form-control" id="validationDefault01"
+                            placeholder="Email" required>
+                    </div>
+                    <div class="col">
+                        <label for="validationDefault01" class="form-label">Mật khẩu </label> <span
+                            for="">&#x2217;</span>
+                        <input name="pass" type="password" class="form-control" id="validationDefault01"
+                            placeholder="Mật khẩu" required>
+                    </div>
+                    <div class="col">
+                        <label for="validationDefault01" class="form-label">Địa chỉ </label> <span
+                            for="">&#x2217;</span>
+                        <input name="diachi" type="text" class="form-control" id="validationDefault01"
+                            placeholder="Địa chỉ" required>
+                    </div>
+                    <div class="col">
+                        <label for="validationDefault01" class="form-label">Vai trò</label> 
+                            
+                            <select name="role" id="input" style="width: 100px; height: 30px; margin-left: 5px; margin-bottom: 20px;">
+                                <option value="0">User</option>
+                                <option value="1">Admin</option>
+                            </select>
+                            
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit" value="Đăng Kí" name="add_tk">Thêm tài khoản</button>
+                        <div class="has-error">
 
-                        <input type="text" name="user" placeholder="Tên tài khoản">
-                        <input type="password" name="pass" placeholder="Nhập mật khẩu">
-                        <input type="email" name="email" placeholder="email">
-                        <input type="text" name="tel" placeholder="tel">
-                        <input type="text" name="diachi" placeholder="Địa chỉ">
-                        <input type="text" name="role" placeholder="Role">
-
-                        <!-- <h2>Chọn</h2>
-                        <div>Danh mục</div>
-                        <select name="iddm" class="form-select form-select-lg mb-3" aria-label="Large select example">
-                            <?php foreach($listdanhmuc as $ldm): ?>
-                            <option value="<?=$ldm['id']?>">
-                                <?=$ldm['tendm']?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select> -->
-                       
-
-                        <div class="div"></div>
-                        <input type="submit" name="add_tk" value="Thêm mới">
-
-                    </form>
-                </div>
+                        </div>
+                    </div>
+                    <hr class="hr mt-4 mb-4">
+                </form>
             </div>
         </div>
     </div>
 </div>
-
-
 <style>
-    .bangdanhmuc input[type="text"] {
-        width: 400px;
-        margin-bottom: 30px;
-        padding: 10px;
-        outline: none;
-        border: 0.3px solid #ccc;
+    .hr {
+        max-width: 300px;
+        margin: auto;
+
+    }
+
+    .qm {
+        text-align: center;
+
+    }
+
+    .qm a {
+        color: brown;
+
+    }
+
+    .qm .qmk {
+        margin-left: -25px;
+    }
+
+    ::placeholder {
+        font-weight: 100;
+
+    }
+
+
+    .tt {
+        padding: 20px 10px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 400;
+    }
+
+    .container0 {
+        margin: 0 auto;
+        margin-left: 200px;
+        background-color: rgb(255, 255, 255);
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        width: 1000px;
+    }
+    .container0 span{
+        color: red;
+    }
+
+
+    .container0 button[type="submit"] {
+        text-align: center;
+        width: 500px;
+        background-color: #F08383;
+        border: none;
+        border-radius: 3px;
+        height: 40px;
+    }
+
+    .container0 button[type="submit"]:active {
+        background-color: #F08383 !important;
+    }
+
+    .container0 button[type="submit"]:hover {
+        background-color: rgb(232, 85, 85) !important;
+    }
+
+    .container0 input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        max-width: 500px;
+        margin: auto;
+        margin-bottom: 20px;
         border-radius: 3px;
     }
 
-    .bangdanhmuc input[type="submit"] {
-        width: 140px;
-        margin-bottom: 30px;
-        margin-left: 10px;
-        padding: 10px;
-        border: 0.3px solid #ccc;
-        border-radius: 3px;
-        background-color: #fff
-    }
 
-    .bangdanhmuc input[type="submit"]:hover {
-        color: #DC3545;
-        border: 0.3px solid #DC3545;
-    }
-
-    .table {
-        text-align: center !important;
-    }
-
-    .table a:hover {
-        color: #DC3545 !important;
-        cursor: pointer;
-    }
-
-    .table a {
-        color: #000 !important;
-    }
-
-    .table thead {
-        background-color: #f3f3f3 !important;
-        border: 0.2px solid #e6e6e6 !important;
-    }
-
-    .table tbody {
-        border: 0.2px solid #e6e6e6 !important;
-    }
-
-    .table thead th {
-        border: none !important;
-    }
-
-    .table tbody th {
-        border: 0.1px solid #e6e6e6 !important;
-        padding: 25px;
-    }
-
-    .table tbody tr td {
-        border: 0.1px solid #e6e6e6 !important;
-    }
-
-    .table tbody td {
-        border: none !important;
-    }
-
-    .danhmucsp p {
-        margin-top: 10px;
-        margin-left: -10px;
-        padding: 10px;
-        font-size: 17px;
-    }
-
-    .be-content {
-        padding: 10px;
-    }
-
-    .be-content .row {
-        background-color: #ffffff;
+    .container0 label {
+        font-weight: 500;
     }
 </style>

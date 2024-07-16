@@ -124,11 +124,11 @@
   	margin-top:10px;
     }
     .danhmucsp a:hover i {
-        color: #DC3545;
+        color: #FFA2A2;
     }
 
     .danhmucsp a:hover {
-        color: #DC3545;
+        color: #FFA2A2;
     }
 
     .add_hang_hoa {
@@ -146,15 +146,15 @@
     }
 
     .table a:hover i {
-        color: #DC3545 !important;
+        color: #FFA2A2 !important;
         cursor: pointer;
     }
 
 
 
     .table thead {
-        background-color: #DC3545 !important;
-        border: 0.2px solid #DC3545 !important;
+        background-color: #FFA2A2 !important;
+        border: 0.2px solid #FFA2A2 !important;
         color: #ffffff;
         font-size: 15px;
     }

@@ -19,40 +19,40 @@
                                     $diachi=$_SESSION['user']['diachi'];
                         ?>
                         <div class="thongtininput mb-3">
-                            <input type="text" name="hoten" value="<?=$name?>">
+                            <input type="text" name="hoten" value="<?=$name?>" required>
                         </div>
                         <div class="thongtininput mb-2">
-                            <input type="email" name="email" value="<?=$email?>">
+                            <input type="email" name="email" value="<?=$email?>" required>
                         </div>
                         <div class="thongtininput mt-3 mb-2">
-                            <input type="text" name="sodienthoai" value="<?=$tel?>">
+                            <input type="text" name="sodienthoai" value="<?=$tel?>" required>
                         </div>
                         <div class="thongtininput mt-3 mb-2">
-                            <input type="text" name="diachi" placeholder="Địa chỉ" value="<?=$diachi?>">
+                            <input type="text" name="diachi" placeholder="Địa chỉ" value="<?=$diachi?>" required>
                         </div>
 
                         <div class="thongtininput mt-3 mb-2">
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
+                            <textarea name="ghichu" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         </div>
                         <?php
                                 }else {
                                     echo '';
                             ?>
                             <div class="thongtininput mb-3">
-                            <input type="text" name="hoten" placeholder="Họ tên">
+                            <input type="text" name="hoten" placeholder="Họ tên" required>
                         </div>
                         <div class="thongtininput mb-2">
-                            <input type="email" placeholder="Email" name="email">
+                            <input type="email" placeholder="Email" name="email" required>
                         </div>
                         <div class="thongtininput mt-3 mb-2">
-                            <input type="text" placeholder="Số điện thoại" name="sodienthoai">
+                            <input type="text" placeholder="Số điện thoại" name="sodienthoai" required>
                         </div>
                         <div class="thongtininput mt-3 mb-2">
-                            <input type="text" placeholder="Địa chỉ" name="diachi">
+                            <input type="text" placeholder="Địa chỉ" name="diachi" required>
                         </div>
 
                         <div class="thongtininput mt-3 mb-2">
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
+                            <textarea name="ghichu" id="" cols="30" rows="10" placeholder="Ghi chú"></textarea>
                         </div>
                         <?php } ?>
                         
@@ -65,12 +65,12 @@
                                     <p>Phương Thức Thanh Toán</p>
                                     <div class="payment-method">
                                         <div class="payment-option">
-                                            <input type="radio" id="onlinePayment" name="pttt" value="1">
+                                            <input type="radio" id="onlinePayment" name="pttt" value="1" required>
                                             <label for="onlinePayment">Thanh toán online</label>
                                         </div>
 
                                         <div class="payment-option">
-                                            <input type="radio" id="cashOnDelivery" name="pttt" value="0">
+                                            <input type="radio" id="cashOnDelivery" name="pttt" value="0" required>
                                             <label for="cashOnDelivery">Thanh toán khi nhận hàng</label>
                                         </div>
                                     </div>

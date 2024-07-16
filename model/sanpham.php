@@ -37,27 +37,23 @@
         $sp=pdo_query_one($sql);
         return $sp;
     }
-    // function loadOne_sanphamct_(){    sửa 12:31 27/11
-    //     $sql="SELECT sp.name, sp.img, sp.giasale, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id
-    //     FROM sanpham_chitiet sanpham_ct 
-    //     INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
-    //     INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id order by id desc limit 10";
-    //     $sp=pdo_query($sql);
-    //     return $sp;
-    // }
+    
    
     function insert_spchitiet($id_dungtich,$id_sp,$gia_sp_chitiet){
         $sql="insert into sanpham_chitiet(id_dung_tich,id_sp,gia_sp_chitiet)values('$id_dungtich','$id_sp','$gia_sp_chitiet')";
         pdo_execute($sql);
     }
    
-    function loadAll_sanpham() {
-        $sql="SELECT sanpham.id, sanpham.name, sanpham.img, sanpham.giasale, sanpham.price,
-        danhmuc.tendm AS danhmuc_tendm
-        FROM sanpham
-        JOIN danhmuc ON sanpham.iddm = danhmuc.id
-        ORDER BY sanpham.id DESC";
-        $listsanpham=pdo_query($sql);
+    function loadAll_sanpham($kyw,$iddm) {
+        $sql="select * from sanpham where 1";
+        if($kyw!=''){
+            $sql.=" and name like '%".$kyw."%'";
+        }
+        if($iddm>0){
+            $sql.=" and iddm = '".$iddm."'";
+        }
+        $sql.= " order by id desc";
+        $listsanpham = pdo_query($sql);
         return $listsanpham;
     }
     
@@ -77,52 +73,42 @@
         $listsanpham=pdo_query($sql);
         return $listsanpham;
     }
+   
   
     function loadOne_sanpham_chitiet($id){
-        $sql="SELECT * from sanpham where sanpham.id=".$id;
+        $sql="SELECT * from sanpham where id=".$id;
         $sp=pdo_query_one($sql);
         return $sp;
     }
+    function loadOne_sanpham_cungloai($id,$iddm){
+        $sql="SELECT * from sanpham where iddm ='.$iddm.' AND id <> ".$id;
+        $sp=pdo_query($sql);
+        return $sp;
+    }
     
-    function loadOne_sanpham_chitietdd($id){
-        $sql="SELECT sanpham_chitiet.gia_sp_chitiet,sanpham_chitiet.id_dung_tich, dung_tich.ten_dung_tich,dung_tich.id, sanpham.name, sanpham.img 
-        FROM sanpham_chitiet 
-        JOIN dung_tich ON sanpham_chitiet.id_dung_tich = dung_tich.id 
-        JOIN sanpham ON sanpham_chitiet.id_sp = sanpham.id where sanpham.id=".$id;
-        $sp=pdo_query($sql);
-        return $sp;
+//keyserch
+function loatAll_sanpham($kyw,$iddm){
+    $sql="select * from sanpham where 1";
+    if($kyw!=''){
+        $sql.=" and name like '%".$kyw."%'";
     }
-
-
-
-    //SỬA 
-    // function load_all_sp_home(){
-    //     $sql="SELECT sp.name, sp.img, sanpham_ct.*
-    //     FROM sanpham_chitiet sanpham_ct
-    //     INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id where sanpham_ct.id_dung_tich IN (8)";
-    //     $listsanpham=pdo_query($sql);
-    //     return $listsanpham;
-    // }
-
-
-    function loadOne_sanphamct_(){  // Của admin
-        $sql="SELECT sp.name, sp.img, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id,sanpham_ct.id_dung_tich
-        FROM sanpham_chitiet sanpham_ct 
-        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
-        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id order by id desc";
-        $sp=pdo_query($sql);
-        return $sp;
+    if($iddm>0){
+        $sql.=" and iddm = '".$iddm."'";
     }
-    function loadOne_sanphamct_home(){  // Của home
-        $sql="SELECT sp.name, sp.img, sp_dt.ten_dung_tich, sanpham_ct.gia_sp_chitiet, sanpham_ct.id, sanpham_ct.id_dung_tich
-        FROM sanpham_chitiet sanpham_ct 
-        INNER JOIN sanpham sp ON sanpham_ct.id_sp = sp.id 
-        INNER JOIN dung_tich sp_dt ON sanpham_ct.id_dung_tich = sp_dt.id";
-        $sp=pdo_query($sql);
-        return $sp;
+    $sql.= " order by id ";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+}
+
+function load_ten_sanpham($iddm){
+    if($iddm>0){
+        $sql = "select * from danhmuc where id = ".$iddm;
+        $dm = pdo_query_one($sql);
+        extract($dm);
+        return $name;
+    }else{
+      return "";
     }
-
-
-
+}
 
 ?>

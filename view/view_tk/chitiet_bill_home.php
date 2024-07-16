@@ -43,6 +43,9 @@
                         <p><strong>Tên: </strong>
                             <?=$bill_name?>
                         </p>
+                        <p><strong>Ghi chú: </strong>
+                            <?=$ghichu?>
+                        </p>
                         <p><strong>Địa Chỉ: </strong>
                             <?=$bill_diachi?>
                         </p>
@@ -62,7 +65,9 @@
                             <span class="text-success">Giao hàng thành công</span>
                             <?php }elseif ($trangthai == 4) {?>
                             <span class="text-danger"><strong>Hủy đơn hàng</strong></span>
-                            <?php }?>
+                            <?php }?> 
+                            <br>
+                            <br>Thời gian: <span class="fs-6 text-primary"><?=$ngaygiaohang?></span>
                         </p>
                     </div>
 

@@ -26,35 +26,4 @@
         pdo_execute($sql);
     }
 
-    
-    // Loại hàng
-    function insert_khoiluong($tendungtich){
-        $sql ="insert into dung_tich(ten_dung_tich) values('$tendungtich')";
-        pdo_execute($sql);
-    }
-
-    function delete_dungtich($id){
-        $sql = "delete from dung_tich where id=".$id;
-        pdo_execute($sql);
-    }
-
-    function loadall_dungtich(){
-        $sql= "select * from dung_tich order by id desc";
-        $listdungtich=pdo_query($sql);
-        return $listdungtich;
-    }
-
-    function loadone_dungtich($id){
-        $sql = "select * from dung_tich where id=".$id;
-        $kl= pdo_query_one($sql);
-        return $kl;
-    }
-
-    function update_dungtich($id,$tendt){
-        $sql =" update dung_tich set ten_dung_tich ='".$tendt."' where id=".$id;
-        pdo_execute($sql);
-    }
-
-
-
 ?>
